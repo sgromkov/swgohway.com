@@ -1,15 +1,20 @@
-import { Page, Text } from '@geist-ui/react';
-import Head from 'next/head';
+import React from 'react';
+import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import Link from '../components/Link';
 
 export default function Home() {
     return (
-        <Page size="large">
-            <Head>
-                <title>swgoh</title>
-            </Head>
-            <Page.Header>
-                <Text h1>SWGOH</Text>
-            </Page.Header>
-        </Page>
+        <Container maxWidth="sm">
+            <Box my={4}>
+                <Typography variant="h1" component="h1" gutterBottom>
+                    SWGOH
+                </Typography>
+                <Link href="/characters" color="secondary">
+                    Characters
+                </Link>
+            </Box>
+        </Container>
     );
-};
+}
