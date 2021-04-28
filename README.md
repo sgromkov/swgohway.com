@@ -1,25 +1,28 @@
-# Next.js example
+# SWGOH
 
-## How to use
+Web application for the mobile ["Star Wars: Galaxy of Heroes"](https://www.ea.com/ru-ru/games/starwars/galaxy-of-heroes) game.
 
-Download the example [or clone the repo](https://github.com/mui-org/material-ui):
+## Coming soon
 
-```sh
-curl https://codeload.github.com/mui-org/material-ui/tar.gz/master | tar -xz --strip=2  material-ui-master/examples/nextjs
-cd nextjs
-```
+Here are a few ideas I'm going to implement:
 
-Install it and run:
+- Advanced character filters;
+- Advanced ship filters;
+- Advanced team builder;
+- Authorization and using your own characters data.
 
-```sh
-npm install
-npm run dev
-```
+## What's Under the Hood?
 
-or:
+Technologies used in building the application:
 
-[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/mui-org/material-ui/tree/master/examples/nextjs)
+1. [Next.js](https://nextjs.org/)
+2. [Material-UI](https://material-ui.com)
+3. [MongoDB](https://www.mongodb.com)
 
-## The idea behind the example
+## About the author
 
-[Next.js](https://github.com/zeit/next.js) is a framework for server-rendered React apps.
+Hi! My name is Sergey Gromkov, I'm web developer from Moscow. Welcome to my website: https://gromkov.me/en/
+
+My SWGOH account: https://swgoh.gg/p/177969349/
+
+Feel free to send me bugs and ideas: https://github.com/sgromkov/swgoh/issues
