@@ -1,6 +1,6 @@
 # SWGOH
 
-Web application for the mobile ["Star Wars: Galaxy of Heroes"](https://www.ea.com/ru-ru/games/starwars/galaxy-of-heroes) game.
+Web application for the mobile ["Star Wars: Galaxy of Heroes"](https://www.ea.com/games/starwars/galaxy-of-heroes) game.
 
 ## Coming soon
 
