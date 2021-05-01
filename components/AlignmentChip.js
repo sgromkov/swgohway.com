@@ -1,30 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Chip from '@material-ui/core/Chip';
+import { Chip } from '@material-ui/core';
 import theme from '../theme';
 
 const LightSideChip = withStyles({
     root: {
-        backgroundColor: theme.swgoh.side.light,
-        color: '#fff'
+        borderRadius: '4px',
+        '&:not($outlined)': {
+            backgroundColor: theme.swgoh.side.light,
+            color: '#fff',
+        },
     },
     outlined: {
         color: theme.swgoh.side.light,
-        border: `1px solid ${theme.swgoh.side.light}`,
-        backgroundColor: theme.palette.background.default
+        borderColor: theme.swgoh.side.light,
     },
 })(Chip);
 
 const DarkSideChip = withStyles({
     root: {
-        backgroundColor: theme.swgoh.side.dark,
-        color: '#fff'
+        borderRadius: '4px',
+        '&:not($outlined)': {
+            backgroundColor: theme.swgoh.side.dark,
+            color: '#fff',
+        },
     },
     outlined: {
         color: theme.swgoh.side.dark,
-        border: `1px solid ${theme.swgoh.side.dark}`,
-        backgroundColor: theme.palette.background.default
+        borderColor: theme.swgoh.side.dark,
     },
 })(Chip);
 

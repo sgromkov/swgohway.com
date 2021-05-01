@@ -1,19 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Chip from '@material-ui/core/Chip';
+import { Chip } from '@material-ui/core';
 import RoleIcon from './RoleIcon';
 import theme from '../theme';
 
 const SupportChip = withStyles({
     root: {
-        backgroundColor: theme.swgoh.role.support,
-        color: '#fff'
+        borderRadius: '4px',
+        '&:not($outlined)': {
+            backgroundColor: theme.swgoh.role.support,
+            color: '#fff',
+        },
     },
     outlined: {
         color: theme.swgoh.role.support,
-        border: `1px solid ${theme.swgoh.role.support}`,
-        backgroundColor: theme.palette.background.default
+        borderColor: theme.swgoh.role.support,
     },
     icon: {
         color: 'inherit',
@@ -22,13 +24,15 @@ const SupportChip = withStyles({
 
 const AttackerChip = withStyles({
     root: {
-        backgroundColor: theme.swgoh.role.attacker,
-        color: '#fff'
+        borderRadius: '4px',
+        '&:not($outlined)': {
+            backgroundColor: theme.swgoh.role.attacker,
+            color: '#fff',
+        },
     },
     outlined: {
         color: theme.swgoh.role.attacker,
-        border: `1px solid ${theme.swgoh.role.attacker}`,
-        backgroundColor: theme.palette.background.default
+        borderColor: theme.swgoh.role.attacker,
     },
     icon: {
         color: 'inherit',
@@ -37,13 +41,15 @@ const AttackerChip = withStyles({
 
 const TankChip = withStyles({
     root: {
-        backgroundColor: theme.swgoh.role.tank,
-        color: '#fff'
+        borderRadius: '4px',
+        '&:not($outlined)': {
+            backgroundColor: theme.swgoh.role.tank,
+            color: '#fff',
+        },
     },
     outlined: {
         color: theme.swgoh.role.tank,
-        border: `1px solid ${theme.swgoh.role.tank}`,
-        backgroundColor: theme.palette.background.default
+        borderColor: theme.swgoh.role.tank,
     },
     icon: {
         color: 'inherit',
@@ -52,13 +58,15 @@ const TankChip = withStyles({
 
 const HealerChip = withStyles({
     root: {
-        backgroundColor: theme.swgoh.role.healer,
-        color: '#fff'
+        borderRadius: '4px',
+        '&:not($outlined)': {
+            backgroundColor: theme.swgoh.role.healer,
+            color: '#fff',
+        },
     },
     outlined: {
         color: theme.swgoh.role.healer,
-        border: `1px solid ${theme.swgoh.role.healer}`,
-        backgroundColor: theme.palette.background.default
+        borderColor: theme.swgoh.role.healer,
     },
     icon: {
         color: 'inherit',
