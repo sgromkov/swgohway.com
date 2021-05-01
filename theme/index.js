@@ -1,34 +1,50 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import { red, grey, cyan, blue, green, brown, purple, orange } from '@material-ui/core/colors';
+import { red, blue, green, brown, purple, orange } from '@material-ui/core/colors';
 
 // Create a theme instance.
 const theme = createMuiTheme({
     palette: {
         primary: {
-            main: grey[50],
+            light: '#80b1ff',
+            main: '#4782da',
+            dark: '#0056a8',
+            contrastText: '#fff',
         },
         secondary: {
-            main: cyan[900],
-        },
-        error: {
-            main: red.A400,
+            light: '#e33371',
+            main: '#dc004e',
+            dark: '#9a0036',
         },
         background: {
-            default: '#fff',
+            default: '#f7f9fc',
         },
+    },
+    typography: {
+        fontFamily: [
+            '-apple-system',
+            'BlinkMacSystemFont',
+            '"Segoe UI"',
+            'Roboto',
+            '"Helvetica Neue"',
+            'Arial',
+            'sans-serif',
+            '"Apple Color Emoji"',
+            '"Segoe UI Emoji"',
+            '"Segoe UI Symbol"',
+        ].join(','),
     },
     swgoh: {
         side: {
             light: blue[700],
-            dark: red[700]
+            dark: red[700],
         },
         role: {
             support: purple[700],
             attacker: orange[800],
             tank: brown[700],
-            healer: green[800]
-        }
-    }
+            healer: green[800],
+        },
+    },
 });
 
 export default theme;
