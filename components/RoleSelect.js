@@ -1,15 +1,33 @@
 import React from 'react';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import Checkbox from '@material-ui/core/Checkbox';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+import {
+    FormHelperText,
+    Checkbox,
+    Select,
+    FormControl,
+    MenuItem,
+    InputLabel,
+    ListItemText,
+    ListItemIcon,
+} from '@material-ui/core';
 import RoleChip from './RoleChip';
+import RoleIcon from './RoleIcon';
+
+const SelectItemIcon = withStyles({
+    root: {
+        minWidth: 'auto',
+        marginRight: '5px',
+    },
+})(ListItemIcon);
 
 const useStyles = makeStyles((theme) => ({
+    root: {
+        display: 'flex',
+        flexWrap: 'nowrap',
+        alignItems: 'flex-end',
+    },
     formControl: {
-        minWidth: '130px'
+        flexGrow: 1,
     },
     chips: {
         display: 'flex',
@@ -34,40 +52,47 @@ function RoleSelect({ roles, onChange }) {
     };
 
     return (
-        <FormControl className={classes.formControl} variant="outlined" size="small">
-            <InputLabel id="role-select-label">Role</InputLabel>
-            <Select
-                multiple
-                labelId="role-select-label"
-                id="role-select"
-                label="Role"
-                value={currentRoles}
-                onChange={handleChange}
-                renderValue={(selected) => (
-                    <div className={classes.chips}>
-                        {selected.map((value) => (
-                            <RoleChip
+        <div className={classes.root}>
+            <FormControl className={classes.formControl} variant="outlined" size="small">
+                <InputLabel id="role-select-label">Role</InputLabel>
+                <Select
+                    multiple
+                    labelId="role-select-label"
+                    id="role-select"
+                    label="Role"
+                    value={currentRoles}
+                    onChange={handleChange}
+                    renderValue={(selected) => (
+                        <div className={classes.chips}>
+                            {selected.map((value) => (
+                                <RoleChip
+                                    size="small"
+                                    role={value}
+                                    key={value}
+                                ></RoleChip>
+                            ))}
+                        </div>
+                    )}
+                >
+                    {roles.map((role) => (
+                        <MenuItem key={role.code} value={role.code}>
+                            <Checkbox checked={currentRoles.indexOf(role.code) > -1} size="small" />
+                            {/* <RoleChip
+                                variant="outlined"
                                 size="small"
-                                role={value}
-                                key={value}
-                            ></RoleChip>
-                        ))}
-                    </div>
-                )}
-            >
-                {roles.map((role) => (
-                    <MenuItem key={role.code} value={role.code}>
-                        <Checkbox checked={currentRoles.indexOf(role.code) > -1} size="small" />
-                        <RoleChip
-                            variant="outlined"
-                            size="small"
-                            role={role.code}
-                            key={role.code}
-                        ></RoleChip>
-                    </MenuItem>
-                ))}
-            </Select>
-        </FormControl>
+                                role={role.code}
+                                key={role.code}
+                            ></RoleChip> */}
+                            <SelectItemIcon>
+                                <RoleIcon role={role.code} fontSize="small" />
+                            </SelectItemIcon>
+                            <ListItemText primary={role.title} />
+                        </MenuItem>
+                    ))}
+                </Select>
+                <FormHelperText>Will show the characters that fit one of the selected roles.</FormHelperText>
+            </FormControl>
+        </div>
     );
 }
 

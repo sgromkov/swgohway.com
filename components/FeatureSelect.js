@@ -1,12 +1,15 @@
 import React from 'react';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import Checkbox from '@material-ui/core/Checkbox';
-import Chip from '@material-ui/core/Chip';
-import ListItemText from '@material-ui/core/ListItemText';
+import {
+    FormHelperText,
+    InputLabel,
+    MenuItem,
+    FormControl,
+    Select,
+    Checkbox,
+    ListItemText,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import CustomChip from './CustomChip';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -15,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'flex-end'
     },
     formControl: {
-        minWidth: '180px'
+        flexGrow: 1,
     },
     chips: {
         display: 'flex',
@@ -53,11 +56,11 @@ function FeatureSelect({ features, onChange }) {
                     renderValue={(selected) => (
                         <div className={classes.chips}>
                             {selected.map((value) => (
-                                <Chip
+                                <CustomChip
                                     size="small"
                                     label={value}
                                     key={value}
-                                ></Chip>
+                                />
                             ))}
                         </div>
                     )}
@@ -69,6 +72,7 @@ function FeatureSelect({ features, onChange }) {
                         </MenuItem>
                     ))}
                 </Select>
+                <FormHelperText>Will show the characters that have all selected features.</FormHelperText>
             </FormControl>
         </div>
     );
