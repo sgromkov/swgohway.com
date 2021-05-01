@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
+import { Avatar } from '@material-ui/core';
 import theme from '../theme';
 
 const LightSideAvatar = withStyles({
