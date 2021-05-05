@@ -4,7 +4,8 @@ import { getCharacters } from '../lib/characters';
 import { getAlignments } from '../lib/alignments';
 import { getRoles } from '../lib/roles';
 import { getFractions } from '../lib/fractions';
-import { Container, Typography, Box } from '@material-ui/core';
+import { Container } from '@material-ui/core';
+import PageCaption from '../components/PageCaption';
 import CharacterList from '../components/CharacterList';
 import CharacterFilter from '../components/CharacterFilter';
 import charactersFiltrator from '../utilities/charactersFiltrator';
@@ -33,11 +34,7 @@ export default function Characters({ characters, alignments, roles, fractions, f
             <Head>
                 <title>Characters | swgoh</title>
             </Head>
-            <Box mt={4} mb={2}>
-                <Typography variant="h2" component="h1" gutterBottom>
-                    Characters
-                </Typography>
-            </Box>
+            <PageCaption caption="Characters" />
             <CharacterFilter
                 alignments={alignments}
                 roles={roles}
