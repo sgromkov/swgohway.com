@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import { getCharacters } from '../lib/characters';
+import { getAlignments } from '../lib/alignments';
+import { getRoles } from '../lib/roles';
+import { getFractions } from '../lib/fractions';
 import { Container, Typography, Box } from '@material-ui/core';
 import CharacterList from '../components/CharacterList';
 import CharacterFilter from '../components/CharacterFilter';
@@ -54,39 +57,15 @@ export default function Characters({ characters, alignments, roles, fractions, f
 
 export async function getStaticProps() {
     const characters = await getCharacters();
+    const alignments = await getAlignments();
+    const roles = await getRoles();
+    const fractions = await getFractions();
 
     const features = [
         { code: 'leader', title: 'Leader' },
         { code: 'fleetCommander', title: 'Fleet Commander' },
         { code: 'galacticLegend', title: 'Galactic Legend' }
     ];
-
-    const alignments = [];
-    const roles = [];
-    const fractions = [];
-
-    const alignmentTitles = [];
-    const roleTitles = [];
-    const fractionTitles = [];
-
-    characters.forEach((character) => {
-        if (alignmentTitles.indexOf(character.alignment.title) === -1) {
-            alignmentTitles.push(character.alignment.title);
-            alignments.push(Object.assign({}, character.alignment));
-        }
-
-        if (roleTitles.indexOf(character.role.title) === -1) {
-            roleTitles.push(character.role.title);
-            roles.push(Object.assign({}, character.role));
-        }
-
-        character.fractions.forEach((fraction) => {
-            if (fractionTitles.indexOf(fraction.title) === -1) {
-                fractionTitles.push(fraction.title);
-                fractions.push(Object.assign({}, fraction));
-            }
-        });
-    });
 
     return {
         props: {

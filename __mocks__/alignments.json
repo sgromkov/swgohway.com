@@ -1,0 +1,10 @@
+[
+    {
+        "code": "light",
+        "title": "Light Side"
+    },
+    {
+        "code": "dark",
+        "title": "Dark Side"
+    }
+]
