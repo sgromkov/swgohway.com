@@ -90,7 +90,7 @@ function CharacterItem({ character }) {
                             <CharacterPortrait
                                 side={character.alignment.code}
                                 alt={character.name}
-                                src={`https://swgoh.gg${character.image}`}
+                                src={character.image}
                                 className={classes.portrait}
                             />
                         </Grid>

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
-import { getCharacters } from '../lib/characters';
 import { getAlignments } from '../lib/alignments';
-import { getRoles } from '../lib/roles';
+import { getCharacters } from '../lib/characters';
 import { getFractions } from '../lib/fractions';
+import { getRoles } from '../lib/roles';
 import { Container } from '@material-ui/core';
 import PageCaption from '../components/PageCaption';
 import CharacterList from '../components/CharacterList';
@@ -53,24 +53,24 @@ export default function Characters({ characters, alignments, roles, fractions, f
 }
 
 export async function getStaticProps() {
-    const characters = await getCharacters();
     const alignments = await getAlignments();
-    const roles = await getRoles();
+    const characters = await getCharacters();
     const fractions = await getFractions();
+    const roles = await getRoles();
 
     const features = [
         { code: 'leader', title: 'Leader' },
         { code: 'fleetCommander', title: 'Fleet Commander' },
-        { code: 'galacticLegend', title: 'Galactic Legend' }
+        { code: 'galacticLegend', title: 'Galactic Legend' },
     ];
 
     return {
         props: {
-            characters,
             alignments,
-            roles,
+            characters,
             fractions,
-            features
+            roles,
+            features,
         }
     };
 }
