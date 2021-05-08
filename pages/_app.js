@@ -5,6 +5,8 @@ import { ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { Container, Tooltip, IconButton, AppBar, Toolbar, Typography } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
+import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
+import TelegramIcon from '@material-ui/icons/Telegram';
 import theme from '../theme';
 
 const useStyles = makeStyles((theme) => ({
@@ -29,6 +31,10 @@ export default function MyApp({ Component, pageProps }) {
             <Head>
                 <title>SWGOH WAY</title>
                 <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+                <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+                <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+                <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+                <link rel="manifest" href="/site.webmanifest"></link>
             </Head>
             <ThemeProvider theme={theme}>
                 <CssBaseline />
@@ -38,6 +44,24 @@ export default function MyApp({ Component, pageProps }) {
                             <Typography variant="h6" className={classes.title}>
                                 SWGOH WAY
                             </Typography>
+                            <Tooltip title="Join the Telegram group">
+                                <IconButton
+                                    color="inherit"
+                                    aria-label="Join the Telegram group"
+                                    href="https://t.me/swgohwaycom"
+                                >
+                                    <TelegramIcon />
+                                </IconButton>
+                            </Tooltip>
+                            <Tooltip title="About the author">
+                                <IconButton
+                                    color="inherit"
+                                    aria-label="About the author"
+                                    href="https://gromkov.me/en/"
+                                >
+                                    <EmojiPeopleIcon />
+                                </IconButton>
+                            </Tooltip>
                             <Tooltip title="View Github repository">
                                 <IconButton
                                     color="inherit"
