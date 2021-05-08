@@ -45,6 +45,12 @@ const characters = mockedCharacters.map((el) => {
         : el.role;
     const characterRole = roles.filter((role) => role.title === characterRoleTitle)[0];
 
+    const isLeader = (el.role === LEADER) || (el.categories.indexOf(LEADER) > -1);
+
+    const isFleetCommander = el.categories.indexOf(FLEET_COMMANDER) > -1;
+
+    const isGalacticLegend = el.categories.indexOf(GALACTIC_LEGEND) > -1;
+
     const character = {
         name: el.name,
         code: characterCode,
@@ -59,12 +65,13 @@ const characters = mockedCharacters.map((el) => {
         ship: el.ship,
         shipSlot: el.ship_slot,
         activateShardCount: el.activate_shard_count,
+        leader: isLeader,
+        fleetCommander: isFleetCommander,
+        galacticLegend: isGalacticLegend,
     };
 
     return character;
 });
-
-console.log(characters);
 
 characters.forEach(async (character) => {
     try {
@@ -75,5 +82,3 @@ characters.forEach(async (character) => {
         throw new Error(error);
     }
 });
-
-// process.exit(0);

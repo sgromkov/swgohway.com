@@ -54,7 +54,19 @@ const CharacterSchema = new mongoose.Schema({
     activateShardCount: {
         type: Number,
         required: true,
-    }
+    },
+    leader: {
+        type: Boolean,
+        required: true,
+    },
+    fleetCommander: {
+        type: Boolean,
+        required: true,
+    },
+    galacticLegend: {
+        type: Boolean,
+        required: true,
+    },
 });
 
 CharacterSchema.set('toJSON', {
