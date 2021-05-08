@@ -6,7 +6,7 @@ const CharacterSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
-    code: { // make from url
+    code: {
         type: String,
         required: true,
         unique: true,
@@ -18,7 +18,7 @@ const CharacterSchema = new mongoose.Schema({
     },
     image: {
         type: String,
-        // required: true,
+        required: true,
     },
     power: {
         type: Number,
@@ -31,7 +31,7 @@ const CharacterSchema = new mongoose.Schema({
     alignment: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Alignment',
-        // required: true,
+        required: true,
     },
     fractions: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -40,7 +40,7 @@ const CharacterSchema = new mongoose.Schema({
     role: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Role',
-        // required: true,
+        required: true,
     },
     ability: [{
         type: String,
