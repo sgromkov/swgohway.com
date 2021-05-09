@@ -11,6 +11,7 @@ import {
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import { makeStyles } from '@material-ui/core/styles';
 import CustomChip from './CustomChip';
+import getItemTitleByCode from '../utilities/getItemTitleByCode';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -78,7 +79,7 @@ function FractionSelect({ fractions, onChange }) {
                                 {selected.map((value) => (
                                     <CustomChip
                                         size="small"
-                                        label={value}
+                                        label={getItemTitleByCode(value, fractions)}
                                         key={value}
                                     />
                                 ))}

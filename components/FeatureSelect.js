@@ -10,6 +10,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CustomChip from './CustomChip';
+import getItemTitleByCode from '../utilities/getItemTitleByCode';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -58,7 +59,7 @@ function FeatureSelect({ features, onChange }) {
                             {selected.map((value) => (
                                 <CustomChip
                                     size="small"
-                                    label={value}
+                                    label={getItemTitleByCode(value, features)}
                                     key={value}
                                 />
                             ))}
