@@ -66,12 +66,12 @@ function FractionSelect({ fractions, onChange }) {
         <>
             <div className={classes.root}>
                 <FormControl className={classes.formControl} variant="outlined" size="small">
-                    <InputLabel id="fraction-select-label">Fractions</InputLabel>
+                    <InputLabel id="fraction-select-label">Factions</InputLabel>
                     <Select
                         multiple
                         labelId="fraction-select-label"
                         id="fraction-select"
-                        label="Fractions"
+                        label="Factions"
                         value={currentFractions}
                         onChange={handleChange}
                         renderValue={(selected) => (
@@ -99,25 +99,25 @@ function FractionSelect({ fractions, onChange }) {
                     value={currentLogic}
                     exclusive
                     onChange={handleLogicChange}
-                    aria-label="Choose how to select fractions"
+                    aria-label="Choose how to select factions"
                     className={classes.toggleButtonGroup}
                 >
                     <ToggleButton
                         value="or"
-                        aria-label="Show the characters belonging to any selected fraction"
-                        title="Show the characters belonging to any selected fraction"
+                        aria-label="Show the characters belonging to any selected faction"
+                        title="Show the characters belonging to any selected faction"
                         className={classes.toggleButton}
                     >Or</ToggleButton>
                     <ToggleButton
                         value="and"
-                        aria-label="Show the characters belonging to all selected fractions"
-                        title="Show the characters belonging to all selected fractions"
+                        aria-label="Show the characters belonging to all selected factions"
+                        title="Show the characters belonging to all selected factions"
                         className={classes.toggleButton}
                     >And</ToggleButton>
                 </ToggleButtonGroup>
             </div>
             <FormHelperText className={classes.formHelperText}>
-                Click AND if you want to show the characters belonging to all selected fractions.
+                Click AND if you want to show the characters belonging to all selected factions.
             </FormHelperText>
         </>
     );

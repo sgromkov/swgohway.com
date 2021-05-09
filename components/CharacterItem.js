@@ -130,7 +130,7 @@ function CharacterItem({ character }) {
                                     variant="subtitle2"
                                     component="div"
                                     className={classes.subtitle}
-                                >Fractions</Typography>
+                                >Factions</Typography>
                             </Grid>
                             <Grid item xs sm md={12} className={classes.paramsChipsGrid}>
                                 <div className={classes.chips}>
