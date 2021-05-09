@@ -4,6 +4,7 @@ const FRACTIONS = 'fractions';
 const LEADER = 'leader';
 const FLEET_COMMANDER = 'fleetCommander';
 const GALACTIC_LEGEND = 'galacticLegend';
+const CREW_MEMBER = 'crewMember';
 
 const charactersFiltrator = {
     setAlignment: function (setParams, alignmentCode) {
@@ -63,7 +64,8 @@ const charactersFiltrator = {
         const PARAM_NAMES = [
             LEADER,
             FLEET_COMMANDER,
-            GALACTIC_LEGEND
+            GALACTIC_LEGEND,
+            CREW_MEMBER,
         ];
 
         setParams((prevParams) => {
@@ -130,6 +132,9 @@ const charactersFiltrator = {
                         break;
                     case GALACTIC_LEGEND:
                         isMatched = character.galacticLegend;
+                        break;
+                    case CREW_MEMBER:
+                        isMatched = !!(character.ship);
                         break;
                 }
 

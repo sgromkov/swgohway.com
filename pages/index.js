@@ -62,6 +62,7 @@ export async function getStaticProps() {
         { code: 'leader', title: 'Leader' },
         { code: 'fleetCommander', title: 'Fleet Commander' },
         { code: 'galacticLegend', title: 'Galactic Legend' },
+        { code: 'crewMember', title: 'Crew member' },
     ];
 
     return {
