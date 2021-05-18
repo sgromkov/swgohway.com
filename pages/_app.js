@@ -57,7 +57,7 @@ export default function MyApp({ Component, pageProps }) {
                                 <IconButton
                                     color="inherit"
                                     aria-label="About the author"
-                                    href="https://gromkov.me/en/"
+                                    href="https://gromkov.me"
                                 >
                                     <EmojiPeopleIcon />
                                 </IconButton>
