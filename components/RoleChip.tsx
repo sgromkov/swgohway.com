@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Chip } from '@material-ui/core';
 import RoleIcon from './RoleIcon';
@@ -73,7 +72,12 @@ const HealerChip = withStyles({
     }
 })(Chip);
 
-function RoleChip(props) {
+type RoleChipProps = {
+    role: string,
+    label?: string,
+};
+
+const RoleChip: React.FC<RoleChipProps> = (props) => {
     const { role, label, ...other } = props;
 
     let resultChip;
@@ -120,10 +124,6 @@ function RoleChip(props) {
     }
 
     return resultChip;
-}
-
-RoleChip.propTypes = {
-    role: PropTypes.string.isRequired,
 };
 
 export default RoleChip;

@@ -12,6 +12,7 @@ import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import { makeStyles } from '@material-ui/core/styles';
 import CustomChip from './CustomChip';
 import getItemTitleByCode from '../utilities/getItemTitleByCode';
+import { IFractionSelectOption } from '../types';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -41,22 +42,30 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function FractionSelect({ fractions, onChange }) {
+type FractionSelectProps = {
+    fractions: IFractionSelectOption[],
+    onChange(fractionCodes: string[], logic: string): void,
+};
+
+const FractionSelect: React.FC<FractionSelectProps> = ({ fractions, onChange }) => {
     const classes = useStyles();
 
-    const [currentFractions, setCurrentFractions] = React.useState([]);
+    const [currentFractions, setCurrentFractions] = React.useState<string[]>([]);
 
-    const [currentLogic, setCurrentLogic] = React.useState('or');
+    const [currentLogic, setCurrentLogic] = React.useState<string>('or');
 
-    const handleChange = (event) => {
-        const fractionCodes = event.target.value;
+    const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+        const fractionCodes = event.target.value as string[];
 
         setCurrentFractions(fractionCodes);
 
         onChange(fractionCodes, currentLogic);
     };
 
-    const handleLogicChange = (event, newLogic) => {
+    const handleLogicChange = (
+        event: React.MouseEvent<HTMLElement, MouseEvent>,
+        newLogic: string
+    ) => {
         setCurrentLogic(newLogic);
 
         onChange(currentFractions, newLogic);
@@ -74,9 +83,9 @@ function FractionSelect({ fractions, onChange }) {
                         label="Factions"
                         value={currentFractions}
                         onChange={handleChange}
-                        renderValue={(selected) => (
+                        renderValue={(selected: string[]) => (
                             <div className={classes.chips}>
-                                {selected.map((value) => (
+                                {selected.map((value: string) => (
                                     <CustomChip
                                         size="small"
                                         label={getItemTitleByCode(value, fractions)}
@@ -121,6 +130,6 @@ function FractionSelect({ fractions, onChange }) {
             </FormHelperText>
         </>
     );
-}
+};
 
 export default FractionSelect;

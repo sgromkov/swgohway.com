@@ -1,10 +1,28 @@
+import React from 'react';
 import { Box, Paper, Divider, Grid, Typography } from '@material-ui/core';
-import AlignmentSelect from '../components/AlignmentSelect';
-import RoleSelect from '../components/RoleSelect';
-import FractionSelect from '../components/FractionSelect';
-import FeatureSelect from '../components/FeatureSelect';
+import AlignmentSelect from './AlignmentSelect';
+import RoleSelect from './RoleSelect';
+import FractionSelect from './FractionSelect';
+import FeatureSelect from './FeatureSelect';
+import {
+    IAlignmentSelectOption,
+    IFeatureSelectOption,
+    IFractionSelectOption,
+    IRoleSelectOption
+} from '../types';
 
-function CharacterFilter({
+type CharacterFilterProps = {
+    alignments: IAlignmentSelectOption[],
+    roles: IRoleSelectOption[],
+    fractions: IFractionSelectOption[],
+    features: IFeatureSelectOption[],
+    onAligmentChange(alignmentCode: string): void,
+    onRoleChange(roleCodes: string[]): void,
+    onFractionChange(fractionCodes: string[], logic: string): void,
+    onFeatureChange(featureCodes: string[]): void,
+};
+
+const CharacterFilter: React.FC<CharacterFilterProps> = ({
     alignments,
     roles,
     fractions,
@@ -13,7 +31,7 @@ function CharacterFilter({
     onRoleChange,
     onFractionChange,
     onFeatureChange,
-}) {
+}) => {
     return (
         <Box component="section" my={2}>
             <Paper>
@@ -52,6 +70,6 @@ function CharacterFilter({
             </Paper>
         </Box>
     );
-}
+};
 
 export default CharacterFilter;

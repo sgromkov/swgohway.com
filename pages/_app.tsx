@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }: AppProps) {
     const classes = useStyles();
 
     React.useEffect(() => {
@@ -79,8 +79,3 @@ export default function MyApp({ Component, pageProps }) {
         </React.Fragment>
     );
 }
-
-MyApp.propTypes = {
-    Component: PropTypes.elementType.isRequired,
-    pageProps: PropTypes.object.isRequired,
-};

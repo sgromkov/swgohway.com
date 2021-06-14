@@ -11,6 +11,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import CustomChip from './CustomChip';
 import getItemTitleByCode from '../utilities/getItemTitleByCode';
+import { IFeatureSelectOption } from '../types';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,13 +31,18 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function FeatureSelect({ features, onChange }) {
+type FeatureSelectProps = {
+    features: IFeatureSelectOption[],
+    onChange(featureCodes: string[]): void,
+};
+
+const FeatureSelect: React.FC<FeatureSelectProps> = ({ features, onChange }) => {
     const classes = useStyles();
 
-    const [currentFeatures, setCurrentFeatures] = React.useState([]);
+    const [currentFeatures, setCurrentFeatures] = React.useState<string[]>([]);
 
-    const handleChange = (event) => {
-        const featureCodes = event.target.value;
+    const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+        const featureCodes = event.target.value as string[];
 
         setCurrentFeatures(featureCodes);
 
@@ -54,9 +60,9 @@ function FeatureSelect({ features, onChange }) {
                     label="Features"
                     value={currentFeatures}
                     onChange={handleChange}
-                    renderValue={(selected) => (
+                    renderValue={(selected: string[]) => (
                         <div className={classes.chips}>
-                            {selected.map((value) => (
+                            {selected.map((value: string) => (
                                 <CustomChip
                                     size="small"
                                     label={getItemTitleByCode(value, features)}
@@ -77,6 +83,6 @@ function FeatureSelect({ features, onChange }) {
             </FormControl>
         </div>
     );
-}
+};
 
 export default FeatureSelect;

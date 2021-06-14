@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Chip } from '@material-ui/core';
 import theme from '../theme';
+import { AlignmentCodeValues } from '../types';
 
 const LightSideChip = withStyles({
     root: {
@@ -32,18 +32,23 @@ const DarkSideChip = withStyles({
     },
 })(Chip);
 
-function AlignmentChip(props) {
+type AlignmentChipProps = {
+    side: AlignmentCodeValues,
+    label?: string,
+};
+
+const AlignmentChip: React.FC<AlignmentChipProps> = (props) => {
     const { side, label, ...other } = props;
 
     if (side === 'light') {
-        return <LightSideChip label={label || 'Light Side'} {...other}></LightSideChip>;
+        return (
+            <LightSideChip label={label || 'Light Side'} {...other}></LightSideChip>
+        );
     } else {
-        return <DarkSideChip label={label || 'Dark Side'} {...other}></DarkSideChip>;
+        return (
+            <DarkSideChip label={label || 'Dark Side'} {...other}></DarkSideChip>
+        );
     }
-}
-
-AlignmentChip.propTypes = {
-    side: PropTypes.string.isRequired,
 };
 
 export default AlignmentChip;

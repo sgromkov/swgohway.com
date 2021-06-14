@@ -12,6 +12,7 @@ import {
 } from '@material-ui/core';
 import RoleChip from './RoleChip';
 import RoleIcon from './RoleIcon';
+import { IRoleSelectOption } from '../types';
 
 const SelectItemIcon = withStyles({
     root: {
@@ -38,13 +39,18 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function RoleSelect({ roles, onChange }) {
+type RoleSelectProps = {
+    roles: IRoleSelectOption[],
+    onChange(roleCodes: string[]): void,
+};
+
+const RoleSelect: React.FC<RoleSelectProps> = ({ roles, onChange }) => {
     const classes = useStyles();
 
-    const [currentRoles, setCurrentRoles] = React.useState([]);
+    const [currentRoles, setCurrentRoles] = React.useState<string[]>([]);
 
-    const handleChange = (event) => {
-        const roleCodes = event.target.value;
+    const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+        const roleCodes = event.target.value as string[];
 
         setCurrentRoles(roleCodes);
 
@@ -62,9 +68,9 @@ function RoleSelect({ roles, onChange }) {
                     label="Role"
                     value={currentRoles}
                     onChange={handleChange}
-                    renderValue={(selected) => (
+                    renderValue={(selected: string[]) => (
                         <div className={classes.chips}>
-                            {selected.map((value) => (
+                            {selected.map((value: string) => (
                                 <RoleChip
                                     size="small"
                                     role={value}
@@ -77,12 +83,6 @@ function RoleSelect({ roles, onChange }) {
                     {roles.map((role) => (
                         <MenuItem key={role.code} value={role.code}>
                             <Checkbox checked={currentRoles.indexOf(role.code) > -1} size="small" />
-                            {/* <RoleChip
-                                variant="outlined"
-                                size="small"
-                                role={role.code}
-                                key={role.code}
-                            ></RoleChip> */}
                             <SelectItemIcon>
                                 <RoleIcon role={role.code} fontSize="small" />
                             </SelectItemIcon>
@@ -94,6 +94,6 @@ function RoleSelect({ roles, onChange }) {
             </FormControl>
         </div>
     );
-}
+};
 
 export default RoleSelect;

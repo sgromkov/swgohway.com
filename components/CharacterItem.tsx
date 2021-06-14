@@ -1,3 +1,4 @@
+import React from 'react';
 import { Grid, Hidden, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import AlignmentChip from './AlignmentChip';
@@ -75,7 +76,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function CharacterItem({ character }) {
+type CharacterItemProps = {
+    character: object,
+};
+
+const CharacterItem: React.FC<CharacterItemProps> = ({ character }) => {
     const classes = useStyles();
 
     const showFractions = (character.fractions.length > 0);
@@ -134,7 +139,7 @@ function CharacterItem({ character }) {
                             </Grid>
                             <Grid item xs sm md={12} className={classes.paramsChipsGrid}>
                                 <div className={classes.chips}>
-                                    {character.fractions.map((fraction) => (
+                                    {character.fractions.map((fraction: { code: string, title: string }) => (
                                         <CustomChip
                                             variant="outlined"
                                             size="small"
@@ -188,6 +193,6 @@ function CharacterItem({ character }) {
             </Grid>
         </article>
     );
-}
+};
 
 export default CharacterItem;

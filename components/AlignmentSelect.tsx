@@ -9,6 +9,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import AlignmentChip from './AlignmentChip';
+import { AlignmentCodeValues, IAlignmentSelectOption } from '../types';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -28,13 +29,18 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function AlignmentSelect({ alignments, onChange }) {
+type AlignmentSelectProps = {
+    alignments: IAlignmentSelectOption[],
+    onChange(alignmentCode: AlignmentCodeValues): void,
+};
+
+const AlignmentSelect: React.FC<AlignmentSelectProps> = ({ alignments, onChange }) => {
     const classes = useStyles();
 
-    const [currentAlignment, setCurrentAlignment] = React.useState('');
+    const [currentAlignment, setCurrentAlignment] = React.useState<string>('');
 
-    const handleChange = (event) => {
-        const alignmentCode = event.target.value;
+    const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+        const alignmentCode = event.target.value as AlignmentCodeValues;
 
         setCurrentAlignment(alignmentCode);
 
@@ -51,7 +57,7 @@ function AlignmentSelect({ alignments, onChange }) {
                     label="Alignment"
                     value={currentAlignment}
                     onChange={handleChange}
-                    renderValue={(selected) => (
+                    renderValue={(selected: AlignmentCodeValues) => (
                         <div className={classes.chips}>
                             <AlignmentChip
                                 side={selected}
@@ -71,6 +77,6 @@ function AlignmentSelect({ alignments, onChange }) {
             </FormControl>
         </div>
     );
-}
+};
 
 export default AlignmentSelect;

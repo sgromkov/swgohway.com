@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import { getAlignments } from '../lib/alignments';
 import { getCharacters } from '../lib/characters';
@@ -10,7 +11,7 @@ import CharacterList from '../components/CharacterList';
 import CharacterFilter from '../components/CharacterFilter';
 import charactersFiltrator from '../utilities/charactersFiltrator';
 
-export default function Characters({ characters, alignments, roles, fractions, features }) {
+const Characters: React.FC = ({ characters, alignments, roles, fractions, features }) => {
     const [params, setParams] = useState([]);
 
     const filterCharactersByAlignment = (alignmentCode) => {
@@ -50,9 +51,11 @@ export default function Characters({ characters, alignments, roles, fractions, f
             />
         </Container >
     );
-}
+};
 
-export async function getStaticProps() {
+export default Characters;
+
+export const getStaticProps: GetStaticProps = async () => {
     const alignments = await getAlignments();
     const characters = await getCharacters();
     const fractions = await getFractions();

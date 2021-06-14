@@ -1,8 +1,13 @@
+import React from 'react';
 import { Divider, Box, Paper, List, ListItem, Typography } from '@material-ui/core';
-import CharacterItem from '../components/CharacterItem';
-import CustomChip from '../components/CustomChip';
+import CharacterItem from './CharacterItem';
+import CustomChip from './CustomChip';
 
-function CharacterList({ characters }) {
+type CharacterListProps = {
+    characters: object[],
+};
+
+const CharacterList: React.FC<CharacterListProps> = ({ characters }) => {
     return (
         <Box component="section" my={2}>
             <Paper>
@@ -40,6 +45,6 @@ function CharacterList({ characters }) {
             </Paper>
         </Box>
     );
-}
+};
 
 export default CharacterList;

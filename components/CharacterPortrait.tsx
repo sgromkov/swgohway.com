@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Image from 'next/image';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { Avatar } from '@material-ui/core';
 import theme from '../theme';
+import { AlignmentCodeValues } from '../types';
 
 const useStyles = makeStyles((theme) => ({
     image: {
@@ -27,7 +27,13 @@ const DarkSideAvatar = withStyles({
     },
 })(Avatar);
 
-function CharacterPortrait(props) {
+type CharacterPortraitProps = {
+    side: AlignmentCodeValues,
+    src: string,
+    alt: string,
+};
+
+const CharacterPortrait: React.FC<CharacterPortraitProps> = (props) => {
     const { side, src, alt, ...other } = props;
 
     const classes = useStyles();
@@ -45,10 +51,6 @@ function CharacterPortrait(props) {
             </DarkSideAvatar>
         );
     }
-}
-
-CharacterPortrait.propTypes = {
-    side: PropTypes.string.isRequired,
 };
 
 export default CharacterPortrait;

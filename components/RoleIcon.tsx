@@ -1,12 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import HealingIcon from '@material-ui/icons/Healing';
 import SecurityIcon from '@material-ui/icons/Security';
 import MyLocationIcon from '@material-ui/icons/MyLocation';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 
-function RoleIcon(props) {
+type RoleIconProps = {
+    role: string,
+};
+
+const RoleIcon: React.FC<RoleIconProps> = (props) => {
     const { role, ...other } = props;
 
     let resultIcon;
@@ -33,14 +36,12 @@ function RoleIcon(props) {
             );
             break;
         default:
-            resultIcon = <RadioButtonUncheckedIcon label={label} {...other}></RadioButtonUncheckedIcon>;
+            resultIcon = (
+                <RadioButtonUncheckedIcon {...other}></RadioButtonUncheckedIcon>
+            );
     }
 
     return resultIcon;
-}
-
-RoleIcon.propTypes = {
-    role: PropTypes.string.isRequired,
 };
 
 export default RoleIcon;
