@@ -12,7 +12,7 @@ import {
 } from '@material-ui/core';
 import RoleChip from './RoleChip';
 import RoleIcon from './RoleIcon';
-import { IRoleSelectOption } from '../types';
+import { SelectOption } from '../types';
 
 const SelectItemIcon = withStyles({
     root: {
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 type RoleSelectProps = {
-    roles: IRoleSelectOption[],
+    roles: SelectOption[],
     onChange(roleCodes: string[]): void,
 };
 

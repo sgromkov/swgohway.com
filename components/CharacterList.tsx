@@ -2,9 +2,10 @@ import React from 'react';
 import { Divider, Box, Paper, List, ListItem, Typography } from '@material-ui/core';
 import CharacterItem from './CharacterItem';
 import CustomChip from './CustomChip';
+import { Character } from '../types';
 
 type CharacterListProps = {
-    characters: object[],
+    characters: Character[],
 };
 
 const CharacterList: React.FC<CharacterListProps> = ({ characters }) => {

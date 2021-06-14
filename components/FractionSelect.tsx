@@ -12,7 +12,7 @@ import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import { makeStyles } from '@material-ui/core/styles';
 import CustomChip from './CustomChip';
 import getItemTitleByCode from '../utilities/getItemTitleByCode';
-import { IFractionSelectOption } from '../types';
+import { SelectOption, LogicValues, Logic } from '../types';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -43,8 +43,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 type FractionSelectProps = {
-    fractions: IFractionSelectOption[],
-    onChange(fractionCodes: string[], logic: string): void,
+    fractions: SelectOption[],
+    onChange(fractionCodes: string[], logic: Logic): void,
 };
 
 const FractionSelect: React.FC<FractionSelectProps> = ({ fractions, onChange }) => {
@@ -52,7 +52,7 @@ const FractionSelect: React.FC<FractionSelectProps> = ({ fractions, onChange }) 
 
     const [currentFractions, setCurrentFractions] = React.useState<string[]>([]);
 
-    const [currentLogic, setCurrentLogic] = React.useState<string>('or');
+    const [currentLogic, setCurrentLogic] = React.useState<Logic>(LogicValues.OR);
 
     const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
         const fractionCodes = event.target.value as string[];
@@ -64,7 +64,7 @@ const FractionSelect: React.FC<FractionSelectProps> = ({ fractions, onChange }) 
 
     const handleLogicChange = (
         event: React.MouseEvent<HTMLElement, MouseEvent>,
-        newLogic: string
+        newLogic: Logic
     ) => {
         setCurrentLogic(newLogic);
 
@@ -112,13 +112,13 @@ const FractionSelect: React.FC<FractionSelectProps> = ({ fractions, onChange }) 
                     className={classes.toggleButtonGroup}
                 >
                     <ToggleButton
-                        value="or"
+                        value={LogicValues.OR}
                         aria-label="Show the characters belonging to any selected faction"
                         title="Show the characters belonging to any selected faction"
                         className={classes.toggleButton}
                     >Or</ToggleButton>
                     <ToggleButton
-                        value="and"
+                        value={LogicValues.AND}
                         aria-label="Show the characters belonging to all selected factions"
                         title="Show the characters belonging to all selected factions"
                         className={classes.toggleButton}

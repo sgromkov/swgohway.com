@@ -10,23 +10,38 @@ import PageCaption from '../components/PageCaption';
 import CharacterList from '../components/CharacterList';
 import CharacterFilter from '../components/CharacterFilter';
 import charactersFiltrator from '../utilities/charactersFiltrator';
+import { Alignment, AlignmentCode, Character, Feature, Fraction, Logic, Role } from '../types';
 
-const Characters: React.FC = ({ characters, alignments, roles, fractions, features }) => {
+type CharactersProps = {
+    alignments: Alignment[],
+    characters: Character[],
+    features: Feature[],
+    fractions: Fraction[],
+    roles: Role[],
+};
+
+const Characters: React.FC<CharactersProps> = ({
+    alignments,
+    characters,
+    features,
+    fractions,
+    roles,
+}) => {
     const [params, setParams] = useState([]);
 
-    const filterCharactersByAlignment = (alignmentCode) => {
+    const filterCharactersByAlignment = (alignmentCode: AlignmentCode): void => {
         charactersFiltrator.setAlignment(setParams, alignmentCode);
     };
 
-    const filterCharactersByRole = (roleCodes) => {
+    const filterCharactersByRole = (roleCodes: string[]): void => {
         charactersFiltrator.setRoles(setParams, roleCodes);
     };
 
-    const filterCharactersByFraction = (fractionCodes, logic) => {
+    const filterCharactersByFraction = (fractionCodes: string[], logic: Logic): void => {
         charactersFiltrator.setFractions(setParams, fractionCodes, logic);
     };
 
-    const filterCharactersByFeature = (featureCodes) => {
+    const filterCharactersByFeature = (featureCodes: string[]): void => {
         charactersFiltrator.setFeatures(setParams, featureCodes);
     };
 
@@ -56,12 +71,12 @@ const Characters: React.FC = ({ characters, alignments, roles, fractions, featur
 export default Characters;
 
 export const getStaticProps: GetStaticProps = async () => {
-    const alignments = await getAlignments();
-    const characters = await getCharacters();
-    const fractions = await getFractions();
-    const roles = await getRoles();
+    const alignments: Alignment[] = await getAlignments();
+    const characters: Character[] = await getCharacters();
+    const fractions: Fraction[] = await getFractions();
+    const roles: Role[] = await getRoles();
 
-    const features = [
+    const features: Feature[] = [
         { code: 'leader', title: 'Leader' },
         { code: 'fleetCommander', title: 'Fleet Commander' },
         { code: 'galacticLegend', title: 'Galactic Legend' },
@@ -72,9 +87,9 @@ export const getStaticProps: GetStaticProps = async () => {
         props: {
             alignments,
             characters,
+            features,
             fractions,
             roles,
-            features,
-        }
+        } as CharactersProps
     };
 }

@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import AlignmentChip from './AlignmentChip';
-import { AlignmentCodeValues, IAlignmentSelectOption } from '../types';
+import { AlignmentCode, SelectOption } from '../types';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,8 +30,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 type AlignmentSelectProps = {
-    alignments: IAlignmentSelectOption[],
-    onChange(alignmentCode: AlignmentCodeValues): void,
+    alignments: SelectOption[],
+    onChange(alignmentCode: AlignmentCode): void,
 };
 
 const AlignmentSelect: React.FC<AlignmentSelectProps> = ({ alignments, onChange }) => {
@@ -40,7 +40,7 @@ const AlignmentSelect: React.FC<AlignmentSelectProps> = ({ alignments, onChange 
     const [currentAlignment, setCurrentAlignment] = React.useState<string>('');
 
     const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-        const alignmentCode = event.target.value as AlignmentCodeValues;
+        const alignmentCode = event.target.value as AlignmentCode;
 
         setCurrentAlignment(alignmentCode);
 
@@ -57,7 +57,7 @@ const AlignmentSelect: React.FC<AlignmentSelectProps> = ({ alignments, onChange 
                     label="Alignment"
                     value={currentAlignment}
                     onChange={handleChange}
-                    renderValue={(selected: AlignmentCodeValues) => (
+                    renderValue={(selected: AlignmentCode) => (
                         <div className={classes.chips}>
                             <AlignmentChip
                                 side={selected}

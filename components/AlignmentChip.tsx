@@ -2,7 +2,7 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Chip } from '@material-ui/core';
 import theme from '../theme';
-import { AlignmentCodeValues } from '../types';
+import { AlignmentCode } from '../types';
 
 const LightSideChip = withStyles({
     root: {
@@ -33,7 +33,7 @@ const DarkSideChip = withStyles({
 })(Chip);
 
 type AlignmentChipProps = {
-    side: AlignmentCodeValues,
+    side: AlignmentCode,
     label?: string,
 };
 

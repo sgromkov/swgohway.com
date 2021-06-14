@@ -4,19 +4,14 @@ import AlignmentSelect from './AlignmentSelect';
 import RoleSelect from './RoleSelect';
 import FractionSelect from './FractionSelect';
 import FeatureSelect from './FeatureSelect';
-import {
-    IAlignmentSelectOption,
-    IFeatureSelectOption,
-    IFractionSelectOption,
-    IRoleSelectOption
-} from '../types';
+import { AlignmentCode, SelectOption } from '../types';
 
 type CharacterFilterProps = {
-    alignments: IAlignmentSelectOption[],
-    roles: IRoleSelectOption[],
-    fractions: IFractionSelectOption[],
-    features: IFeatureSelectOption[],
-    onAligmentChange(alignmentCode: string): void,
+    alignments: SelectOption[],
+    roles: SelectOption[],
+    fractions: SelectOption[],
+    features: SelectOption[],
+    onAligmentChange(alignmentCode: AlignmentCode): void,
     onRoleChange(roleCodes: string[]): void,
     onFractionChange(fractionCodes: string[], logic: string): void,
     onFeatureChange(featureCodes: string[]): void,

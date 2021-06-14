@@ -5,6 +5,7 @@ import AlignmentChip from './AlignmentChip';
 import CharacterPortrait from './CharacterPortrait';
 import RoleChip from './RoleChip';
 import CustomChip from './CustomChip';
+import { Character } from '../types';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -77,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 type CharacterItemProps = {
-    character: object,
+    character: Character,
 };
 
 const CharacterItem: React.FC<CharacterItemProps> = ({ character }) => {
@@ -139,7 +140,7 @@ const CharacterItem: React.FC<CharacterItemProps> = ({ character }) => {
                             </Grid>
                             <Grid item xs sm md={12} className={classes.paramsChipsGrid}>
                                 <div className={classes.chips}>
-                                    {character.fractions.map((fraction: { code: string, title: string }) => (
+                                    {character.fractions.map((fraction) => (
                                         <CustomChip
                                             variant="outlined"
                                             size="small"

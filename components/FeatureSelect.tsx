@@ -11,7 +11,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import CustomChip from './CustomChip';
 import getItemTitleByCode from '../utilities/getItemTitleByCode';
-import { IFeatureSelectOption } from '../types';
+import { SelectOption } from '../types';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 type FeatureSelectProps = {
-    features: IFeatureSelectOption[],
+    features: SelectOption[],
     onChange(featureCodes: string[]): void,
 };
 
