@@ -1,6 +1,8 @@
-# SWGOH
+# SWGOHWAY.COM
 
 Web application for the mobile ["Star Wars: Galaxy of Heroes"](https://www.ea.com/games/starwars/galaxy-of-heroes) game.
+
+App: https://swgohway.com
 
 ## Coming soon
 
