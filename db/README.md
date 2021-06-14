@@ -24,3 +24,8 @@ npm run db db/fractions/add.js
 ```bash
 npm run db db/characters/add.js
 ```
+
+5. images:
+```bash
+npm run db db/images/add.js
+```
