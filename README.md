@@ -21,7 +21,7 @@ Technologies used in building the application:
 
 ## About the author
 
-Hi! My name is Sergey Gromkov, I'm web developer from Moscow. Welcome to my website: https://gromkov.me/en/
+Hi! My name is Sergey Gromkov, I'm web developer from Moscow. Welcome to my website: https://gromkov.me
 
 My SWGOH account: https://swgoh.gg/p/177969349/
 
