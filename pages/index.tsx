@@ -12,6 +12,10 @@ import CharacterFilter from '../components/CharacterFilter';
 import charactersFiltrator from '../utilities/charactersFiltrator';
 import { Alignment, AlignmentCode, Character, Feature, Fraction, Logic, Role } from '../types';
 
+const selectOptionSortByTitle = (a, b) => {
+    return (a.title > b.title) ? 1 : -1;
+};
+
 type CharactersProps = {
     alignments: Alignment[],
     characters: Character[],
@@ -85,11 +89,11 @@ export const getStaticProps: GetStaticProps = async () => {
 
     return {
         props: {
-            alignments,
+            alignments: alignments.sort(selectOptionSortByTitle),
             characters,
-            features,
-            fractions,
-            roles,
+            features: features.sort(selectOptionSortByTitle),
+            fractions: fractions.sort(selectOptionSortByTitle),
+            roles: roles.sort(selectOptionSortByTitle),
         } as CharactersProps
     };
 }
