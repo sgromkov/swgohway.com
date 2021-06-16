@@ -47,12 +47,16 @@ type RoleSelectProps = {
 const RoleSelect: React.FC<RoleSelectProps> = ({ roles, onChange }) => {
     const classes = useStyles();
 
-    const [currentRoles, setCurrentRoles] = React.useState<string[]>([]);
+    const currentRoles = roles.reduce((activeValues, role) => {
+        if (role.selected) {
+            activeValues.push(role.code);
+        }
+
+        return activeValues;
+    }, []);
 
     const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
         const roleCodes = event.target.value as string[];
-
-        setCurrentRoles(roleCodes);
 
         onChange(roleCodes);
     };

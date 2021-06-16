@@ -39,12 +39,17 @@ type FeatureSelectProps = {
 const FeatureSelect: React.FC<FeatureSelectProps> = ({ features, onChange }) => {
     const classes = useStyles();
 
-    const [currentFeatures, setCurrentFeatures] = React.useState<string[]>([]);
+    const currentFeatures = features.reduce((activeValues, feature) => {
+        if (feature.selected) {
+            activeValues.push(feature.code);
+        }
+
+        return activeValues;
+    }, []);
+
 
     const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
         const featureCodes = event.target.value as string[];
-
-        setCurrentFeatures(featureCodes);
 
         onChange(featureCodes);
     };

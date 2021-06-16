@@ -1,6 +1,9 @@
+import { Logic } from "../types";
+
 const ALIGNMENT = 'alignment';
 const ROLE = 'role';
 const FRACTIONS = 'fractions';
+const FEATURES = 'features';
 const LEADER = 'leader';
 const FLEET_COMMANDER = 'fleetCommander';
 const GALACTIC_LEGEND = 'galacticLegend';
@@ -153,6 +156,90 @@ const charactersFiltrator = {
 
             return allParamsMatched;
         });
+    },
+
+    getActiveValuesByParamName: function(params, seekingParamName) {
+        let activeValues = [];
+
+        if (params.length === 0) {
+            return activeValues;
+        }
+
+        params.forEach((param) => {
+            switch (param.name) {
+                case ALIGNMENT:
+                    if (seekingParamName === ALIGNMENT) {
+                        activeValues.push(param.value);
+                    }
+                    break;
+                case ROLE:
+                    if (seekingParamName === ROLE) {
+                        activeValues = [...param.value];
+                    }
+                    break;
+                case FRACTIONS:
+                    if (seekingParamName === FRACTIONS) {
+                        activeValues = [...param.value];
+                    }
+                    break;
+                case LEADER:
+                    if (seekingParamName === FEATURES) {
+                        activeValues.push(LEADER);
+                    }
+                    break;
+                case FLEET_COMMANDER:
+                    if (seekingParamName === FEATURES) {
+                        activeValues.push(FLEET_COMMANDER);
+                    }
+                    break;
+                case GALACTIC_LEGEND:
+                    if (seekingParamName === FEATURES) {
+                        activeValues.push(GALACTIC_LEGEND);
+                    }
+                    break;
+                case CREW_MEMBER:
+                    if (seekingParamName === FEATURES) {
+                        activeValues.push(CREW_MEMBER);
+                    }
+                    break;
+            }
+        });
+
+        return activeValues;
+    },
+
+    getAlignment: function (params) {
+        return this.getActiveValuesByParamName(params, ALIGNMENT);
+    },
+
+    getRoles: function (params) {
+        return this.getActiveValuesByParamName(params, ROLE);
+    },
+
+    getFractions: function (params) {
+        return this.getActiveValuesByParamName(params, FRACTIONS);
+    },
+
+    getFeatures: function (params) {
+        return this.getActiveValuesByParamName(params, FEATURES);
+    },
+
+    getFractionsLogic: function (params, defaultValue: Logic): Logic {
+        let activeLogic = defaultValue;
+
+        if (params.length === 0) {
+            return activeLogic;
+        }
+
+        params.forEach((param) => {
+            switch (param.name) {
+                case FRACTIONS:
+                    activeLogic = param.logic;
+                    break;
+            }
+        });
+
+        return activeLogic;
     }
 };
 

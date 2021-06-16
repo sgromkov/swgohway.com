@@ -9,6 +9,7 @@ export type Logic = LogicValues.AND | LogicValues.OR;
 export interface SelectOption {
     title: string,
     code: string,
+    selected?: boolean,
 }
 
 export interface Alignment {

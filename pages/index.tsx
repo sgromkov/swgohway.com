@@ -10,7 +10,16 @@ import PageCaption from '../components/PageCaption';
 import CharacterList from '../components/CharacterList';
 import CharacterFilter from '../components/CharacterFilter';
 import charactersFiltrator from '../utilities/charactersFiltrator';
-import { Alignment, AlignmentCode, Character, Feature, Fraction, Logic, Role } from '../types';
+import {
+    Alignment,
+    AlignmentCode,
+    Character,
+    Feature,
+    Fraction,
+    Logic,
+    LogicValues,
+    Role
+} from '../types';
 
 const selectOptionSortByTitle = (a, b) => {
     return (a.title > b.title) ? 1 : -1;
@@ -49,6 +58,12 @@ const Characters: React.FC<CharactersProps> = ({
         charactersFiltrator.setFeatures(setParams, featureCodes);
     };
 
+    const activeAlignments = charactersFiltrator.getAlignment(params);
+    const activeRoles = charactersFiltrator.getRoles(params);
+    const activeFractions = charactersFiltrator.getFractions(params);
+    const activeFeatures = charactersFiltrator.getFeatures(params);
+    const activeFractionsLogic: Logic = charactersFiltrator.getFractionsLogic(params, LogicValues.OR);
+
     return (
         <Container component="main" maxWidth="lg">
             <Head>
@@ -56,14 +71,32 @@ const Characters: React.FC<CharactersProps> = ({
             </Head>
             <PageCaption caption="Characters" />
             <CharacterFilter
-                alignments={alignments}
-                roles={roles}
-                fractions={fractions}
-                features={features}
+                alignments={alignments.map((option) => {
+                    return Object.assign({}, option, {
+                        selected: activeAlignments.indexOf(option.code) !== -1
+                    });
+                })}
+                roles={roles.map((option) => {
+                    return Object.assign({}, option, {
+                        selected: activeRoles.indexOf(option.code) !== -1
+                    });
+                })}
+                fractions={fractions.map((option) => {
+                    return Object.assign({}, option, {
+                        selected: activeFractions.indexOf(option.code) !== -1
+                    });
+                })}
+                features={features.map((option) => {
+                    return Object.assign({}, option, {
+                        selected: activeFeatures.indexOf(option.code) !== -1
+                    });
+                })}
+                fractionsLogic={activeFractionsLogic}
                 onAligmentChange={filterCharactersByAlignment}
                 onRoleChange={filterCharactersByRole}
                 onFractionChange={filterCharactersByFraction}
                 onFeatureChange={filterCharactersByFeature}
+                onReset={() => {setParams([])}}
             />
             <CharacterList
                 characters={charactersFiltrator.getFilteredCharacters(characters, params)}

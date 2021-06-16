@@ -44,30 +44,30 @@ const useStyles = makeStyles((theme) => ({
 
 type FractionSelectProps = {
     fractions: SelectOption[],
+    logic: Logic,
     onChange(fractionCodes: string[], logic: Logic): void,
 };
 
-const FractionSelect: React.FC<FractionSelectProps> = ({ fractions, onChange }) => {
+const FractionSelect: React.FC<FractionSelectProps> = ({ fractions, logic, onChange }) => {
     const classes = useStyles();
 
-    const [currentFractions, setCurrentFractions] = React.useState<string[]>([]);
+    const currentFractions = fractions.reduce((activeValues, fraction) => {
+        if (fraction.selected) {
+            activeValues.push(fraction.code);
+        }
 
-    const [currentLogic, setCurrentLogic] = React.useState<Logic>(LogicValues.OR);
+        return activeValues;
+    }, []);
+
+    const currentLogic = logic;
 
     const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
         const fractionCodes = event.target.value as string[];
 
-        setCurrentFractions(fractionCodes);
-
         onChange(fractionCodes, currentLogic);
     };
 
-    const handleLogicChange = (
-        event: React.MouseEvent<HTMLElement, MouseEvent>,
-        newLogic: Logic
-    ) => {
-        setCurrentLogic(newLogic);
-
+    const handleLogicChange = (event, newLogic: Logic) => {
         onChange(currentFractions, newLogic);
     };
 

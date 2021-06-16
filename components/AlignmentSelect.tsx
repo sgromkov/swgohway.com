@@ -37,12 +37,16 @@ type AlignmentSelectProps = {
 const AlignmentSelect: React.FC<AlignmentSelectProps> = ({ alignments, onChange }) => {
     const classes = useStyles();
 
-    const [currentAlignment, setCurrentAlignment] = React.useState<string>('');
+    const currentAlignment = alignments.reduce((activeValue, alignment) => {
+        if (alignment.selected) {
+            activeValue = alignment.code;
+        }
+
+        return activeValue;
+    }, '');
 
     const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
         const alignmentCode = event.target.value as AlignmentCode;
-
-        setCurrentAlignment(alignmentCode);
 
         onChange(alignmentCode);
     };
