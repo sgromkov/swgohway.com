@@ -1,7 +1,39 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { Theme } from '@material-ui/core/styles/createMuiTheme';
+import { createMuiTheme, ThemeOptions } from '@material-ui/core/styles';
 import { red, blue, green, brown, purple, orange } from '@material-ui/core/colors';
 
-// Create a theme instance.
+declare module '@material-ui/core/styles/createMuiTheme' {
+    interface Theme {
+        swgoh?: {
+            side?: {
+                light?: string,
+                dark?: string,
+            },
+            role?: {
+                support?: string,
+                attacker?: string,
+                tank?: string,
+                healer?: string,
+            },
+        }
+    }
+    // allow configuration using `createMuiTheme`
+    interface ThemeOptions {
+        swgoh?: {
+            side?: {
+                light?: string,
+                dark?: string,
+            },
+            role?: {
+                support?: string,
+                attacker?: string,
+                tank?: string,
+                healer?: string,
+            },
+        }
+    }
+}
+
 const theme = createMuiTheme({
     palette: {
         primary: {
