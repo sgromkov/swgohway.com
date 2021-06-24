@@ -8,10 +8,10 @@
     "@material-ui/lab": "^4.0.0-alpha.58",
     "clsx": "latest",
     "mongoose": "^5.12.7",
-    "next": "^10.2.0",
+    "next": "^11.0.1",
     "prop-types": "latest",
-    "react": "latest",
-    "react-dom": "latest"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "scripts": {
     "dev": "next",
