@@ -1,11 +1,12 @@
 import React from 'react';
+import { SvgIconProps } from '@material-ui/core';
 import HealingIcon from '@material-ui/icons/Healing';
 import SecurityIcon from '@material-ui/icons/Security';
 import MyLocationIcon from '@material-ui/icons/MyLocation';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 
-type RoleIconProps = {
+type RoleIconProps = SvgIconProps & {
     role: string,
 };
 
@@ -17,27 +18,27 @@ const RoleIcon: React.FC<RoleIconProps> = (props) => {
     switch (role) {
         case 'support':
             resultIcon = (
-                <SupervisorAccountIcon {...other}></SupervisorAccountIcon>
+                <SupervisorAccountIcon {...other} />
             );
             break;
         case 'attacker':
             resultIcon = (
-                <MyLocationIcon {...other}></MyLocationIcon>
+                <MyLocationIcon {...other} />
             );
             break;
         case 'tank':
             resultIcon = (
-                <SecurityIcon {...other}></SecurityIcon>
+                <SecurityIcon {...other} />
             );
             break;
         case 'healer':
             resultIcon = (
-                <HealingIcon {...other}></HealingIcon>
+                <HealingIcon {...other} />
             );
             break;
         default:
             resultIcon = (
-                <RadioButtonUncheckedIcon {...other}></RadioButtonUncheckedIcon>
+                <RadioButtonUncheckedIcon {...other} />
             );
     }
 

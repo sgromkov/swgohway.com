@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-import { Avatar } from '@material-ui/core';
+import { Avatar, AvatarProps } from '@material-ui/core';
 import theme from '../theme';
 import { AlignmentCode } from '../types';
 
@@ -27,7 +27,7 @@ const DarkSideAvatar = withStyles({
     },
 })(Avatar);
 
-type CharacterPortraitProps = {
+type CharacterPortraitProps = AvatarProps & {
     side: AlignmentCode,
     src: string,
     alt: string,

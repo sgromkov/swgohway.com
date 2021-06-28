@@ -1,6 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Chip } from '@material-ui/core';
+import { Chip, ChipProps } from '@material-ui/core';
 import RoleIcon from './RoleIcon';
 import theme from '../theme';
 
@@ -72,9 +72,8 @@ const HealerChip = withStyles({
     }
 })(Chip);
 
-type RoleChipProps = {
+type RoleChipProps = ChipProps & {
     role: string,
-    label?: string,
 };
 
 const RoleChip: React.FC<RoleChipProps> = (props) => {
@@ -89,7 +88,7 @@ const RoleChip: React.FC<RoleChipProps> = (props) => {
                     label={label || 'Support'}
                     icon={<RoleIcon role={role} />}
                     {...other}
-                ></SupportChip>
+                />
             );
             break;
         case 'attacker':
@@ -98,7 +97,7 @@ const RoleChip: React.FC<RoleChipProps> = (props) => {
                     label={label || 'Attacker'}
                     icon={<RoleIcon role={role} />}
                     {...other}
-                ></AttackerChip>
+                />
             );
             break;
         case 'tank':
@@ -107,7 +106,7 @@ const RoleChip: React.FC<RoleChipProps> = (props) => {
                     label={label || 'Tank'}
                     icon={<RoleIcon role={role} />}
                     {...other}
-                ></TankChip>
+                />
             );
             break;
         case 'healer':
@@ -116,11 +115,11 @@ const RoleChip: React.FC<RoleChipProps> = (props) => {
                     label={label || 'Healer'}
                     icon={<RoleIcon role={role} />}
                     {...other}
-                ></HealerChip>
+                />
             );
             break;
         default:
-            resultChip = <Chip label={label} {...other}></Chip>;
+            resultChip = <Chip label={label} {...other} />;
     }
 
     return resultChip;
