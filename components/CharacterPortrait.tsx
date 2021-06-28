@@ -5,7 +5,7 @@ import { Avatar, AvatarProps } from '@material-ui/core';
 import theme from '../theme';
 import { AlignmentCode } from '../types';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
     image: {
         borderRadius: '50%'
     },
