@@ -1,4 +1,4 @@
-import charactersFiltrator from './charactersFiltrator';
+import charactersFiltration from './charactersFiltration';
 
 let params = [];
 
@@ -6,89 +6,85 @@ const clearParams = function () {
     params = [];
 }
 
-const setParams = function (callback) {
-    params = callback(params);
-};
-
-describe('charactersFiltrator.setFractions() does not set fractions param to empty params', () => {
+describe('charactersFiltration.setFractions() does not set fractions param to empty params', () => {
     beforeEach(() => {
         clearParams();
     });
 
     test('if passed nothing', () => {
-        charactersFiltrator.setFractions(setParams);
+        params = charactersFiltration.setFractions(params);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty string', () => {
-        charactersFiltrator.setFractions(setParams, '');
+        params = charactersFiltration.setFractions(params, '');
 
         expect(params).toEqual([]);
     });
 
     test('if passed string with value', () => {
-        charactersFiltrator.setFractions(setParams, 'tank');
+        params = charactersFiltration.setFractions(params, 'tank');
 
         expect(params).toEqual([]);
     });
 
     test('if passed undefined', () => {
-        charactersFiltrator.setFractions(setParams, undefined);
+        params = charactersFiltration.setFractions(params, undefined);
 
         expect(params).toEqual([]);
     });
 
     test('if passed null', () => {
-        charactersFiltrator.setFractions(setParams, null);
+        params = charactersFiltration.setFractions(params, null);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty array', () => {
-        charactersFiltrator.setFractions(setParams, []);
+        params = charactersFiltration.setFractions(params, []);
 
         expect(params).toEqual([]);
     });
 
     test('if passed function', () => {
-        charactersFiltrator.setFractions(setParams, () => { });
+        params = charactersFiltration.setFractions(params, () => { });
 
         expect(params).toEqual([]);
     });
 
     test('if passed number', () => {
-        charactersFiltrator.setFractions(setParams, 10);
+        params = charactersFiltration.setFractions(params, 10);
 
         expect(params).toEqual([]);
     });
 
     test('if passed boolean true', () => {
-        charactersFiltrator.setFractions(setParams, true);
+        params = charactersFiltration.setFractions(params, true);
 
         expect(params).toEqual([]);
     });
 
     test('if passed boolean false', () => {
-        charactersFiltrator.setFractions(setParams, false);
+        params = charactersFiltration.setFractions(params, false);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty object', () => {
-        charactersFiltrator.setFractions(setParams, {});
+        params = charactersFiltration.setFractions(params, {});
 
         expect(params).toEqual([]);
     });
 
     test('if passed object with data', () => {
-        charactersFiltrator.setFractions(setParams, { code: 'light' });
+        params = charactersFiltration.setFractions(params, { code: 'light' });
 
         expect(params).toEqual([]);
     });
 });
 
-describe('charactersFiltrator.setFractions() does not set fractions param to prefilled params', () => {
+describe('charactersFiltration.setFractions() does not set fractions param to prefilled params', () => {
     beforeEach(() => {
         clearParams();
 
@@ -99,7 +95,7 @@ describe('charactersFiltrator.setFractions() does not set fractions param to pre
     });
 
     test('if passed nothing', () => {
-        charactersFiltrator.setFractions(setParams);
+        params = charactersFiltration.setFractions(params);
 
         expect(params).toMatchObject(
             [{
@@ -110,7 +106,7 @@ describe('charactersFiltrator.setFractions() does not set fractions param to pre
     });
 
     test('if passed empty string', () => {
-        charactersFiltrator.setFractions(setParams, '');
+        params = charactersFiltration.setFractions(params, '');
 
         expect(params).toMatchObject(
             [{
@@ -121,7 +117,7 @@ describe('charactersFiltrator.setFractions() does not set fractions param to pre
     });
 
     test('if passed undefined', () => {
-        charactersFiltrator.setFractions(setParams, undefined);
+        params = charactersFiltration.setFractions(params, undefined);
 
         expect(params).toMatchObject(
             [{
@@ -132,7 +128,7 @@ describe('charactersFiltrator.setFractions() does not set fractions param to pre
     });
 
     test('if passed null', () => {
-        charactersFiltrator.setFractions(setParams, null);
+        params = charactersFiltration.setFractions(params, null);
 
         expect(params).toMatchObject(
             [{
@@ -143,7 +139,7 @@ describe('charactersFiltrator.setFractions() does not set fractions param to pre
     });
 
     test('if passed empty array', () => {
-        charactersFiltrator.setFractions(setParams, []);
+        params = charactersFiltration.setFractions(params, []);
 
         expect(params).toMatchObject(
             [{
@@ -154,7 +150,7 @@ describe('charactersFiltrator.setFractions() does not set fractions param to pre
     });
 
     test('if passed function', () => {
-        charactersFiltrator.setFractions(setParams, () => { });
+        params = charactersFiltration.setFractions(params, () => { });
 
         expect(params).toMatchObject(
             [{
@@ -165,7 +161,7 @@ describe('charactersFiltrator.setFractions() does not set fractions param to pre
     });
 
     test('if passed number', () => {
-        charactersFiltrator.setFractions(setParams, 10);
+        params = charactersFiltration.setFractions(params, 10);
 
         expect(params).toMatchObject(
             [{
@@ -176,7 +172,7 @@ describe('charactersFiltrator.setFractions() does not set fractions param to pre
     });
 
     test('if passed boolean true', () => {
-        charactersFiltrator.setFractions(setParams, true);
+        params = charactersFiltration.setFractions(params, true);
 
         expect(params).toMatchObject(
             [{
@@ -187,7 +183,7 @@ describe('charactersFiltrator.setFractions() does not set fractions param to pre
     });
 
     test('if passed boolean false', () => {
-        charactersFiltrator.setFractions(setParams, false);
+        params = charactersFiltration.setFractions(params, false);
 
         expect(params).toMatchObject(
             [{
@@ -198,7 +194,7 @@ describe('charactersFiltrator.setFractions() does not set fractions param to pre
     });
 
     test('if passed empty object', () => {
-        charactersFiltrator.setFractions(setParams, {});
+        params = charactersFiltration.setFractions(params, {});
 
         expect(params).toMatchObject(
             [{
@@ -209,7 +205,7 @@ describe('charactersFiltrator.setFractions() does not set fractions param to pre
     });
 
     test('if passed object with data', () => {
-        charactersFiltrator.setFractions(setParams, { code: 'light' });
+        params = charactersFiltration.setFractions(params, { code: 'light' });
 
         expect(params).toMatchObject(
             [{
@@ -220,7 +216,7 @@ describe('charactersFiltrator.setFractions() does not set fractions param to pre
     });
 });
 
-describe('charactersFiltrator.setFractions() removes fractions param from params with fractions only', () => {
+describe('charactersFiltration.setFractions() removes fractions param from params with fractions only', () => {
     beforeEach(() => {
         clearParams();
 
@@ -231,79 +227,79 @@ describe('charactersFiltrator.setFractions() removes fractions param from params
     });
 
     test('if passed nothing', () => {
-        charactersFiltrator.setFractions(setParams);
+        params = charactersFiltration.setFractions(params);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty string', () => {
-        charactersFiltrator.setFractions(setParams, '');
+        params = charactersFiltration.setFractions(params, '');
 
         expect(params).toEqual([]);
     });
 
     test('if passed string with value', () => {
-        charactersFiltrator.setFractions(setParams, 'tank');
+        params = charactersFiltration.setFractions(params, 'tank');
 
         expect(params).toEqual([]);
     });
 
     test('if passed undefined', () => {
-        charactersFiltrator.setFractions(setParams, undefined);
+        params = charactersFiltration.setFractions(params, undefined);
 
         expect(params).toEqual([]);
     });
 
     test('if passed null', () => {
-        charactersFiltrator.setFractions(setParams, null);
+        params = charactersFiltration.setFractions(params, null);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty array', () => {
-        charactersFiltrator.setFractions(setParams, []);
+        params = charactersFiltration.setFractions(params, []);
 
         expect(params).toEqual([]);
     });
 
     test('if passed function', () => {
-        charactersFiltrator.setFractions(setParams, () => { });
+        params = charactersFiltration.setFractions(params, () => { });
 
         expect(params).toEqual([]);
     });
 
     test('if passed number', () => {
-        charactersFiltrator.setFractions(setParams, 10);
+        params = charactersFiltration.setFractions(params, 10);
 
         expect(params).toEqual([]);
     });
 
     test('if passed boolean true', () => {
-        charactersFiltrator.setFractions(setParams, true);
+        params = charactersFiltration.setFractions(params, true);
 
         expect(params).toEqual([]);
     });
 
     test('if passed boolean false', () => {
-        charactersFiltrator.setFractions(setParams, false);
+        params = charactersFiltration.setFractions(params, false);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty object', () => {
-        charactersFiltrator.setFractions(setParams, {});
+        params = charactersFiltration.setFractions(params, {});
 
         expect(params).toEqual([]);
     });
 
     test('if passed object with data', () => {
-        charactersFiltrator.setFractions(setParams, { code: 'light' });
+        params = charactersFiltration.setFractions(params, { code: 'light' });
 
         expect(params).toEqual([]);
     });
 });
 
-describe('charactersFiltrator.setFractions() removes fractions param from params with different params', () => {
+describe('charactersFiltration.setFractions() removes fractions param from params with different params', () => {
     beforeEach(() => {
         clearParams();
 
@@ -317,7 +313,7 @@ describe('charactersFiltrator.setFractions() removes fractions param from params
     });
 
     test('if passed nothing', () => {
-        charactersFiltrator.setFractions(setParams);
+        params = charactersFiltration.setFractions(params);
 
         expect(params).toMatchObject(
             [{
@@ -328,7 +324,7 @@ describe('charactersFiltrator.setFractions() removes fractions param from params
     });
 
     test('if passed empty string', () => {
-        charactersFiltrator.setFractions(setParams, '');
+        params = charactersFiltration.setFractions(params, '');
 
         expect(params).toMatchObject(
             [{
@@ -339,7 +335,7 @@ describe('charactersFiltrator.setFractions() removes fractions param from params
     });
 
     test('if passed string with value', () => {
-        charactersFiltrator.setFractions(setParams, 'healer');
+        params = charactersFiltration.setFractions(params, 'healer');
 
         expect(params).toMatchObject(
             [{
@@ -350,7 +346,7 @@ describe('charactersFiltrator.setFractions() removes fractions param from params
     });
 
     test('if passed undefined', () => {
-        charactersFiltrator.setFractions(setParams, undefined);
+        params = charactersFiltration.setFractions(params, undefined);
 
         expect(params).toMatchObject(
             [{
@@ -361,7 +357,7 @@ describe('charactersFiltrator.setFractions() removes fractions param from params
     });
 
     test('if passed null', () => {
-        charactersFiltrator.setFractions(setParams, null);
+        params = charactersFiltration.setFractions(params, null);
 
         expect(params).toMatchObject(
             [{
@@ -372,7 +368,7 @@ describe('charactersFiltrator.setFractions() removes fractions param from params
     });
 
     test('if passed empty array', () => {
-        charactersFiltrator.setFractions(setParams, []);
+        params = charactersFiltration.setFractions(params, []);
 
         expect(params).toMatchObject(
             [{
@@ -383,7 +379,7 @@ describe('charactersFiltrator.setFractions() removes fractions param from params
     });
 
     test('if passed function', () => {
-        charactersFiltrator.setFractions(setParams, () => { });
+        params = charactersFiltration.setFractions(params, () => { });
 
         expect(params).toMatchObject(
             [{
@@ -394,7 +390,7 @@ describe('charactersFiltrator.setFractions() removes fractions param from params
     });
 
     test('if passed number', () => {
-        charactersFiltrator.setFractions(setParams, 10);
+        params = charactersFiltration.setFractions(params, 10);
 
         expect(params).toMatchObject(
             [{
@@ -405,7 +401,7 @@ describe('charactersFiltrator.setFractions() removes fractions param from params
     });
 
     test('if passed boolean true', () => {
-        charactersFiltrator.setFractions(setParams, true);
+        params = charactersFiltration.setFractions(params, true);
 
         expect(params).toMatchObject(
             [{
@@ -416,7 +412,7 @@ describe('charactersFiltrator.setFractions() removes fractions param from params
     });
 
     test('if passed boolean false', () => {
-        charactersFiltrator.setFractions(setParams, false);
+        params = charactersFiltration.setFractions(params, false);
 
         expect(params).toMatchObject(
             [{
@@ -427,7 +423,7 @@ describe('charactersFiltrator.setFractions() removes fractions param from params
     });
 
     test('if passed empty object', () => {
-        charactersFiltrator.setFractions(setParams, {});
+        params = charactersFiltration.setFractions(params, {});
 
         expect(params).toMatchObject(
             [{
@@ -438,7 +434,7 @@ describe('charactersFiltrator.setFractions() removes fractions param from params
     });
 
     test('if passed object with data', () => {
-        charactersFiltrator.setFractions(setParams, { code: 'light' });
+        params = charactersFiltration.setFractions(params, { code: 'light' });
 
         expect(params).toMatchObject(
             [{
@@ -449,13 +445,13 @@ describe('charactersFiltrator.setFractions() removes fractions param from params
     });
 });
 
-describe('charactersFiltrator.setFractions() sets fractions param correctly to empty params', () => {
+describe('charactersFiltration.setFractions() sets fractions param correctly to empty params', () => {
     beforeEach(() => {
         clearParams();
     });
 
     test('if passed value ["Bounty Hunter"]', () => {
-        charactersFiltrator.setFractions(setParams, ['Bounty Hunter']);
+        params = charactersFiltration.setFractions(params, ['Bounty Hunter']);
 
         expect(params).toMatchObject(
             [{
@@ -466,7 +462,7 @@ describe('charactersFiltrator.setFractions() sets fractions param correctly to e
     });
 
     test('if passed values ["Separatist", "Droid"]', () => {
-        charactersFiltrator.setFractions(setParams, ['Separatist', 'Droid']);
+        params = charactersFiltration.setFractions(params, ['Separatist', 'Droid']);
 
         expect(params).toMatchObject(
             [{
@@ -477,7 +473,7 @@ describe('charactersFiltrator.setFractions() sets fractions param correctly to e
     });
 
     test('if passed value ["501st", "Clone Trooper", "Empire"]', () => {
-        charactersFiltrator.setFractions(setParams, ['501st', 'Clone Trooper', 'Empire']);
+        params = charactersFiltration.setFractions(params, ['501st', 'Clone Trooper', 'Empire']);
 
         expect(params).toMatchObject(
             [{
@@ -488,7 +484,7 @@ describe('charactersFiltrator.setFractions() sets fractions param correctly to e
     });
 });
 
-describe('charactersFiltrator.setFractions() sets fractions param correctly to params with existed fraction', () => {
+describe('charactersFiltration.setFractions() sets fractions param correctly to params with existed fraction', () => {
     beforeEach(() => {
         clearParams();
     });
@@ -499,7 +495,7 @@ describe('charactersFiltrator.setFractions() sets fractions param correctly to p
             value: ['Resistance']
         }];
 
-        charactersFiltrator.setFractions(setParams, ['Ewok']);
+        params = charactersFiltration.setFractions(params, ['Ewok']);
 
         expect(params).toMatchObject(
             [{
@@ -515,7 +511,7 @@ describe('charactersFiltrator.setFractions() sets fractions param correctly to p
             value: ['Phoenix', 'Geonosian']
         }];
 
-        charactersFiltrator.setFractions(setParams, ['Jawa', 'Bad Batch']);
+        params = charactersFiltration.setFractions(params, ['Jawa', 'Bad Batch']);
 
         expect(params).toMatchObject(
             [{
@@ -526,7 +522,7 @@ describe('charactersFiltrator.setFractions() sets fractions param correctly to p
     });
 });
 
-describe('charactersFiltrator.setFractions() sets fractions param correctly to params with other params', () => {
+describe('charactersFiltration.setFractions() sets fractions param correctly to params with other params', () => {
     beforeEach(() => {
         clearParams();
     });
@@ -537,7 +533,7 @@ describe('charactersFiltrator.setFractions() sets fractions param correctly to p
             value: ['fleetCommander', 'galacticLegend']
         }];
 
-        charactersFiltrator.setFractions(setParams, ['Jedi']);
+        params = charactersFiltration.setFractions(params, ['Jedi']);
 
         expect(params).toMatchObject(
             [{
@@ -559,7 +555,7 @@ describe('charactersFiltrator.setFractions() sets fractions param correctly to p
             value: 'dark'
         }];
 
-        charactersFiltrator.setFractions(setParams, ['First Order', 'Mandalorian', 'Rogue One']);
+        params = charactersFiltration.setFractions(params, ['First Order', 'Mandalorian', 'Rogue One']);
 
         expect(params).toMatchObject(
             [{
@@ -590,7 +586,7 @@ describe('charactersFiltrator.setFractions() sets fractions param correctly to p
             value: ['support']
         }];
 
-        charactersFiltrator.setFractions(setParams, ['Rebel Fighter']);
+        params = charactersFiltration.setFractions(params, ['Rebel Fighter']);
 
         expect(params).toMatchObject(
             [{

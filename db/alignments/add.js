@@ -7,7 +7,7 @@ await dbConnect();
 alignments.forEach(async (alignment) => {
     try {
         const createdAlignment = await Alignment.create(alignment);
-        console.log('New alignmnet has created:', createdAlignment);
+        console.log('New alignment has created:', createdAlignment);
     } catch (error) {
         throw new Error(error);
     }

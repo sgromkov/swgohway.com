@@ -1,4 +1,4 @@
-import charactersFiltrator from './charactersFiltrator';
+import charactersFiltration from './charactersFiltration';
 
 let params = [];
 
@@ -6,89 +6,85 @@ const clearParams = function () {
     params = [];
 }
 
-const setParams = function (callback) {
-    params = callback(params);
-};
-
-describe('charactersFiltrator.setRoles() does not set role param to empty params', () => {
+describe('charactersFiltration.setRoles() does not set role param to empty params', () => {
     beforeEach(() => {
         clearParams();
     });
 
     test('if passed nothing', () => {
-        charactersFiltrator.setRoles(setParams);
+        params = charactersFiltration.setRoles(params);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty string', () => {
-        charactersFiltrator.setRoles(setParams, '');
+        params = charactersFiltration.setRoles(params, '');
 
         expect(params).toEqual([]);
     });
 
     test('if passed string with value', () => {
-        charactersFiltrator.setRoles(setParams, 'tank');
+        params = charactersFiltration.setRoles(params, 'tank');
 
         expect(params).toEqual([]);
     });
 
     test('if passed undefined', () => {
-        charactersFiltrator.setRoles(setParams, undefined);
+        params = charactersFiltration.setRoles(params, undefined);
 
         expect(params).toEqual([]);
     });
 
     test('if passed null', () => {
-        charactersFiltrator.setRoles(setParams, null);
+        params = charactersFiltration.setRoles(params, null);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty array', () => {
-        charactersFiltrator.setRoles(setParams, []);
+        params = charactersFiltration.setRoles(params, []);
 
         expect(params).toEqual([]);
     });
 
     test('if passed function', () => {
-        charactersFiltrator.setRoles(setParams, () => { });
+        params = charactersFiltration.setRoles(params, () => { });
 
         expect(params).toEqual([]);
     });
 
     test('if passed number', () => {
-        charactersFiltrator.setRoles(setParams, 10);
+        params = charactersFiltration.setRoles(params, 10);
 
         expect(params).toEqual([]);
     });
 
     test('if passed boolean true', () => {
-        charactersFiltrator.setRoles(setParams, true);
+        params = charactersFiltration.setRoles(params, true);
 
         expect(params).toEqual([]);
     });
 
     test('if passed boolean false', () => {
-        charactersFiltrator.setRoles(setParams, false);
+        params = charactersFiltration.setRoles(params, false);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty object', () => {
-        charactersFiltrator.setRoles(setParams, {});
+        params = charactersFiltration.setRoles(params, {});
 
         expect(params).toEqual([]);
     });
 
     test('if passed object with data', () => {
-        charactersFiltrator.setRoles(setParams, { code: 'light' });
+        params = charactersFiltration.setRoles(params, { code: 'light' });
 
         expect(params).toEqual([]);
     });
 });
 
-describe('charactersFiltrator.setRoles() does not set role param to prefilled params', () => {
+describe('charactersFiltration.setRoles() does not set role param to prefilled params', () => {
     beforeEach(() => {
         clearParams();
 
@@ -99,7 +95,7 @@ describe('charactersFiltrator.setRoles() does not set role param to prefilled pa
     });
 
     test('if passed nothing', () => {
-        charactersFiltrator.setRoles(setParams);
+        params = charactersFiltration.setRoles(params);
 
         expect(params).toMatchObject(
             [{
@@ -110,7 +106,7 @@ describe('charactersFiltrator.setRoles() does not set role param to prefilled pa
     });
 
     test('if passed empty string', () => {
-        charactersFiltrator.setRoles(setParams, '');
+        params = charactersFiltration.setRoles(params, '');
 
         expect(params).toMatchObject(
             [{
@@ -121,7 +117,7 @@ describe('charactersFiltrator.setRoles() does not set role param to prefilled pa
     });
 
     test('if passed undefined', () => {
-        charactersFiltrator.setRoles(setParams, undefined);
+        params = charactersFiltration.setRoles(params, undefined);
 
         expect(params).toMatchObject(
             [{
@@ -132,7 +128,7 @@ describe('charactersFiltrator.setRoles() does not set role param to prefilled pa
     });
 
     test('if passed null', () => {
-        charactersFiltrator.setRoles(setParams, null);
+        params = charactersFiltration.setRoles(params, null);
 
         expect(params).toMatchObject(
             [{
@@ -143,7 +139,7 @@ describe('charactersFiltrator.setRoles() does not set role param to prefilled pa
     });
 
     test('if passed empty array', () => {
-        charactersFiltrator.setRoles(setParams, []);
+        params = charactersFiltration.setRoles(params, []);
 
         expect(params).toMatchObject(
             [{
@@ -154,7 +150,7 @@ describe('charactersFiltrator.setRoles() does not set role param to prefilled pa
     });
 
     test('if passed function', () => {
-        charactersFiltrator.setRoles(setParams, () => { });
+        params = charactersFiltration.setRoles(params, () => { });
 
         expect(params).toMatchObject(
             [{
@@ -165,7 +161,7 @@ describe('charactersFiltrator.setRoles() does not set role param to prefilled pa
     });
 
     test('if passed number', () => {
-        charactersFiltrator.setRoles(setParams, 10);
+        params = charactersFiltration.setRoles(params, 10);
 
         expect(params).toMatchObject(
             [{
@@ -176,7 +172,7 @@ describe('charactersFiltrator.setRoles() does not set role param to prefilled pa
     });
 
     test('if passed boolean true', () => {
-        charactersFiltrator.setRoles(setParams, true);
+        params = charactersFiltration.setRoles(params, true);
 
         expect(params).toMatchObject(
             [{
@@ -187,7 +183,7 @@ describe('charactersFiltrator.setRoles() does not set role param to prefilled pa
     });
 
     test('if passed boolean false', () => {
-        charactersFiltrator.setRoles(setParams, false);
+        params = charactersFiltration.setRoles(params, false);
 
         expect(params).toMatchObject(
             [{
@@ -198,7 +194,7 @@ describe('charactersFiltrator.setRoles() does not set role param to prefilled pa
     });
 
     test('if passed empty object', () => {
-        charactersFiltrator.setRoles(setParams, {});
+        params = charactersFiltration.setRoles(params, {});
 
         expect(params).toMatchObject(
             [{
@@ -209,7 +205,7 @@ describe('charactersFiltrator.setRoles() does not set role param to prefilled pa
     });
 
     test('if passed object with data', () => {
-        charactersFiltrator.setRoles(setParams, { code: 'light' });
+        params = charactersFiltration.setRoles(params, { code: 'light' });
 
         expect(params).toMatchObject(
             [{
@@ -220,7 +216,7 @@ describe('charactersFiltrator.setRoles() does not set role param to prefilled pa
     });
 });
 
-describe('charactersFiltrator.setRoles() removes role param from params with roles only', () => {
+describe('charactersFiltration.setRoles() removes role param from params with roles only', () => {
     beforeEach(() => {
         clearParams();
 
@@ -231,79 +227,79 @@ describe('charactersFiltrator.setRoles() removes role param from params with rol
     });
 
     test('if passed nothing', () => {
-        charactersFiltrator.setRoles(setParams);
+        params = charactersFiltration.setRoles(params);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty string', () => {
-        charactersFiltrator.setRoles(setParams, '');
+        params = charactersFiltration.setRoles(params, '');
 
         expect(params).toEqual([]);
     });
 
     test('if passed string with value', () => {
-        charactersFiltrator.setRoles(setParams, 'tank');
+        params = charactersFiltration.setRoles(params, 'tank');
 
         expect(params).toEqual([]);
     });
 
     test('if passed undefined', () => {
-        charactersFiltrator.setRoles(setParams, undefined);
+        params = charactersFiltration.setRoles(params, undefined);
 
         expect(params).toEqual([]);
     });
 
     test('if passed null', () => {
-        charactersFiltrator.setRoles(setParams, null);
+        params = charactersFiltration.setRoles(params, null);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty array', () => {
-        charactersFiltrator.setRoles(setParams, []);
+        params = charactersFiltration.setRoles(params, []);
 
         expect(params).toEqual([]);
     });
 
     test('if passed function', () => {
-        charactersFiltrator.setRoles(setParams, () => { });
+        params = charactersFiltration.setRoles(params, () => { });
 
         expect(params).toEqual([]);
     });
 
     test('if passed number', () => {
-        charactersFiltrator.setRoles(setParams, 10);
+        params = charactersFiltration.setRoles(params, 10);
 
         expect(params).toEqual([]);
     });
 
     test('if passed boolean true', () => {
-        charactersFiltrator.setRoles(setParams, true);
+        params = charactersFiltration.setRoles(params, true);
 
         expect(params).toEqual([]);
     });
 
     test('if passed boolean false', () => {
-        charactersFiltrator.setRoles(setParams, false);
+        params = charactersFiltration.setRoles(params, false);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty object', () => {
-        charactersFiltrator.setRoles(setParams, {});
+        params = charactersFiltration.setRoles(params, {});
 
         expect(params).toEqual([]);
     });
 
     test('if passed object with data', () => {
-        charactersFiltrator.setRoles(setParams, { code: 'light' });
+        params = charactersFiltration.setRoles(params, { code: 'light' });
 
         expect(params).toEqual([]);
     });
 });
 
-describe('charactersFiltrator.setRoles() removes role param from params with different params', () => {
+describe('charactersFiltration.setRoles() removes role param from params with different params', () => {
     beforeEach(() => {
         clearParams();
 
@@ -317,7 +313,7 @@ describe('charactersFiltrator.setRoles() removes role param from params with dif
     });
 
     test('if passed nothing', () => {
-        charactersFiltrator.setRoles(setParams);
+        params = charactersFiltration.setRoles(params);
 
         expect(params).toMatchObject(
             [{
@@ -328,7 +324,7 @@ describe('charactersFiltrator.setRoles() removes role param from params with dif
     });
 
     test('if passed empty string', () => {
-        charactersFiltrator.setRoles(setParams, '');
+        params = charactersFiltration.setRoles(params, '');
 
         expect(params).toMatchObject(
             [{
@@ -339,7 +335,7 @@ describe('charactersFiltrator.setRoles() removes role param from params with dif
     });
 
     test('if passed string with value', () => {
-        charactersFiltrator.setRoles(setParams, 'healer');
+        params = charactersFiltration.setRoles(params, 'healer');
 
         expect(params).toMatchObject(
             [{
@@ -350,7 +346,7 @@ describe('charactersFiltrator.setRoles() removes role param from params with dif
     });
 
     test('if passed undefined', () => {
-        charactersFiltrator.setRoles(setParams, undefined);
+        params = charactersFiltration.setRoles(params, undefined);
 
         expect(params).toMatchObject(
             [{
@@ -361,7 +357,7 @@ describe('charactersFiltrator.setRoles() removes role param from params with dif
     });
 
     test('if passed null', () => {
-        charactersFiltrator.setRoles(setParams, null);
+        params = charactersFiltration.setRoles(params, null);
 
         expect(params).toMatchObject(
             [{
@@ -372,7 +368,7 @@ describe('charactersFiltrator.setRoles() removes role param from params with dif
     });
 
     test('if passed empty array', () => {
-        charactersFiltrator.setRoles(setParams, []);
+        params = charactersFiltration.setRoles(params, []);
 
         expect(params).toMatchObject(
             [{
@@ -383,7 +379,7 @@ describe('charactersFiltrator.setRoles() removes role param from params with dif
     });
 
     test('if passed function', () => {
-        charactersFiltrator.setRoles(setParams, () => { });
+        params = charactersFiltration.setRoles(params, () => { });
 
         expect(params).toMatchObject(
             [{
@@ -394,7 +390,7 @@ describe('charactersFiltrator.setRoles() removes role param from params with dif
     });
 
     test('if passed number', () => {
-        charactersFiltrator.setRoles(setParams, 10);
+        params = charactersFiltration.setRoles(params, 10);
 
         expect(params).toMatchObject(
             [{
@@ -405,7 +401,7 @@ describe('charactersFiltrator.setRoles() removes role param from params with dif
     });
 
     test('if passed boolean true', () => {
-        charactersFiltrator.setRoles(setParams, true);
+        params = charactersFiltration.setRoles(params, true);
 
         expect(params).toMatchObject(
             [{
@@ -416,7 +412,7 @@ describe('charactersFiltrator.setRoles() removes role param from params with dif
     });
 
     test('if passed boolean false', () => {
-        charactersFiltrator.setRoles(setParams, false);
+        params = charactersFiltration.setRoles(params, false);
 
         expect(params).toMatchObject(
             [{
@@ -427,7 +423,7 @@ describe('charactersFiltrator.setRoles() removes role param from params with dif
     });
 
     test('if passed empty object', () => {
-        charactersFiltrator.setRoles(setParams, {});
+        params = charactersFiltration.setRoles(params, {});
 
         expect(params).toMatchObject(
             [{
@@ -438,7 +434,7 @@ describe('charactersFiltrator.setRoles() removes role param from params with dif
     });
 
     test('if passed object with data', () => {
-        charactersFiltrator.setRoles(setParams, { code: 'light' });
+        params = charactersFiltration.setRoles(params, { code: 'light' });
 
         expect(params).toMatchObject(
             [{
@@ -449,13 +445,13 @@ describe('charactersFiltrator.setRoles() removes role param from params with dif
     });
 });
 
-describe('charactersFiltrator.setRoles() sets role param correctly to empty params', () => {
+describe('charactersFiltration.setRoles() sets role param correctly to empty params', () => {
     beforeEach(() => {
         clearParams();
     });
 
     test('if passed value ["attacker"]', () => {
-        charactersFiltrator.setRoles(setParams, ['attacker']);
+        params = charactersFiltration.setRoles(params, ['attacker']);
 
         expect(params).toMatchObject(
             [{
@@ -466,7 +462,7 @@ describe('charactersFiltrator.setRoles() sets role param correctly to empty para
     });
 
     test('if passed value ["tank"]', () => {
-        charactersFiltrator.setRoles(setParams, ['tank']);
+        params = charactersFiltration.setRoles(params, ['tank']);
 
         expect(params).toMatchObject(
             [{
@@ -477,7 +473,7 @@ describe('charactersFiltrator.setRoles() sets role param correctly to empty para
     });
 
     test('if passed value ["support"]', () => {
-        charactersFiltrator.setRoles(setParams, ['support']);
+        params = charactersFiltration.setRoles(params, ['support']);
 
         expect(params).toMatchObject(
             [{
@@ -488,7 +484,7 @@ describe('charactersFiltrator.setRoles() sets role param correctly to empty para
     });
 
     test('if passed value ["healer"]', () => {
-        charactersFiltrator.setRoles(setParams, ['healer']);
+        params = charactersFiltration.setRoles(params, ['healer']);
 
         expect(params).toMatchObject(
             [{
@@ -499,7 +495,7 @@ describe('charactersFiltrator.setRoles() sets role param correctly to empty para
     });
 });
 
-describe('charactersFiltrator.setRoles() sets role param correctly to params with existed role', () => {
+describe('charactersFiltration.setRoles() sets role param correctly to params with existed role', () => {
     beforeEach(() => {
         clearParams();
     });
@@ -510,7 +506,7 @@ describe('charactersFiltrator.setRoles() sets role param correctly to params wit
             value: ['healer']
         }];
 
-        charactersFiltrator.setRoles(setParams, ['attacker']);
+        params = charactersFiltration.setRoles(params, ['attacker']);
 
         expect(params).toMatchObject(
             [{
@@ -526,7 +522,7 @@ describe('charactersFiltrator.setRoles() sets role param correctly to params wit
             value: ['healer', 'tank']
         }];
 
-        charactersFiltrator.setRoles(setParams, ['attacker', 'support']);
+        params = charactersFiltration.setRoles(params, ['attacker', 'support']);
 
         expect(params).toMatchObject(
             [{
@@ -537,7 +533,7 @@ describe('charactersFiltrator.setRoles() sets role param correctly to params wit
     });
 });
 
-describe('charactersFiltrator.setRoles() sets role param correctly to params with other params', () => {
+describe('charactersFiltration.setRoles() sets role param correctly to params with other params', () => {
     beforeEach(() => {
         clearParams();
     });
@@ -548,7 +544,7 @@ describe('charactersFiltrator.setRoles() sets role param correctly to params wit
             value: ['fleetCommander', 'galacticLegend']
         }];
 
-        charactersFiltrator.setRoles(setParams, ['tank']);
+        params = charactersFiltration.setRoles(params, ['tank']);
 
         expect(params).toMatchObject(
             [{
@@ -570,7 +566,7 @@ describe('charactersFiltrator.setRoles() sets role param correctly to params wit
             value: 'dark'
         }];
 
-        charactersFiltrator.setRoles(setParams, ['healer']);
+        params = charactersFiltration.setRoles(params, ['healer']);
 
         expect(params).toMatchObject(
             [{
@@ -601,7 +597,7 @@ describe('charactersFiltrator.setRoles() sets role param correctly to params wit
             value: ['support']
         }];
 
-        charactersFiltrator.setRoles(setParams, ['attacker', 'tank']);
+        params = charactersFiltration.setRoles(params, ['attacker', 'tank']);
 
         expect(params).toMatchObject(
             [{

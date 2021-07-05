@@ -4,7 +4,7 @@
 1. update file `__mocks__/characters.json`
 2. add key `"type": "module"` in `package.json`
 
-## Order to fill database
+## Order filling database
 1. alignments:
 ```bash
 npm run db db/alignments/add.js

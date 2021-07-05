@@ -79,7 +79,7 @@ const RoleSelect: React.FC<RoleSelectProps> = ({ roles, onChange }) => {
                                     size="small"
                                     role={value}
                                     key={value}
-                                ></RoleChip>
+                                />
                             ))}
                         </div>
                     )}

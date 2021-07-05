@@ -12,7 +12,7 @@ type CharacterFilterProps = {
     fractions: SelectOption[],
     features: SelectOption[],
     fractionsLogic: Logic,
-    onAligmentChange: (alignmentCode: AlignmentCode) => void,
+    onAlignmentChange: (alignmentCode: AlignmentCode) => void,
     onRoleChange:(roleCodes: string[]) => void,
     onFractionChange: (fractionCodes: string[], logic: string) => void,
     onFeatureChange: (featureCodes: string[]) => void,
@@ -25,7 +25,7 @@ const CharacterFilter: React.FC<CharacterFilterProps> = ({
     fractions,
     features,
     fractionsLogic,
-    onAligmentChange,
+    onAlignmentChange,
     onRoleChange,
     onFractionChange,
     onFeatureChange,
@@ -48,7 +48,7 @@ const CharacterFilter: React.FC<CharacterFilterProps> = ({
                         <Grid item xs={12} sm={6} md={6} lg={3}>
                             <AlignmentSelect
                                 alignments={alignments}
-                                onChange={onAligmentChange}
+                                onChange={onAlignmentChange}
                             />
                         </Grid>
                         <Grid item xs={12} sm={6} md={6} lg={3}>

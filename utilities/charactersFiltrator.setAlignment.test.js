@@ -1,4 +1,4 @@
-import charactersFiltrator from './charactersFiltrator';
+import charactersFiltration from './charactersFiltration';
 
 let params = [];
 
@@ -6,89 +6,85 @@ const clearParams = function () {
     params = [];
 }
 
-const setParams = function (callback) {
-    params = callback(params);
-};
-
-describe('charactersFiltrator.setAlignment() does not set alignment param to empty params', () => {
+describe('charactersFiltration.setAlignment() does not set alignment param to empty params', () => {
     beforeEach(() => {
         clearParams();
     });
 
     test('if passed nothing', () => {
-        charactersFiltrator.setAlignment(setParams);
+        params = charactersFiltration.setAlignment(params);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty string', () => {
-        charactersFiltrator.setAlignment(setParams, '');
+        params = charactersFiltration.setAlignment(params, '');
 
         expect(params).toEqual([]);
     });
 
     test('if passed undefined', () => {
-        charactersFiltrator.setAlignment(setParams, undefined);
+        params = charactersFiltration.setAlignment(params, undefined);
 
         expect(params).toEqual([]);
     });
 
     test('if passed null', () => {
-        charactersFiltrator.setAlignment(setParams, null);
+        params = charactersFiltration.setAlignment(params, null);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty array', () => {
-        charactersFiltrator.setAlignment(setParams, []);
+        params = charactersFiltration.setAlignment(params, []);
 
         expect(params).toEqual([]);
     });
 
     test('if passed array with values', () => {
-        charactersFiltrator.setAlignment(setParams, ['light']);
+        params = charactersFiltration.setAlignment(params, ['light']);
 
         expect(params).toEqual([]);
     });
 
     test('if passed function', () => {
-        charactersFiltrator.setAlignment(setParams, () => { });
+        params = charactersFiltration.setAlignment(params, () => { });
 
         expect(params).toEqual([]);
     });
 
     test('if passed number', () => {
-        charactersFiltrator.setAlignment(setParams, 10);
+        params = charactersFiltration.setAlignment(params, 10);
 
         expect(params).toEqual([]);
     });
 
     test('if passed boolean true', () => {
-        charactersFiltrator.setAlignment(setParams, true);
+        params = charactersFiltration.setAlignment(params, true);
 
         expect(params).toEqual([]);
     });
 
     test('if passed boolean false', () => {
-        charactersFiltrator.setAlignment(setParams, false);
+        params = charactersFiltration.setAlignment(params, false);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty object', () => {
-        charactersFiltrator.setAlignment(setParams, {});
+        params = charactersFiltration.setAlignment(params, {});
 
         expect(params).toEqual([]);
     });
 
     test('if passed object with data', () => {
-        charactersFiltrator.setAlignment(setParams, { code: 'light' });
+        params = charactersFiltration.setAlignment(params, { code: 'light' });
 
         expect(params).toEqual([]);
     });
 });
 
-describe('charactersFiltrator.setAlignment() does not set alignment param to prefilled params', () => {
+describe('charactersFiltration.setAlignment() does not set alignment param to prefilled params', () => {
     beforeEach(() => {
         clearParams();
 
@@ -99,7 +95,7 @@ describe('charactersFiltrator.setAlignment() does not set alignment param to pre
     });
 
     test('if passed nothing', () => {
-        charactersFiltrator.setAlignment(setParams);
+        params = charactersFiltration.setAlignment(params);
 
         expect(params).toMatchObject(
             [{
@@ -110,7 +106,7 @@ describe('charactersFiltrator.setAlignment() does not set alignment param to pre
     });
 
     test('if passed empty string', () => {
-        charactersFiltrator.setAlignment(setParams, '');
+        params = charactersFiltration.setAlignment(params, '');
 
         expect(params).toMatchObject(
             [{
@@ -121,7 +117,7 @@ describe('charactersFiltrator.setAlignment() does not set alignment param to pre
     });
 
     test('if passed undefined', () => {
-        charactersFiltrator.setAlignment(setParams, undefined);
+        params = charactersFiltration.setAlignment(params, undefined);
 
         expect(params).toMatchObject(
             [{
@@ -132,7 +128,7 @@ describe('charactersFiltrator.setAlignment() does not set alignment param to pre
     });
 
     test('if passed null', () => {
-        charactersFiltrator.setAlignment(setParams, null);
+        params = charactersFiltration.setAlignment(params, null);
 
         expect(params).toMatchObject(
             [{
@@ -143,7 +139,7 @@ describe('charactersFiltrator.setAlignment() does not set alignment param to pre
     });
 
     test('if passed empty array', () => {
-        charactersFiltrator.setAlignment(setParams, []);
+        params = charactersFiltration.setAlignment(params, []);
 
         expect(params).toMatchObject(
             [{
@@ -154,7 +150,7 @@ describe('charactersFiltrator.setAlignment() does not set alignment param to pre
     });
 
     test('if passed array with values', () => {
-        charactersFiltrator.setAlignment(setParams, ['light']);
+        params = charactersFiltration.setAlignment(params, ['light']);
 
         expect(params).toMatchObject(
             [{
@@ -165,7 +161,7 @@ describe('charactersFiltrator.setAlignment() does not set alignment param to pre
     });
 
     test('if passed function', () => {
-        charactersFiltrator.setAlignment(setParams, () => { });
+        params = charactersFiltration.setAlignment(params, () => { });
 
         expect(params).toMatchObject(
             [{
@@ -176,7 +172,7 @@ describe('charactersFiltrator.setAlignment() does not set alignment param to pre
     });
 
     test('if passed number', () => {
-        charactersFiltrator.setAlignment(setParams, 10);
+        params = charactersFiltration.setAlignment(params, 10);
 
         expect(params).toMatchObject(
             [{
@@ -187,7 +183,7 @@ describe('charactersFiltrator.setAlignment() does not set alignment param to pre
     });
 
     test('if passed boolean true', () => {
-        charactersFiltrator.setAlignment(setParams, true);
+        params = charactersFiltration.setAlignment(params, true);
 
         expect(params).toMatchObject(
             [{
@@ -198,7 +194,7 @@ describe('charactersFiltrator.setAlignment() does not set alignment param to pre
     });
 
     test('if passed boolean false', () => {
-        charactersFiltrator.setAlignment(setParams, false);
+        params = charactersFiltration.setAlignment(params, false);
 
         expect(params).toMatchObject(
             [{
@@ -209,7 +205,7 @@ describe('charactersFiltrator.setAlignment() does not set alignment param to pre
     });
 
     test('if passed empty object', () => {
-        charactersFiltrator.setAlignment(setParams, {});
+        params = charactersFiltration.setAlignment(params, {});
 
         expect(params).toMatchObject(
             [{
@@ -220,7 +216,7 @@ describe('charactersFiltrator.setAlignment() does not set alignment param to pre
     });
 
     test('if passed object with data', () => {
-        charactersFiltrator.setAlignment(setParams, { code: 'light' });
+        params = charactersFiltration.setAlignment(params, { code: 'light' });
 
         expect(params).toMatchObject(
             [{
@@ -231,7 +227,7 @@ describe('charactersFiltrator.setAlignment() does not set alignment param to pre
     });
 });
 
-describe('charactersFiltrator.setAlignment() removes alignment param from params with alignment only', () => {
+describe('charactersFiltration.setAlignment() removes alignment param from params with alignment only', () => {
     beforeEach(() => {
         clearParams();
 
@@ -242,79 +238,79 @@ describe('charactersFiltrator.setAlignment() removes alignment param from params
     });
 
     test('if passed nothing', () => {
-        charactersFiltrator.setAlignment(setParams);
+        params = charactersFiltration.setAlignment(params);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty string', () => {
-        charactersFiltrator.setAlignment(setParams, '');
+        params = charactersFiltration.setAlignment(params, '');
 
         expect(params).toEqual([]);
     });
 
     test('if passed undefined', () => {
-        charactersFiltrator.setAlignment(setParams, undefined);
+        params = charactersFiltration.setAlignment(params, undefined);
 
         expect(params).toEqual([]);
     });
 
     test('if passed null', () => {
-        charactersFiltrator.setAlignment(setParams, null);
+        params = charactersFiltration.setAlignment(params, null);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty array', () => {
-        charactersFiltrator.setAlignment(setParams, []);
+        params = charactersFiltration.setAlignment(params, []);
 
         expect(params).toEqual([]);
     });
 
     test('if passed array with values', () => {
-        charactersFiltrator.setAlignment(setParams, ['light']);
+        params = charactersFiltration.setAlignment(params, ['light']);
 
         expect(params).toEqual([]);
     });
 
     test('if passed function', () => {
-        charactersFiltrator.setAlignment(setParams, () => { });
+        params = charactersFiltration.setAlignment(params, () => { });
 
         expect(params).toEqual([]);
     });
 
     test('if passed number', () => {
-        charactersFiltrator.setAlignment(setParams, 10);
+        params = charactersFiltration.setAlignment(params, 10);
 
         expect(params).toEqual([]);
     });
 
     test('if passed boolean true', () => {
-        charactersFiltrator.setAlignment(setParams, true);
+        params = charactersFiltration.setAlignment(params, true);
 
         expect(params).toEqual([]);
     });
 
     test('if passed boolean false', () => {
-        charactersFiltrator.setAlignment(setParams, false);
+        params = charactersFiltration.setAlignment(params, false);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty object', () => {
-        charactersFiltrator.setAlignment(setParams, {});
+        params = charactersFiltration.setAlignment(params, {});
 
         expect(params).toEqual([]);
     });
 
     test('if passed object with data', () => {
-        charactersFiltrator.setAlignment(setParams, { code: 'light' });
+        params = charactersFiltration.setAlignment(params, { code: 'light' });
 
         expect(params).toEqual([]);
     });
 });
 
-describe('charactersFiltrator.setAlignment() removes alignment param from params with different params', () => {
+describe('charactersFiltration.setAlignment() removes alignment param from params with different params', () => {
     beforeEach(() => {
         clearParams();
 
@@ -328,7 +324,7 @@ describe('charactersFiltrator.setAlignment() removes alignment param from params
     });
 
     test('if passed nothing', () => {
-        charactersFiltrator.setAlignment(setParams);
+        params = charactersFiltration.setAlignment(params);
 
         expect(params).toMatchObject(
             [{
@@ -339,7 +335,7 @@ describe('charactersFiltrator.setAlignment() removes alignment param from params
     });
 
     test('if passed empty string', () => {
-        charactersFiltrator.setAlignment(setParams, '');
+        params = charactersFiltration.setAlignment(params, '');
 
         expect(params).toMatchObject(
             [{
@@ -350,7 +346,7 @@ describe('charactersFiltrator.setAlignment() removes alignment param from params
     });
 
     test('if passed undefined', () => {
-        charactersFiltrator.setAlignment(setParams, undefined);
+        params = charactersFiltration.setAlignment(params, undefined);
 
         expect(params).toMatchObject(
             [{
@@ -361,7 +357,7 @@ describe('charactersFiltrator.setAlignment() removes alignment param from params
     });
 
     test('if passed null', () => {
-        charactersFiltrator.setAlignment(setParams, null);
+        params = charactersFiltration.setAlignment(params, null);
 
         expect(params).toMatchObject(
             [{
@@ -372,7 +368,7 @@ describe('charactersFiltrator.setAlignment() removes alignment param from params
     });
 
     test('if passed empty array', () => {
-        charactersFiltrator.setAlignment(setParams, []);
+        params = charactersFiltration.setAlignment(params, []);
 
         expect(params).toMatchObject(
             [{
@@ -383,7 +379,7 @@ describe('charactersFiltrator.setAlignment() removes alignment param from params
     });
 
     test('if passed array with values', () => {
-        charactersFiltrator.setAlignment(setParams, ['light']);
+        params = charactersFiltration.setAlignment(params, ['light']);
 
         expect(params).toMatchObject(
             [{
@@ -394,7 +390,7 @@ describe('charactersFiltrator.setAlignment() removes alignment param from params
     });
 
     test('if passed function', () => {
-        charactersFiltrator.setAlignment(setParams, () => { });
+        params = charactersFiltration.setAlignment(params, () => { });
 
         expect(params).toMatchObject(
             [{
@@ -405,7 +401,7 @@ describe('charactersFiltrator.setAlignment() removes alignment param from params
     });
 
     test('if passed number', () => {
-        charactersFiltrator.setAlignment(setParams, 10);
+        params = charactersFiltration.setAlignment(params, 10);
 
         expect(params).toMatchObject(
             [{
@@ -416,7 +412,7 @@ describe('charactersFiltrator.setAlignment() removes alignment param from params
     });
 
     test('if passed boolean true', () => {
-        charactersFiltrator.setAlignment(setParams, true);
+        params = charactersFiltration.setAlignment(params, true);
 
         expect(params).toMatchObject(
             [{
@@ -427,7 +423,7 @@ describe('charactersFiltrator.setAlignment() removes alignment param from params
     });
 
     test('if passed boolean false', () => {
-        charactersFiltrator.setAlignment(setParams, false);
+        params = charactersFiltration.setAlignment(params, false);
 
         expect(params).toMatchObject(
             [{
@@ -438,7 +434,7 @@ describe('charactersFiltrator.setAlignment() removes alignment param from params
     });
 
     test('if passed empty object', () => {
-        charactersFiltrator.setAlignment(setParams, {});
+        params = charactersFiltration.setAlignment(params, {});
 
         expect(params).toMatchObject(
             [{
@@ -449,7 +445,7 @@ describe('charactersFiltrator.setAlignment() removes alignment param from params
     });
 
     test('if passed object with data', () => {
-        charactersFiltrator.setAlignment(setParams, { code: 'light' });
+        params = charactersFiltration.setAlignment(params, { code: 'light' });
 
         expect(params).toMatchObject(
             [{
@@ -460,13 +456,13 @@ describe('charactersFiltrator.setAlignment() removes alignment param from params
     });
 });
 
-describe('charactersFiltrator.setAlignment() sets alignment param correctly to empty params', () => {
+describe('charactersFiltration.setAlignment() sets alignment param correctly to empty params', () => {
     beforeEach(() => {
         clearParams();
     });
 
     test('if passed string "light"', () => {
-        charactersFiltrator.setAlignment(setParams, 'light');
+        params = charactersFiltration.setAlignment(params, 'light');
 
         expect(params).toMatchObject(
             [{
@@ -477,7 +473,7 @@ describe('charactersFiltrator.setAlignment() sets alignment param correctly to e
     });
 
     test('if passed string "dark"', () => {
-        charactersFiltrator.setAlignment(setParams, 'dark');
+        params = charactersFiltration.setAlignment(params, 'dark');
 
         expect(params).toMatchObject(
             [{
@@ -488,7 +484,7 @@ describe('charactersFiltrator.setAlignment() sets alignment param correctly to e
     });
 });
 
-describe('charactersFiltrator.setAlignment() sets alignment param correctly to prefilled params', () => {
+describe('charactersFiltration.setAlignment() sets alignment param correctly to prefilled params', () => {
     beforeEach(() => {
         clearParams();
     });
@@ -499,7 +495,7 @@ describe('charactersFiltrator.setAlignment() sets alignment param correctly to p
             value: ['fleetCommender', 'galacticLegend']
         }];
 
-        charactersFiltrator.setAlignment(setParams, 'dark');
+        params = charactersFiltration.setAlignment(params, 'dark');
 
         expect(params).toMatchObject(
             [{
@@ -518,7 +514,7 @@ describe('charactersFiltrator.setAlignment() sets alignment param correctly to p
             value: ['attacker']
         }];
 
-        charactersFiltrator.setAlignment(setParams, 'dark');
+        params = charactersFiltration.setAlignment(params, 'dark');
 
         expect(params).toMatchObject(
             [{

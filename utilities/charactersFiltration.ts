@@ -9,61 +9,49 @@ const FLEET_COMMANDER = 'fleetCommander';
 const GALACTIC_LEGEND = 'galacticLegend';
 const CREW_MEMBER = 'crewMember';
 
-const charactersFiltrator = {
-    setAlignment: function (setParams, alignmentCode) {
-        const PARAM_NAME = ALIGNMENT;
+const charactersFiltration = {
+    setAlignment: function (params, alignmentCode) {
+        const newParams = params.filter((param) => param.name !== ALIGNMENT);
 
-        setParams((prevParams) => {
-            const newParams = prevParams.filter((param) => param.name !== PARAM_NAME);
+        if (typeof alignmentCode === 'string' && alignmentCode) {
+            newParams.push({
+                name: ALIGNMENT,
+                value: alignmentCode
+            });
+        }
 
-            if (typeof alignmentCode === 'string' && alignmentCode) {
-                newParams.push({
-                    name: PARAM_NAME,
-                    value: alignmentCode
-                });
-            }
-
-            return newParams;
-        });
+        return newParams;
     },
 
-    setRoles: function (setParams, roleCodes) {
-        const PARAM_NAME = ROLE;
+    setRoles: function (params, roleCodes) {
+        const newParams = params.filter((param) => param.name !== ROLE);
 
-        setParams((prevParams) => {
-            const newParams = prevParams.filter((param) => param.name !== PARAM_NAME);
+        if (Array.isArray(roleCodes) && roleCodes.length > 0) {
+            newParams.push({
+                name: ROLE,
+                value: roleCodes,
+                logic: 'or'
+            });
+        }
 
-            if (Array.isArray(roleCodes) && roleCodes.length > 0) {
-                newParams.push({
-                    name: PARAM_NAME,
-                    value: roleCodes,
-                    logic: 'or'
-                });
-            }
-
-            return newParams;
-        });
+        return newParams;
     },
 
-    setFractions: function (setParams, fractionCodes, logic) {
-        const PARAM_NAME = FRACTIONS;
+    setFractions: function (params, fractionCodes, logic) {
+        const newParams = params.filter((param) => param.name !== FRACTIONS);
 
-        setParams((prevParams) => {
-            const newParams = prevParams.filter((param) => param.name !== PARAM_NAME);
+        if (Array.isArray(fractionCodes) && fractionCodes.length > 0) {
+            newParams.push({
+                name: FRACTIONS,
+                value: fractionCodes,
+                logic
+            });
+        }
 
-            if (Array.isArray(fractionCodes) && fractionCodes.length > 0) {
-                newParams.push({
-                    name: PARAM_NAME,
-                    value: fractionCodes,
-                    logic
-                });
-            }
-
-            return newParams;
-        });
+        return newParams;
     },
 
-    setFeatures: function (setParams, featureCodes) {
+    setFeatures: function (params, featureCodes) {
         const PARAM_NAMES = [
             LEADER,
             FLEET_COMMANDER,
@@ -71,22 +59,20 @@ const charactersFiltrator = {
             CREW_MEMBER,
         ];
 
-        setParams((prevParams) => {
-            const newParams = prevParams.filter((param) => PARAM_NAMES.indexOf(param.name) === -1);
+        const newParams = params.filter((param) => PARAM_NAMES.indexOf(param.name) === -1);
 
-            if (Array.isArray(featureCodes) && featureCodes.length > 0) {
-                featureCodes.forEach((featureCode) => {
-                    if (PARAM_NAMES.indexOf(featureCode) > -1) {
-                        newParams.push({
-                            name: featureCode,
-                            value: true
-                        });
-                    }
-                });
-            }
+        if (Array.isArray(featureCodes) && featureCodes.length > 0) {
+            featureCodes.forEach((featureCode) => {
+                if (PARAM_NAMES.indexOf(featureCode) > -1) {
+                    newParams.push({
+                        name: featureCode,
+                        value: true
+                    });
+                }
+            });
+        }
 
-            return newParams;
-        });
+        return newParams;
     },
 
     getFilteredCharacters: function (characters, params) {
@@ -108,22 +94,22 @@ const charactersFiltrator = {
                         isMatched = param.value.indexOf(character.role.code) > -1;
                         break;
                     case FRACTIONS:
-                        const findedFractions = [];
+                        const foundFractions = [];
 
                         param.value.forEach((seekingValue) => {
                             character.fractions.forEach((fraction) => {
                                 if (fraction.code === seekingValue) {
-                                    findedFractions.push(seekingValue);
+                                    foundFractions.push(seekingValue);
                                 }
                             });
                         });
 
-                        if (findedFractions.length === 0) {
+                        if (foundFractions.length === 0) {
                             isMatched = false;
                         } else if (param.logic === 'or') {
                             isMatched = true;
                         } else {
-                            isMatched = findedFractions.length === param.value.length;
+                            isMatched = foundFractions.length === param.value.length;
                         }
 
                         break;
@@ -243,4 +229,4 @@ const charactersFiltrator = {
     }
 };
 
-export default charactersFiltrator;
+export default charactersFiltration;

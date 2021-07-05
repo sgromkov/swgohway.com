@@ -112,7 +112,7 @@ const CharacterItem: React.FC<CharacterItemProps> = ({ character }) => {
                                     variant="outlined"
                                     size="small"
                                     role={character.role.code}
-                                ></RoleChip>
+                                />
                             </div>
                             <Hidden xsDown>
                                 <Typography

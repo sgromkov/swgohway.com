@@ -1,4 +1,4 @@
-import charactersFiltrator from './charactersFiltrator';
+import charactersFiltration from './charactersFiltration';
 
 let params = [];
 
@@ -6,89 +6,85 @@ const clearParams = function () {
     params = [];
 }
 
-const setParams = function (callback) {
-    params = callback(params);
-};
-
-describe('charactersFiltrator.setFeatures() does not set features param to empty params', () => {
+describe('charactersFiltration.setFeatures() does not set features param to empty params', () => {
     beforeEach(() => {
         clearParams();
     });
 
     test('if passed nothing', () => {
-        charactersFiltrator.setFeatures(setParams);
+        params = charactersFiltration.setFeatures(params);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty string', () => {
-        charactersFiltrator.setFeatures(setParams, '');
+        params = charactersFiltration.setFeatures(params, '');
 
         expect(params).toEqual([]);
     });
 
     test('if passed string with value', () => {
-        charactersFiltrator.setFeatures(setParams, 'tank');
+        params = charactersFiltration.setFeatures(params, 'tank');
 
         expect(params).toEqual([]);
     });
 
     test('if passed undefined', () => {
-        charactersFiltrator.setFeatures(setParams, undefined);
+        params = charactersFiltration.setFeatures(params, undefined);
 
         expect(params).toEqual([]);
     });
 
     test('if passed null', () => {
-        charactersFiltrator.setFeatures(setParams, null);
+        params = charactersFiltration.setFeatures(params, null);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty array', () => {
-        charactersFiltrator.setFeatures(setParams, []);
+        params = charactersFiltration.setFeatures(params, []);
 
         expect(params).toEqual([]);
     });
 
     test('if passed function', () => {
-        charactersFiltrator.setFeatures(setParams, () => { });
+        params = charactersFiltration.setFeatures(params, () => { });
 
         expect(params).toEqual([]);
     });
 
     test('if passed number', () => {
-        charactersFiltrator.setFeatures(setParams, 10);
+        params = charactersFiltration.setFeatures(params, 10);
 
         expect(params).toEqual([]);
     });
 
     test('if passed boolean true', () => {
-        charactersFiltrator.setFeatures(setParams, true);
+        params = charactersFiltration.setFeatures(params, true);
 
         expect(params).toEqual([]);
     });
 
     test('if passed boolean false', () => {
-        charactersFiltrator.setFeatures(setParams, false);
+        params = charactersFiltration.setFeatures(params, false);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty object', () => {
-        charactersFiltrator.setFeatures(setParams, {});
+        params = charactersFiltration.setFeatures(params, {});
 
         expect(params).toEqual([]);
     });
 
     test('if passed object with data', () => {
-        charactersFiltrator.setFeatures(setParams, { code: 'light' });
+        params = charactersFiltration.setFeatures(params, { code: 'light' });
 
         expect(params).toEqual([]);
     });
 });
 
-describe('charactersFiltrator.setFeatures() does not set features param to prefilled params', () => {
+describe('charactersFiltration.setFeatures() does not set features param to prefilled params', () => {
     beforeEach(() => {
         clearParams();
 
@@ -99,7 +95,7 @@ describe('charactersFiltrator.setFeatures() does not set features param to prefi
     });
 
     test('if passed nothing', () => {
-        charactersFiltrator.setFeatures(setParams);
+        params = charactersFiltration.setFeatures(params);
 
         expect(params).toMatchObject(
             [{
@@ -110,7 +106,7 @@ describe('charactersFiltrator.setFeatures() does not set features param to prefi
     });
 
     test('if passed empty string', () => {
-        charactersFiltrator.setFeatures(setParams, '');
+        params = charactersFiltration.setFeatures(params, '');
 
         expect(params).toMatchObject(
             [{
@@ -121,7 +117,7 @@ describe('charactersFiltrator.setFeatures() does not set features param to prefi
     });
 
     test('if passed undefined', () => {
-        charactersFiltrator.setFeatures(setParams, undefined);
+        params = charactersFiltration.setFeatures(params, undefined);
 
         expect(params).toMatchObject(
             [{
@@ -132,7 +128,7 @@ describe('charactersFiltrator.setFeatures() does not set features param to prefi
     });
 
     test('if passed null', () => {
-        charactersFiltrator.setFeatures(setParams, null);
+        params = charactersFiltration.setFeatures(params, null);
 
         expect(params).toMatchObject(
             [{
@@ -143,7 +139,7 @@ describe('charactersFiltrator.setFeatures() does not set features param to prefi
     });
 
     test('if passed empty array', () => {
-        charactersFiltrator.setFeatures(setParams, []);
+        params = charactersFiltration.setFeatures(params, []);
 
         expect(params).toMatchObject(
             [{
@@ -154,7 +150,7 @@ describe('charactersFiltrator.setFeatures() does not set features param to prefi
     });
 
     test('if passed function', () => {
-        charactersFiltrator.setFeatures(setParams, () => { });
+        params = charactersFiltration.setFeatures(params, () => { });
 
         expect(params).toMatchObject(
             [{
@@ -165,7 +161,7 @@ describe('charactersFiltrator.setFeatures() does not set features param to prefi
     });
 
     test('if passed number', () => {
-        charactersFiltrator.setFeatures(setParams, 10);
+        params = charactersFiltration.setFeatures(params, 10);
 
         expect(params).toMatchObject(
             [{
@@ -176,7 +172,7 @@ describe('charactersFiltrator.setFeatures() does not set features param to prefi
     });
 
     test('if passed boolean true', () => {
-        charactersFiltrator.setFeatures(setParams, true);
+        params = charactersFiltration.setFeatures(params, true);
 
         expect(params).toMatchObject(
             [{
@@ -187,7 +183,7 @@ describe('charactersFiltrator.setFeatures() does not set features param to prefi
     });
 
     test('if passed boolean false', () => {
-        charactersFiltrator.setFeatures(setParams, false);
+        params = charactersFiltration.setFeatures(params, false);
 
         expect(params).toMatchObject(
             [{
@@ -198,7 +194,7 @@ describe('charactersFiltrator.setFeatures() does not set features param to prefi
     });
 
     test('if passed empty object', () => {
-        charactersFiltrator.setFeatures(setParams, {});
+        params = charactersFiltration.setFeatures(params, {});
 
         expect(params).toMatchObject(
             [{
@@ -209,7 +205,7 @@ describe('charactersFiltrator.setFeatures() does not set features param to prefi
     });
 
     test('if passed object with data', () => {
-        charactersFiltrator.setFeatures(setParams, { code: 'light' });
+        params = charactersFiltration.setFeatures(params, { code: 'light' });
 
         expect(params).toMatchObject(
             [{
@@ -220,7 +216,7 @@ describe('charactersFiltrator.setFeatures() does not set features param to prefi
     });
 });
 
-describe('charactersFiltrator.setFeatures() removes features param from params with features only', () => {
+describe('charactersFiltration.setFeatures() removes features param from params with features only', () => {
     beforeEach(() => {
         clearParams();
 
@@ -237,85 +233,85 @@ describe('charactersFiltrator.setFeatures() removes features param from params w
     });
 
     test('if passed nothing', () => {
-        charactersFiltrator.setFeatures(setParams);
+        params = charactersFiltration.setFeatures(params);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty string', () => {
-        charactersFiltrator.setFeatures(setParams, '');
+        params = charactersFiltration.setFeatures(params, '');
 
         expect(params).toEqual([]);
     });
 
     test('if passed string with value', () => {
-        charactersFiltrator.setFeatures(setParams, 'tank');
+        params = charactersFiltration.setFeatures(params, 'tank');
 
         expect(params).toEqual([]);
     });
 
     test('if passed undefined', () => {
-        charactersFiltrator.setFeatures(setParams, undefined);
+        params = charactersFiltration.setFeatures(params, undefined);
 
         expect(params).toEqual([]);
     });
 
     test('if passed null', () => {
-        charactersFiltrator.setFeatures(setParams, null);
+        params = charactersFiltration.setFeatures(params, null);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty array', () => {
-        charactersFiltrator.setFeatures(setParams, []);
+        params = charactersFiltration.setFeatures(params, []);
 
         expect(params).toEqual([]);
     });
 
     test('if passed array with value', () => {
-        charactersFiltrator.setFeatures(setParams, ['light']);
+        params = charactersFiltration.setFeatures(params, ['light']);
 
         expect(params).toEqual([]);
     });
 
     test('if passed function', () => {
-        charactersFiltrator.setFeatures(setParams, () => { });
+        params = charactersFiltration.setFeatures(params, () => { });
 
         expect(params).toEqual([]);
     });
 
     test('if passed number', () => {
-        charactersFiltrator.setFeatures(setParams, 10);
+        params = charactersFiltration.setFeatures(params, 10);
 
         expect(params).toEqual([]);
     });
 
     test('if passed boolean true', () => {
-        charactersFiltrator.setFeatures(setParams, true);
+        params = charactersFiltration.setFeatures(params, true);
 
         expect(params).toEqual([]);
     });
 
     test('if passed boolean false', () => {
-        charactersFiltrator.setFeatures(setParams, false);
+        params = charactersFiltration.setFeatures(params, false);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty object', () => {
-        charactersFiltrator.setFeatures(setParams, {});
+        params = charactersFiltration.setFeatures(params, {});
 
         expect(params).toEqual([]);
     });
 
     test('if passed object with data', () => {
-        charactersFiltrator.setFeatures(setParams, { code: 'light' });
+        params = charactersFiltration.setFeatures(params, { code: 'light' });
 
         expect(params).toEqual([]);
     });
 });
 
-describe('charactersFiltrator.setFeatures() removes features param from params with different params', () => {
+describe('charactersFiltration.setFeatures() removes features param from params with different params', () => {
     beforeEach(() => {
         clearParams();
 
@@ -329,7 +325,7 @@ describe('charactersFiltrator.setFeatures() removes features param from params w
     });
 
     test('if passed nothing', () => {
-        charactersFiltrator.setFeatures(setParams);
+        params = charactersFiltration.setFeatures(params);
 
         expect(params).toMatchObject(
             [{
@@ -340,7 +336,7 @@ describe('charactersFiltrator.setFeatures() removes features param from params w
     });
 
     test('if passed empty string', () => {
-        charactersFiltrator.setFeatures(setParams, '');
+        params = charactersFiltration.setFeatures(params, '');
 
         expect(params).toMatchObject(
             [{
@@ -351,7 +347,7 @@ describe('charactersFiltrator.setFeatures() removes features param from params w
     });
 
     test('if passed string with value', () => {
-        charactersFiltrator.setFeatures(setParams, 'healer');
+        params = charactersFiltration.setFeatures(params, 'healer');
 
         expect(params).toMatchObject(
             [{
@@ -362,7 +358,7 @@ describe('charactersFiltrator.setFeatures() removes features param from params w
     });
 
     test('if passed undefined', () => {
-        charactersFiltrator.setFeatures(setParams, undefined);
+        params = charactersFiltration.setFeatures(params, undefined);
 
         expect(params).toMatchObject(
             [{
@@ -373,7 +369,7 @@ describe('charactersFiltrator.setFeatures() removes features param from params w
     });
 
     test('if passed null', () => {
-        charactersFiltrator.setFeatures(setParams, null);
+        params = charactersFiltration.setFeatures(params, null);
 
         expect(params).toMatchObject(
             [{
@@ -384,7 +380,7 @@ describe('charactersFiltrator.setFeatures() removes features param from params w
     });
 
     test('if passed empty array', () => {
-        charactersFiltrator.setFeatures(setParams, []);
+        params = charactersFiltration.setFeatures(params, []);
 
         expect(params).toMatchObject(
             [{
@@ -395,7 +391,7 @@ describe('charactersFiltrator.setFeatures() removes features param from params w
     });
 
     test('if passed function', () => {
-        charactersFiltrator.setFeatures(setParams, () => { });
+        params = charactersFiltration.setFeatures(params, () => { });
 
         expect(params).toMatchObject(
             [{
@@ -406,7 +402,7 @@ describe('charactersFiltrator.setFeatures() removes features param from params w
     });
 
     test('if passed number', () => {
-        charactersFiltrator.setFeatures(setParams, 10);
+        params = charactersFiltration.setFeatures(params, 10);
 
         expect(params).toMatchObject(
             [{
@@ -417,7 +413,7 @@ describe('charactersFiltrator.setFeatures() removes features param from params w
     });
 
     test('if passed boolean true', () => {
-        charactersFiltrator.setFeatures(setParams, true);
+        params = charactersFiltration.setFeatures(params, true);
 
         expect(params).toMatchObject(
             [{
@@ -428,7 +424,7 @@ describe('charactersFiltrator.setFeatures() removes features param from params w
     });
 
     test('if passed boolean false', () => {
-        charactersFiltrator.setFeatures(setParams, false);
+        params = charactersFiltration.setFeatures(params, false);
 
         expect(params).toMatchObject(
             [{
@@ -439,7 +435,7 @@ describe('charactersFiltrator.setFeatures() removes features param from params w
     });
 
     test('if passed empty object', () => {
-        charactersFiltrator.setFeatures(setParams, {});
+        params = charactersFiltration.setFeatures(params, {});
 
         expect(params).toMatchObject(
             [{
@@ -450,7 +446,7 @@ describe('charactersFiltrator.setFeatures() removes features param from params w
     });
 
     test('if passed object with data', () => {
-        charactersFiltrator.setFeatures(setParams, { code: 'light' });
+        params = charactersFiltration.setFeatures(params, { code: 'light' });
 
         expect(params).toMatchObject(
             [{
@@ -461,13 +457,13 @@ describe('charactersFiltrator.setFeatures() removes features param from params w
     });
 });
 
-describe('charactersFiltrator.setFeatures() sets features param correctly to empty params', () => {
+describe('charactersFiltration.setFeatures() sets features param correctly to empty params', () => {
     beforeEach(() => {
         clearParams();
     });
 
     test('if passed value ["leader"]', () => {
-        charactersFiltrator.setFeatures(setParams, ['leader']);
+        params = charactersFiltration.setFeatures(params, ['leader']);
 
         expect(params).toMatchObject(
             [{
@@ -478,7 +474,7 @@ describe('charactersFiltrator.setFeatures() sets features param correctly to emp
     });
 
     test('if passed values ["galacticLegend", "leader"]', () => {
-        charactersFiltrator.setFeatures(setParams, ['galacticLegend', 'leader']);
+        params = charactersFiltration.setFeatures(params, ['galacticLegend', 'leader']);
 
         expect(params).toMatchObject(
             [{
@@ -492,7 +488,7 @@ describe('charactersFiltrator.setFeatures() sets features param correctly to emp
     });
 
     test('if passed value ["galacticLegend", "fleetCommander", "leader"]', () => {
-        charactersFiltrator.setFeatures(setParams, ['galacticLegend', 'fleetCommander', 'leader']);
+        params = charactersFiltration.setFeatures(params, ['galacticLegend', 'fleetCommander', 'leader']);
 
         expect(params).toMatchObject(
             [{
@@ -509,7 +505,7 @@ describe('charactersFiltrator.setFeatures() sets features param correctly to emp
     });
 });
 
-describe('charactersFiltrator.setFeatures() sets features param correctly to params with existed feature', () => {
+describe('charactersFiltration.setFeatures() sets features param correctly to params with existed feature', () => {
     beforeEach(() => {
         clearParams();
     });
@@ -520,7 +516,7 @@ describe('charactersFiltrator.setFeatures() sets features param correctly to par
             value: true
         }];
 
-        charactersFiltrator.setFeatures(setParams, ['leader', 'galacticLegend']);
+        params = charactersFiltration.setFeatures(params, ['leader', 'galacticLegend']);
 
         expect(params).toMatchObject(
             [{
@@ -542,7 +538,7 @@ describe('charactersFiltrator.setFeatures() sets features param correctly to par
             value: true
         }];
 
-        charactersFiltrator.setFeatures(setParams, ['fleetCommander']);
+        params = charactersFiltration.setFeatures(params, ['fleetCommander']);
 
         expect(params).toMatchObject(
             [{
@@ -553,7 +549,7 @@ describe('charactersFiltrator.setFeatures() sets features param correctly to par
     });
 });
 
-describe('charactersFiltrator.setFeatures() sets features param correctly to params with other params', () => {
+describe('charactersFiltration.setFeatures() sets features param correctly to params with other params', () => {
     beforeEach(() => {
         clearParams();
     });
@@ -564,7 +560,7 @@ describe('charactersFiltrator.setFeatures() sets features param correctly to par
             value: ['attacker', 'tank']
         }];
 
-        charactersFiltrator.setFeatures(setParams, ['fleetCommander', 'galacticLegend']);
+        params = charactersFiltration.setFeatures(params, ['fleetCommander', 'galacticLegend']);
 
         expect(params).toMatchObject(
             [{
@@ -590,7 +586,7 @@ describe('charactersFiltrator.setFeatures() sets features param correctly to par
             value: 'dark'
         }];
 
-        charactersFiltrator.setFeatures(setParams, ['fleetCommander']);
+        params = charactersFiltration.setFeatures(params, ['fleetCommander']);
 
         expect(params).toMatchObject(
             [{
@@ -621,7 +617,7 @@ describe('charactersFiltrator.setFeatures() sets features param correctly to par
             value: ['support']
         }];
 
-        charactersFiltrator.setFeatures(setParams, ['fleetCommander', 'galacticLegend']);
+        params = charactersFiltration.setFeatures(params, ['fleetCommander', 'galacticLegend']);
 
         expect(params).toMatchObject(
             [{

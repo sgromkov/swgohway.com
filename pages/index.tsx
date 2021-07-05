@@ -9,7 +9,7 @@ import { Container } from '@material-ui/core';
 import PageCaption from '../components/PageCaption';
 import CharacterList from '../components/CharacterList';
 import CharacterFilter from '../components/CharacterFilter';
-import charactersFiltrator from '../utilities/charactersFiltrator';
+import charactersFiltration from '../utilities/charactersFiltration';
 import {
     Alignment,
     AlignmentCode,
@@ -43,26 +43,34 @@ const Characters: React.FC<CharactersProps> = ({
     const [params, setParams] = useState([]);
 
     const filterCharactersByAlignment = (alignmentCode: AlignmentCode): void => {
-        charactersFiltrator.setAlignment(setParams, alignmentCode);
+        setParams((prevParams) => {
+            return charactersFiltration.setAlignment(prevParams, alignmentCode);
+        });
     };
 
     const filterCharactersByRole = (roleCodes: string[]): void => {
-        charactersFiltrator.setRoles(setParams, roleCodes);
+        setParams((prevParams) => {
+            return charactersFiltration.setRoles(prevParams, roleCodes);
+        });
     };
 
     const filterCharactersByFraction = (fractionCodes: string[], logic: Logic): void => {
-        charactersFiltrator.setFractions(setParams, fractionCodes, logic);
+        setParams((prevParams) => {
+            return charactersFiltration.setFractions(prevParams, fractionCodes, logic);
+        });
     };
 
     const filterCharactersByFeature = (featureCodes: string[]): void => {
-        charactersFiltrator.setFeatures(setParams, featureCodes);
+        setParams((prevParams) => {
+            return charactersFiltration.setFeatures(prevParams, featureCodes);
+        });
     };
 
-    const activeAlignments = charactersFiltrator.getAlignment(params);
-    const activeRoles = charactersFiltrator.getRoles(params);
-    const activeFractions = charactersFiltrator.getFractions(params);
-    const activeFeatures = charactersFiltrator.getFeatures(params);
-    const activeFractionsLogic: Logic = charactersFiltrator.getFractionsLogic(params, LogicValues.OR);
+    const activeAlignments = charactersFiltration.getAlignment(params);
+    const activeRoles = charactersFiltration.getRoles(params);
+    const activeFractions = charactersFiltration.getFractions(params);
+    const activeFeatures = charactersFiltration.getFeatures(params);
+    const activeFractionsLogic: Logic = charactersFiltration.getFractionsLogic(params, LogicValues.OR);
 
     return (
         <Container component="main" maxWidth="lg">
@@ -92,14 +100,14 @@ const Characters: React.FC<CharactersProps> = ({
                     });
                 })}
                 fractionsLogic={activeFractionsLogic}
-                onAligmentChange={filterCharactersByAlignment}
+                onAlignmentChange={filterCharactersByAlignment}
                 onRoleChange={filterCharactersByRole}
                 onFractionChange={filterCharactersByFraction}
                 onFeatureChange={filterCharactersByFeature}
                 onReset={() => {setParams([])}}
             />
             <CharacterList
-                characters={charactersFiltrator.getFilteredCharacters(characters, params)}
+                characters={charactersFiltration.getFilteredCharacters(characters, params)}
             />
         </Container >
     );
