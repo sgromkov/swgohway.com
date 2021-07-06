@@ -16,7 +16,7 @@ Here are a few ideas I'm going to implement:
 ## What's Under the Hood?
 
 Technologies and tools used in building the application:
-| Purpose | Technologies and tools |
+| Purpose | Stack |
 |-|-|
 | Backend    | [Next.js](https://nextjs.org/) |
 | Frontend   | [React](https://reactjs.org/) + [Material-UI](https://material-ui.com) |
