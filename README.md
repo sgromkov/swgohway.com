@@ -16,14 +16,14 @@ Here are a few ideas I'm going to implement:
 ## What's Under the Hood?
 
 Technologies and tools used in building the application:
-| Purpose | Stack |
-|-|-|
-| Backend    | [Next.js](https://nextjs.org/) |
-| Frontend   | [React](https://reactjs.org/) + [Material-UI](https://material-ui.com) |
+| Purpose    | Stack                                                                    |
+|------------|--------------------------------------------------------------------------|
+| Backend    | [Next.js](https://nextjs.org/)                                           |
+| Frontend   | [React](https://reactjs.org/) + [Material-UI](https://material-ui.com)   |
 | Database   | [MongoDB](https://www.mongodb.com) + [Mongoose](https://mongoosejs.com/) |
-| Testing    | [Jest](https://jestjs.io/ru/) |
-| Typing     | [Typescript](https://www.typescriptlang.org/) |
-| Code style | [ESLint](https://eslint.org/) |
+| Testing    | [Jest](https://jestjs.io/ru/)                                            |
+| Typing     | [Typescript](https://www.typescriptlang.org/)                            |
+| Code style | [ESLint](https://eslint.org/)                                            |
 
 ## About the author
 
