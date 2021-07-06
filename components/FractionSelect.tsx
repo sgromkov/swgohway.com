@@ -7,8 +7,9 @@ import {
     Select,
     Checkbox,
     ListItemText,
+    ButtonGroup,
+    Button,
 } from '@material-ui/core';
-import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import { makeStyles } from '@material-ui/core/styles';
 import CustomChip from './CustomChip';
 import getItemTitleByCode from '../utilities/getItemTitleByCode';
@@ -24,7 +25,8 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: theme.spacing(0.5)
     },
     toggleButton: {
-        width: '45px'
+        width: '45px',
+        height: '40px',
     },
     formControl: {
         flexGrow: 1,
@@ -67,7 +69,7 @@ const FractionSelect: React.FC<FractionSelectProps> = ({ fractions, logic, onCha
         onChange(fractionCodes, currentLogic);
     };
 
-    const handleLogicChange = (event, newLogic: Logic) => {
+    const handleLogicChange = (newLogic: Logic) => {
         onChange(currentFractions, newLogic);
     };
 
@@ -103,27 +105,25 @@ const FractionSelect: React.FC<FractionSelectProps> = ({ fractions, logic, onCha
                         ))}
                     </Select>
                 </FormControl>
-                <ToggleButtonGroup
-                    size="small"
-                    value={currentLogic}
-                    exclusive
-                    onChange={handleLogicChange}
-                    aria-label="Choose how to select factions"
+                <ButtonGroup
                     className={classes.toggleButtonGroup}
+                    aria-label="Choose how to select factions"
                 >
-                    <ToggleButton
-                        value={LogicValues.OR}
+                    <Button
+                        className={classes.toggleButton}
+                        disabled={currentFractions.length === 0 || currentLogic === LogicValues.OR}
+                        onClick={() => {handleLogicChange(LogicValues.OR)}}
                         aria-label="Show the characters belonging to any selected faction"
                         title="Show the characters belonging to any selected faction"
+                    >Or</Button>
+                    <Button
                         className={classes.toggleButton}
-                    >Or</ToggleButton>
-                    <ToggleButton
-                        value={LogicValues.AND}
+                        disabled={currentFractions.length === 0 || currentLogic === LogicValues.AND}
+                        onClick={() => {handleLogicChange(LogicValues.AND)}}
                         aria-label="Show the characters belonging to all selected factions"
                         title="Show the characters belonging to all selected factions"
-                        className={classes.toggleButton}
-                    >And</ToggleButton>
-                </ToggleButtonGroup>
+                    >And</Button>
+                </ButtonGroup>
             </div>
             <FormHelperText className={classes.formHelperText}>
                 Click AND if you want to show the characters belonging to all selected factions.

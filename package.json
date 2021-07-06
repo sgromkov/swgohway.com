@@ -3,13 +3,11 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.11.4",
+    "@material-ui/core": "^4.12.0",
     "@material-ui/icons": "^4.11.2",
-    "@material-ui/lab": "^4.0.0-alpha.58",
     "clsx": "latest",
-    "mongoose": "^5.12.7",
+    "mongoose": "^5.13.2",
     "next": "^11.0.1",
-    "prop-types": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
@@ -22,16 +20,16 @@
     "db": "node --experimental-modules --es-module-specifier-resolution=node -r dotenv-flow/config"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.13.0",
-    "@babel/plugin-proposal-decorators": "^7.13.15",
-    "@babel/plugin-transform-runtime": "^7.13.15",
-    "@babel/preset-env": "^7.13.15",
-    "@types/node": "^15.9.0",
-    "@types/react": "^17.0.9",
-    "babel-jest": "^26.6.3",
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "@babel/plugin-proposal-decorators": "^7.14.5",
+    "@babel/plugin-transform-runtime": "^7.14.5",
+    "@babel/preset-env": "^7.14.7",
+    "@types/node": "^16.0.0",
+    "@types/react": "^17.0.13",
+    "babel-jest": "^27.0.6",
     "dotenv-flow": "^3.2.0",
-    "jest": "^26.6.3",
+    "jest": "^27.0.6",
     "jest-environment-jsdom-fourteen": "^1.0.1",
-    "typescript": "^4.3.2"
+    "typescript": "^4.3.5"
   }
 }

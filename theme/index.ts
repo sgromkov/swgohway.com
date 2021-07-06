@@ -1,8 +1,8 @@
-import { Theme } from '@material-ui/core/styles/createMuiTheme';
-import { createMuiTheme, ThemeOptions } from '@material-ui/core/styles';
+import { Theme } from '@material-ui/core/styles/createTheme';
+import { createTheme, ThemeOptions } from '@material-ui/core/styles';
 import { red, blue, green, brown, purple, orange } from '@material-ui/core/colors';
 
-declare module '@material-ui/core/styles/createMuiTheme' {
+declare module '@material-ui/core/styles/createTheme' {
     interface Theme {
         swgoh?: {
             side?: {
@@ -17,7 +17,7 @@ declare module '@material-ui/core/styles/createMuiTheme' {
             },
         }
     }
-    // allow configuration using `createMuiTheme`
+    // allow configuration using `createTheme`
     interface ThemeOptions {
         swgoh?: {
             side?: {
@@ -34,7 +34,14 @@ declare module '@material-ui/core/styles/createMuiTheme' {
     }
 }
 
-const theme = createMuiTheme({
+function createSwgohTheme(options: ThemeOptions) {
+    return createTheme({
+        swgoh: {},
+        ...options,
+    })
+}
+
+const theme = createSwgohTheme({
     palette: {
         primary: {
             light: '#80b1ff',

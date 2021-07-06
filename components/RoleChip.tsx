@@ -86,7 +86,7 @@ const RoleChip: React.FC<RoleChipProps> = (props) => {
             resultChip = (
                 <SupportChip
                     label={label || 'Support'}
-                    icon={<RoleIcon role={role} />}
+                    icon={<RoleIcon role={role} fontSize="small" />}
                     {...other}
                 />
             );
@@ -95,7 +95,7 @@ const RoleChip: React.FC<RoleChipProps> = (props) => {
             resultChip = (
                 <AttackerChip
                     label={label || 'Attacker'}
-                    icon={<RoleIcon role={role} />}
+                    icon={<RoleIcon role={role} fontSize="small" />}
                     {...other}
                 />
             );
@@ -104,7 +104,7 @@ const RoleChip: React.FC<RoleChipProps> = (props) => {
             resultChip = (
                 <TankChip
                     label={label || 'Tank'}
-                    icon={<RoleIcon role={role} />}
+                    icon={<RoleIcon role={role} fontSize="small" />}
                     {...other}
                 />
             );
@@ -113,7 +113,7 @@ const RoleChip: React.FC<RoleChipProps> = (props) => {
             resultChip = (
                 <HealerChip
                     label={label || 'Healer'}
-                    icon={<RoleIcon role={role} />}
+                    icon={<RoleIcon role={role} fontSize="small" />}
                     {...other}
                 />
             );
