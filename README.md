@@ -15,11 +15,15 @@ Here are a few ideas I'm going to implement:
 
 ## What's Under the Hood?
 
-Technologies used in building the application:
-
-1. [Next.js](https://nextjs.org/)
-2. [Material-UI](https://material-ui.com)
-3. [MongoDB](https://www.mongodb.com)
+Technologies and tools used in building the application:
+|||
+|-|-|
+| Backend    | [Next.js](https://nextjs.org/) |
+| Frontend   | [React](https://reactjs.org/) + [Material-UI](https://material-ui.com) |
+| Database   | [MongoDB](https://www.mongodb.com) + [Mongoose](https://mongoosejs.com/) |
+| Testing    | [Jest](https://jestjs.io/ru/) |
+| Typing     | [Typescript](https://www.typescriptlang.org/) |
+| Code style | [ESLint](https://eslint.org/) |
 
 ## About the author
 
