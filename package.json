@@ -17,7 +17,8 @@
     "start": "next start",
     "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest",
     "test": "jest",
-    "db": "node --experimental-modules --es-module-specifier-resolution=node -r dotenv-flow/config"
+    "db": "node --experimental-modules --es-module-specifier-resolution=node -r dotenv-flow/config",
+    "lint": "next lint"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.14.5",
@@ -28,6 +29,8 @@
     "@types/react": "^17.0.13",
     "babel-jest": "^27.0.6",
     "dotenv-flow": "^3.2.0",
+    "eslint": "^7.30.0",
+    "eslint-config-next": "^11.0.1",
     "jest": "^27.0.6",
     "jest-environment-jsdom-fourteen": "^1.0.1",
     "typescript": "^4.3.5"
