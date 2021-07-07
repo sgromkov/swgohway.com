@@ -44,18 +44,18 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-type FractionSelectProps = {
-    fractions: SelectOption[],
+type FactionSelectProps = {
+    factions: SelectOption[],
     logic: Logic,
-    onChange(fractionCodes: string[], logic: Logic): void,
+    onChange(factionCodes: string[], logic: Logic): void,
 };
 
-const FractionSelect: React.FC<FractionSelectProps> = ({ fractions, logic, onChange }) => {
+const FactionSelect: React.FC<FactionSelectProps> = ({ factions, logic, onChange }) => {
     const classes = useStyles();
 
-    const currentFractions = fractions.reduce((activeValues, fraction) => {
-        if (fraction.selected) {
-            activeValues.push(fraction.code);
+    const currentFactions = factions.reduce((activeValues, faction) => {
+        if (faction.selected) {
+            activeValues.push(faction.code);
         }
 
         return activeValues;
@@ -64,43 +64,43 @@ const FractionSelect: React.FC<FractionSelectProps> = ({ fractions, logic, onCha
     const currentLogic = logic;
 
     const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-        const fractionCodes = event.target.value as string[];
+        const factionCodes = event.target.value as string[];
 
-        onChange(fractionCodes, currentLogic);
+        onChange(factionCodes, currentLogic);
     };
 
     const handleLogicChange = (newLogic: Logic) => {
-        onChange(currentFractions, newLogic);
+        onChange(currentFactions, newLogic);
     };
 
     return (
         <>
             <div className={classes.root}>
                 <FormControl className={classes.formControl} variant="outlined" size="small">
-                    <InputLabel id="fraction-select-label">Factions</InputLabel>
+                    <InputLabel id="faction-select-label">Factions</InputLabel>
                     <Select
                         multiple
-                        labelId="fraction-select-label"
-                        id="fraction-select"
+                        labelId="faction-select-label"
+                        id="faction-select"
                         label="Factions"
-                        value={currentFractions}
+                        value={currentFactions}
                         onChange={handleChange}
                         renderValue={(selected: string[]) => (
                             <div className={classes.chips}>
                                 {selected.map((value: string) => (
                                     <CustomChip
                                         size="small"
-                                        label={getItemTitleByCode(value, fractions)}
+                                        label={getItemTitleByCode(value, factions)}
                                         key={value}
                                     />
                                 ))}
                             </div>
                         )}
                     >
-                        {fractions.map((fraction) => (
-                            <MenuItem key={fraction.code} value={fraction.code}>
-                                <Checkbox checked={currentFractions.indexOf(fraction.code) > -1} size="small" />
-                                <ListItemText primary={fraction.title} />
+                        {factions.map((faction) => (
+                            <MenuItem key={faction.code} value={faction.code}>
+                                <Checkbox checked={currentFactions.indexOf(faction.code) > -1} size="small" />
+                                <ListItemText primary={faction.title} />
                             </MenuItem>
                         ))}
                     </Select>
@@ -111,14 +111,14 @@ const FractionSelect: React.FC<FractionSelectProps> = ({ fractions, logic, onCha
                 >
                     <Button
                         className={classes.toggleButton}
-                        disabled={currentFractions.length === 0 || currentLogic === LogicValues.OR}
+                        disabled={currentFactions.length === 0 || currentLogic === LogicValues.OR}
                         onClick={() => {handleLogicChange(LogicValues.OR)}}
                         aria-label="Show the characters belonging to any selected faction"
                         title="Show the characters belonging to any selected faction"
                     >Or</Button>
                     <Button
                         className={classes.toggleButton}
-                        disabled={currentFractions.length === 0 || currentLogic === LogicValues.AND}
+                        disabled={currentFactions.length === 0 || currentLogic === LogicValues.AND}
                         onClick={() => {handleLogicChange(LogicValues.AND)}}
                         aria-label="Show the characters belonging to all selected factions"
                         title="Show the characters belonging to all selected factions"
@@ -132,4 +132,4 @@ const FractionSelect: React.FC<FractionSelectProps> = ({ fractions, logic, onCha
     );
 };
 
-export default FractionSelect;
+export default FactionSelect;

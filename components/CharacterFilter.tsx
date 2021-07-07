@@ -2,19 +2,19 @@ import React from 'react';
 import { Box, Button, Paper, Divider, Grid, Typography } from '@material-ui/core';
 import AlignmentSelect from './AlignmentSelect';
 import RoleSelect from './RoleSelect';
-import FractionSelect from './FractionSelect';
+import FactionSelect from './FactionSelect';
 import FeatureSelect from './FeatureSelect';
 import { AlignmentCode, Logic, SelectOption } from '../types';
 
 type CharacterFilterProps = {
     alignments: SelectOption[],
     roles: SelectOption[],
-    fractions: SelectOption[],
+    factions: SelectOption[],
     features: SelectOption[],
-    fractionsLogic: Logic,
+    factionsLogic: Logic,
     onAlignmentChange: (alignmentCode: AlignmentCode) => void,
     onRoleChange:(roleCodes: string[]) => void,
-    onFractionChange: (fractionCodes: string[], logic: string) => void,
+    onFactionChange: (factionCodes: string[], logic: string) => void,
     onFeatureChange: (featureCodes: string[]) => void,
     onReset: () => void,
 };
@@ -22,12 +22,12 @@ type CharacterFilterProps = {
 const CharacterFilter: React.FC<CharacterFilterProps> = ({
     alignments,
     roles,
-    fractions,
+    factions,
     features,
-    fractionsLogic,
+    factionsLogic,
     onAlignmentChange,
     onRoleChange,
-    onFractionChange,
+    onFactionChange,
     onFeatureChange,
     onReset,
 }) => {
@@ -58,10 +58,10 @@ const CharacterFilter: React.FC<CharacterFilterProps> = ({
                             />
                         </Grid>
                         <Grid item xs={12} sm={6} md={6} lg={3}>
-                            <FractionSelect
-                                fractions={fractions}
-                                logic={fractionsLogic}
-                                onChange={onFractionChange}
+                            <FactionSelect
+                                factions={factions}
+                                logic={factionsLogic}
+                                onChange={onFactionChange}
                             />
                         </Grid>
                         <Grid item xs={12} sm={6} md={6} lg={3}>

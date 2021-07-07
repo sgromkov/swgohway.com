@@ -3,6 +3,7 @@
 ## What to do before database update
 1. update file `__mocks__/characters.json`
 2. add key `"type": "module"` in `package.json`
+3. remove all existing collection in database 
 
 ## Order filling database
 1. alignments:
@@ -15,9 +16,9 @@ npm run db db/alignments/add.js
 npm run db db/roles/add.js
 ```
 
-3. fractions:
+3. factions:
 ```bash
-npm run db db/fractions/add.js
+npm run db db/factions/add.js
 ```
 
 4. characters:
@@ -27,5 +28,6 @@ npm run db db/characters/add.js
 
 5. images:
 ```bash
+# remove "type": "module" from package.json first
 npm run db db/images/add.js
 ```

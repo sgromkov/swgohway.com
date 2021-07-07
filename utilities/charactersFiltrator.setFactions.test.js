@@ -6,85 +6,85 @@ const clearParams = function () {
     params = [];
 }
 
-describe('charactersFiltration.setFractions() does not set fractions param to empty params', () => {
+describe('charactersFiltration.setFactions() does not set factions param to empty params', () => {
     beforeEach(() => {
         clearParams();
     });
 
     test('if passed nothing', () => {
-        params = charactersFiltration.setFractions(params);
+        params = charactersFiltration.setFactions(params);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty string', () => {
-        params = charactersFiltration.setFractions(params, '');
+        params = charactersFiltration.setFactions(params, '');
 
         expect(params).toEqual([]);
     });
 
     test('if passed string with value', () => {
-        params = charactersFiltration.setFractions(params, 'tank');
+        params = charactersFiltration.setFactions(params, 'tank');
 
         expect(params).toEqual([]);
     });
 
     test('if passed undefined', () => {
-        params = charactersFiltration.setFractions(params, undefined);
+        params = charactersFiltration.setFactions(params, undefined);
 
         expect(params).toEqual([]);
     });
 
     test('if passed null', () => {
-        params = charactersFiltration.setFractions(params, null);
+        params = charactersFiltration.setFactions(params, null);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty array', () => {
-        params = charactersFiltration.setFractions(params, []);
+        params = charactersFiltration.setFactions(params, []);
 
         expect(params).toEqual([]);
     });
 
     test('if passed function', () => {
-        params = charactersFiltration.setFractions(params, () => { });
+        params = charactersFiltration.setFactions(params, () => { });
 
         expect(params).toEqual([]);
     });
 
     test('if passed number', () => {
-        params = charactersFiltration.setFractions(params, 10);
+        params = charactersFiltration.setFactions(params, 10);
 
         expect(params).toEqual([]);
     });
 
     test('if passed boolean true', () => {
-        params = charactersFiltration.setFractions(params, true);
+        params = charactersFiltration.setFactions(params, true);
 
         expect(params).toEqual([]);
     });
 
     test('if passed boolean false', () => {
-        params = charactersFiltration.setFractions(params, false);
+        params = charactersFiltration.setFactions(params, false);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty object', () => {
-        params = charactersFiltration.setFractions(params, {});
+        params = charactersFiltration.setFactions(params, {});
 
         expect(params).toEqual([]);
     });
 
     test('if passed object with data', () => {
-        params = charactersFiltration.setFractions(params, { code: 'light' });
+        params = charactersFiltration.setFactions(params, { code: 'light' });
 
         expect(params).toEqual([]);
     });
 });
 
-describe('charactersFiltration.setFractions() does not set fractions param to prefilled params', () => {
+describe('charactersFiltration.setFactions() does not set factions param to prefilled params', () => {
     beforeEach(() => {
         clearParams();
 
@@ -95,7 +95,7 @@ describe('charactersFiltration.setFractions() does not set fractions param to pr
     });
 
     test('if passed nothing', () => {
-        params = charactersFiltration.setFractions(params);
+        params = charactersFiltration.setFactions(params);
 
         expect(params).toMatchObject(
             [{
@@ -106,7 +106,7 @@ describe('charactersFiltration.setFractions() does not set fractions param to pr
     });
 
     test('if passed empty string', () => {
-        params = charactersFiltration.setFractions(params, '');
+        params = charactersFiltration.setFactions(params, '');
 
         expect(params).toMatchObject(
             [{
@@ -117,7 +117,7 @@ describe('charactersFiltration.setFractions() does not set fractions param to pr
     });
 
     test('if passed undefined', () => {
-        params = charactersFiltration.setFractions(params, undefined);
+        params = charactersFiltration.setFactions(params, undefined);
 
         expect(params).toMatchObject(
             [{
@@ -128,7 +128,7 @@ describe('charactersFiltration.setFractions() does not set fractions param to pr
     });
 
     test('if passed null', () => {
-        params = charactersFiltration.setFractions(params, null);
+        params = charactersFiltration.setFactions(params, null);
 
         expect(params).toMatchObject(
             [{
@@ -139,7 +139,7 @@ describe('charactersFiltration.setFractions() does not set fractions param to pr
     });
 
     test('if passed empty array', () => {
-        params = charactersFiltration.setFractions(params, []);
+        params = charactersFiltration.setFactions(params, []);
 
         expect(params).toMatchObject(
             [{
@@ -150,7 +150,7 @@ describe('charactersFiltration.setFractions() does not set fractions param to pr
     });
 
     test('if passed function', () => {
-        params = charactersFiltration.setFractions(params, () => { });
+        params = charactersFiltration.setFactions(params, () => { });
 
         expect(params).toMatchObject(
             [{
@@ -161,7 +161,7 @@ describe('charactersFiltration.setFractions() does not set fractions param to pr
     });
 
     test('if passed number', () => {
-        params = charactersFiltration.setFractions(params, 10);
+        params = charactersFiltration.setFactions(params, 10);
 
         expect(params).toMatchObject(
             [{
@@ -172,7 +172,7 @@ describe('charactersFiltration.setFractions() does not set fractions param to pr
     });
 
     test('if passed boolean true', () => {
-        params = charactersFiltration.setFractions(params, true);
+        params = charactersFiltration.setFactions(params, true);
 
         expect(params).toMatchObject(
             [{
@@ -183,7 +183,7 @@ describe('charactersFiltration.setFractions() does not set fractions param to pr
     });
 
     test('if passed boolean false', () => {
-        params = charactersFiltration.setFractions(params, false);
+        params = charactersFiltration.setFactions(params, false);
 
         expect(params).toMatchObject(
             [{
@@ -194,7 +194,7 @@ describe('charactersFiltration.setFractions() does not set fractions param to pr
     });
 
     test('if passed empty object', () => {
-        params = charactersFiltration.setFractions(params, {});
+        params = charactersFiltration.setFactions(params, {});
 
         expect(params).toMatchObject(
             [{
@@ -205,7 +205,7 @@ describe('charactersFiltration.setFractions() does not set fractions param to pr
     });
 
     test('if passed object with data', () => {
-        params = charactersFiltration.setFractions(params, { code: 'light' });
+        params = charactersFiltration.setFactions(params, { code: 'light' });
 
         expect(params).toMatchObject(
             [{
@@ -216,90 +216,90 @@ describe('charactersFiltration.setFractions() does not set fractions param to pr
     });
 });
 
-describe('charactersFiltration.setFractions() removes fractions param from params with fractions only', () => {
+describe('charactersFiltration.setFactions() removes factions param from params with factions only', () => {
     beforeEach(() => {
         clearParams();
 
         params = [{
-            name: 'fractions',
+            name: 'factions',
             value: ['Jedi', 'Sith']
         }];
     });
 
     test('if passed nothing', () => {
-        params = charactersFiltration.setFractions(params);
+        params = charactersFiltration.setFactions(params);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty string', () => {
-        params = charactersFiltration.setFractions(params, '');
+        params = charactersFiltration.setFactions(params, '');
 
         expect(params).toEqual([]);
     });
 
     test('if passed string with value', () => {
-        params = charactersFiltration.setFractions(params, 'tank');
+        params = charactersFiltration.setFactions(params, 'tank');
 
         expect(params).toEqual([]);
     });
 
     test('if passed undefined', () => {
-        params = charactersFiltration.setFractions(params, undefined);
+        params = charactersFiltration.setFactions(params, undefined);
 
         expect(params).toEqual([]);
     });
 
     test('if passed null', () => {
-        params = charactersFiltration.setFractions(params, null);
+        params = charactersFiltration.setFactions(params, null);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty array', () => {
-        params = charactersFiltration.setFractions(params, []);
+        params = charactersFiltration.setFactions(params, []);
 
         expect(params).toEqual([]);
     });
 
     test('if passed function', () => {
-        params = charactersFiltration.setFractions(params, () => { });
+        params = charactersFiltration.setFactions(params, () => { });
 
         expect(params).toEqual([]);
     });
 
     test('if passed number', () => {
-        params = charactersFiltration.setFractions(params, 10);
+        params = charactersFiltration.setFactions(params, 10);
 
         expect(params).toEqual([]);
     });
 
     test('if passed boolean true', () => {
-        params = charactersFiltration.setFractions(params, true);
+        params = charactersFiltration.setFactions(params, true);
 
         expect(params).toEqual([]);
     });
 
     test('if passed boolean false', () => {
-        params = charactersFiltration.setFractions(params, false);
+        params = charactersFiltration.setFactions(params, false);
 
         expect(params).toEqual([]);
     });
 
     test('if passed empty object', () => {
-        params = charactersFiltration.setFractions(params, {});
+        params = charactersFiltration.setFactions(params, {});
 
         expect(params).toEqual([]);
     });
 
     test('if passed object with data', () => {
-        params = charactersFiltration.setFractions(params, { code: 'light' });
+        params = charactersFiltration.setFactions(params, { code: 'light' });
 
         expect(params).toEqual([]);
     });
 });
 
-describe('charactersFiltration.setFractions() removes fractions param from params with different params', () => {
+describe('charactersFiltration.setFactions() removes factions param from params with different params', () => {
     beforeEach(() => {
         clearParams();
 
@@ -307,13 +307,13 @@ describe('charactersFiltration.setFractions() removes fractions param from param
             name: 'role',
             value: ['attacker', 'tank']
         }, {
-            name: 'fractions',
+            name: 'factions',
             value: ['Jedi']
         }];
     });
 
     test('if passed nothing', () => {
-        params = charactersFiltration.setFractions(params);
+        params = charactersFiltration.setFactions(params);
 
         expect(params).toMatchObject(
             [{
@@ -324,7 +324,7 @@ describe('charactersFiltration.setFractions() removes fractions param from param
     });
 
     test('if passed empty string', () => {
-        params = charactersFiltration.setFractions(params, '');
+        params = charactersFiltration.setFactions(params, '');
 
         expect(params).toMatchObject(
             [{
@@ -335,7 +335,7 @@ describe('charactersFiltration.setFractions() removes fractions param from param
     });
 
     test('if passed string with value', () => {
-        params = charactersFiltration.setFractions(params, 'healer');
+        params = charactersFiltration.setFactions(params, 'healer');
 
         expect(params).toMatchObject(
             [{
@@ -346,7 +346,7 @@ describe('charactersFiltration.setFractions() removes fractions param from param
     });
 
     test('if passed undefined', () => {
-        params = charactersFiltration.setFractions(params, undefined);
+        params = charactersFiltration.setFactions(params, undefined);
 
         expect(params).toMatchObject(
             [{
@@ -357,7 +357,7 @@ describe('charactersFiltration.setFractions() removes fractions param from param
     });
 
     test('if passed null', () => {
-        params = charactersFiltration.setFractions(params, null);
+        params = charactersFiltration.setFactions(params, null);
 
         expect(params).toMatchObject(
             [{
@@ -368,7 +368,7 @@ describe('charactersFiltration.setFractions() removes fractions param from param
     });
 
     test('if passed empty array', () => {
-        params = charactersFiltration.setFractions(params, []);
+        params = charactersFiltration.setFactions(params, []);
 
         expect(params).toMatchObject(
             [{
@@ -379,7 +379,7 @@ describe('charactersFiltration.setFractions() removes fractions param from param
     });
 
     test('if passed function', () => {
-        params = charactersFiltration.setFractions(params, () => { });
+        params = charactersFiltration.setFactions(params, () => { });
 
         expect(params).toMatchObject(
             [{
@@ -390,7 +390,7 @@ describe('charactersFiltration.setFractions() removes fractions param from param
     });
 
     test('if passed number', () => {
-        params = charactersFiltration.setFractions(params, 10);
+        params = charactersFiltration.setFactions(params, 10);
 
         expect(params).toMatchObject(
             [{
@@ -401,7 +401,7 @@ describe('charactersFiltration.setFractions() removes fractions param from param
     });
 
     test('if passed boolean true', () => {
-        params = charactersFiltration.setFractions(params, true);
+        params = charactersFiltration.setFactions(params, true);
 
         expect(params).toMatchObject(
             [{
@@ -412,7 +412,7 @@ describe('charactersFiltration.setFractions() removes fractions param from param
     });
 
     test('if passed boolean false', () => {
-        params = charactersFiltration.setFractions(params, false);
+        params = charactersFiltration.setFactions(params, false);
 
         expect(params).toMatchObject(
             [{
@@ -423,7 +423,7 @@ describe('charactersFiltration.setFractions() removes fractions param from param
     });
 
     test('if passed empty object', () => {
-        params = charactersFiltration.setFractions(params, {});
+        params = charactersFiltration.setFactions(params, {});
 
         expect(params).toMatchObject(
             [{
@@ -434,7 +434,7 @@ describe('charactersFiltration.setFractions() removes fractions param from param
     });
 
     test('if passed object with data', () => {
-        params = charactersFiltration.setFractions(params, { code: 'light' });
+        params = charactersFiltration.setFactions(params, { code: 'light' });
 
         expect(params).toMatchObject(
             [{
@@ -445,84 +445,84 @@ describe('charactersFiltration.setFractions() removes fractions param from param
     });
 });
 
-describe('charactersFiltration.setFractions() sets fractions param correctly to empty params', () => {
+describe('charactersFiltration.setFactions() sets factions param correctly to empty params', () => {
     beforeEach(() => {
         clearParams();
     });
 
     test('if passed value ["Bounty Hunter"]', () => {
-        params = charactersFiltration.setFractions(params, ['Bounty Hunter']);
+        params = charactersFiltration.setFactions(params, ['Bounty Hunter']);
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Bounty Hunter']
             }]
         );
     });
 
     test('if passed values ["Separatist", "Droid"]', () => {
-        params = charactersFiltration.setFractions(params, ['Separatist', 'Droid']);
+        params = charactersFiltration.setFactions(params, ['Separatist', 'Droid']);
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Separatist', 'Droid']
             }]
         );
     });
 
     test('if passed value ["501st", "Clone Trooper", "Empire"]', () => {
-        params = charactersFiltration.setFractions(params, ['501st', 'Clone Trooper', 'Empire']);
+        params = charactersFiltration.setFactions(params, ['501st', 'Clone Trooper', 'Empire']);
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['501st', 'Clone Trooper', 'Empire']
             }]
         );
     });
 });
 
-describe('charactersFiltration.setFractions() sets fractions param correctly to params with existed fraction', () => {
+describe('charactersFiltration.setFactions() sets factions param correctly to params with existed faction', () => {
     beforeEach(() => {
         clearParams();
     });
 
-    test('if exists one another fraction', () => {
+    test('if exists one another faction', () => {
         params = [{
-            name: 'fractions',
+            name: 'factions',
             value: ['Resistance']
         }];
 
-        params = charactersFiltration.setFractions(params, ['Ewok']);
+        params = charactersFiltration.setFactions(params, ['Ewok']);
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Ewok']
             }]
         );
     });
 
-    test('if exists two another fractions', () => {
+    test('if exists two another factions', () => {
         params = [{
-            name: 'fractions',
+            name: 'factions',
             value: ['Phoenix', 'Geonosian']
         }];
 
-        params = charactersFiltration.setFractions(params, ['Jawa', 'Bad Batch']);
+        params = charactersFiltration.setFactions(params, ['Jawa', 'Bad Batch']);
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jawa', 'Bad Batch']
             }]
         );
     });
 });
 
-describe('charactersFiltration.setFractions() sets fractions param correctly to params with other params', () => {
+describe('charactersFiltration.setFactions() sets factions param correctly to params with other params', () => {
     beforeEach(() => {
         clearParams();
     });
@@ -533,14 +533,14 @@ describe('charactersFiltration.setFractions() sets fractions param correctly to 
             value: ['fleetCommander', 'galacticLegend']
         }];
 
-        params = charactersFiltration.setFractions(params, ['Jedi']);
+        params = charactersFiltration.setFactions(params, ['Jedi']);
 
         expect(params).toMatchObject(
             [{
                 name: 'features',
                 value: ['fleetCommander', 'galacticLegend']
             }, {
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jedi']
             }]
         );
@@ -555,7 +555,7 @@ describe('charactersFiltration.setFractions() sets fractions param correctly to 
             value: 'dark'
         }];
 
-        params = charactersFiltration.setFractions(params, ['First Order', 'Mandalorian', 'Rogue One']);
+        params = charactersFiltration.setFactions(params, ['First Order', 'Mandalorian', 'Rogue One']);
 
         expect(params).toMatchObject(
             [{
@@ -565,13 +565,13 @@ describe('charactersFiltration.setFractions() sets fractions param correctly to 
                 name: 'alignment',
                 value: 'dark'
             }, {
-                name: 'fractions',
+                name: 'factions',
                 value: ['First Order', 'Mandalorian', 'Rogue One']
             }]
         );
     });
 
-    test('if exists few other params and one fractions param', () => {
+    test('if exists few other params and one factions param', () => {
         params = [{
             name: 'features',
             value: ['fleetCommander', 'galacticLegend']
@@ -579,14 +579,14 @@ describe('charactersFiltration.setFractions() sets fractions param correctly to 
             name: 'alignment',
             value: 'dark'
         }, {
-            name: 'fractions',
+            name: 'factions',
             value: ['Jedi']
         }, {
             name: 'role',
             value: ['support']
         }];
 
-        params = charactersFiltration.setFractions(params, ['Rebel Fighter']);
+        params = charactersFiltration.setFactions(params, ['Rebel Fighter']);
 
         expect(params).toMatchObject(
             [{
@@ -599,7 +599,7 @@ describe('charactersFiltration.setFractions() sets fractions param correctly to 
                 name: 'role',
                 value: ['support']
             }, {
-                name: 'fractions',
+                name: 'factions',
                 value: ['Rebel Fighter']
             }]
         );

@@ -18,7 +18,7 @@ export interface Alignment {
     code: AlignmentCode,
 }
 
-export interface Fraction {
+export interface Faction {
     id: string,
     title: string,
     code: string,
@@ -44,7 +44,7 @@ export interface Character {
     power: number,
     description: string,
     alignment: Alignment,
-    fractions?: Fraction[],
+    factions?: Faction[],
     role: Role,
     ability?: string,
     ship?: string,

@@ -610,7 +610,7 @@ describe('charactersFiltration.setFeatures() sets features param correctly to pa
             name: 'alignment',
             value: 'dark'
         }, {
-            name: 'fractions',
+            name: 'factions',
             value: ['Jedi']
         }, {
             name: 'role',
@@ -624,7 +624,7 @@ describe('charactersFiltration.setFeatures() sets features param correctly to pa
                 name: 'alignment',
                 value: 'dark'
             }, {
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jedi']
             }, {
                 name: 'role',

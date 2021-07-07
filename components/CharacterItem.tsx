@@ -84,7 +84,7 @@ type CharacterItemProps = {
 const CharacterItem: React.FC<CharacterItemProps> = ({ character }) => {
     const classes = useStyles();
 
-    const showFractions = (character.fractions.length > 0);
+    const showFactions = (character.factions.length > 0);
     const showFeatures = (character.leader || character.fleetCommander || character.galacticLegend);
 
     return (
@@ -129,7 +129,7 @@ const CharacterItem: React.FC<CharacterItemProps> = ({ character }) => {
                     </Grid>
                 </Hidden>
                 <Grid item xs={12} md={3} className={classes.paramsWrapper}>
-                    {showFractions && (
+                    {showFactions && (
                         <Grid container spacing={2} className={classes.params}>
                             <Grid item md={12} className={classes.paramsTitleGrid}>
                                 <Typography
@@ -140,12 +140,12 @@ const CharacterItem: React.FC<CharacterItemProps> = ({ character }) => {
                             </Grid>
                             <Grid item xs sm md={12} className={classes.paramsChipsGrid}>
                                 <div className={classes.chips}>
-                                    {character.fractions.map((fraction) => (
+                                    {character.factions.map((faction) => (
                                         <CustomChip
                                             variant="outlined"
                                             size="small"
-                                            label={fraction.title}
-                                            key={fraction.code}
+                                            label={faction.title}
+                                            key={faction.code}
                                         />
                                     ))}
                                 </div>

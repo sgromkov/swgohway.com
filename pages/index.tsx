@@ -3,7 +3,7 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import { getAlignments } from '../lib/alignments';
 import { getCharacters } from '../lib/characters';
-import { getFractions } from '../lib/fractions';
+import { getFactions } from '../lib/factions';
 import { getRoles } from '../lib/roles';
 import { Container } from '@material-ui/core';
 import PageCaption from '../components/PageCaption';
@@ -15,7 +15,7 @@ import {
     AlignmentCode,
     Character,
     Feature,
-    Fraction,
+    Faction,
     Logic,
     LogicValues,
     Role
@@ -29,7 +29,7 @@ type CharactersProps = {
     alignments: Alignment[],
     characters: Character[],
     features: Feature[],
-    fractions: Fraction[],
+    factions: Faction[],
     roles: Role[],
 };
 
@@ -37,7 +37,7 @@ const Characters: React.FC<CharactersProps> = ({
     alignments,
     characters,
     features,
-    fractions,
+    factions,
     roles,
 }) => {
     const [params, setParams] = useState([]);
@@ -54,9 +54,9 @@ const Characters: React.FC<CharactersProps> = ({
         });
     };
 
-    const filterCharactersByFraction = (fractionCodes: string[], logic: Logic): void => {
+    const filterCharactersByFaction = (factionCodes: string[], logic: Logic): void => {
         setParams((prevParams) => {
-            return charactersFiltration.setFractions(prevParams, fractionCodes, logic);
+            return charactersFiltration.setFactions(prevParams, factionCodes, logic);
         });
     };
 
@@ -68,9 +68,9 @@ const Characters: React.FC<CharactersProps> = ({
 
     const activeAlignments = charactersFiltration.getAlignment(params);
     const activeRoles = charactersFiltration.getRoles(params);
-    const activeFractions = charactersFiltration.getFractions(params);
+    const activeFactions = charactersFiltration.getFactions(params);
     const activeFeatures = charactersFiltration.getFeatures(params);
-    const activeFractionsLogic: Logic = charactersFiltration.getFractionsLogic(params, LogicValues.OR);
+    const activeFactionsLogic: Logic = charactersFiltration.getFactionsLogic(params, LogicValues.OR);
 
     return (
         <Container component="main" maxWidth="lg">
@@ -89,9 +89,9 @@ const Characters: React.FC<CharactersProps> = ({
                         selected: activeRoles.indexOf(option.code) !== -1
                     });
                 })}
-                fractions={fractions.map((option) => {
+                factions={factions.map((option) => {
                     return Object.assign({}, option, {
-                        selected: activeFractions.indexOf(option.code) !== -1
+                        selected: activeFactions.indexOf(option.code) !== -1
                     });
                 })}
                 features={features.map((option) => {
@@ -99,10 +99,10 @@ const Characters: React.FC<CharactersProps> = ({
                         selected: activeFeatures.indexOf(option.code) !== -1
                     });
                 })}
-                fractionsLogic={activeFractionsLogic}
+                factionsLogic={activeFactionsLogic}
                 onAlignmentChange={filterCharactersByAlignment}
                 onRoleChange={filterCharactersByRole}
-                onFractionChange={filterCharactersByFraction}
+                onFactionChange={filterCharactersByFaction}
                 onFeatureChange={filterCharactersByFeature}
                 onReset={() => {setParams([])}}
             />
@@ -118,7 +118,7 @@ export default Characters;
 export const getStaticProps: GetStaticProps = async () => {
     const alignments: Alignment[] = await getAlignments();
     const characters: Character[] = await getCharacters();
-    const fractions: Fraction[] = await getFractions();
+    const factions: Faction[] = await getFactions();
     const roles: Role[] = await getRoles();
 
     const features: Feature[] = [
@@ -133,7 +133,7 @@ export const getStaticProps: GetStaticProps = async () => {
             alignments: alignments.sort(selectOptionSortByTitle),
             characters,
             features: features.sort(selectOptionSortByTitle),
-            fractions: fractions.sort(selectOptionSortByTitle),
+            factions: factions.sort(selectOptionSortByTitle),
             roles: roles.sort(selectOptionSortByTitle),
         } as CharactersProps
     };

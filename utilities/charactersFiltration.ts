@@ -2,7 +2,7 @@ import { Logic } from "../types";
 
 const ALIGNMENT = 'alignment';
 const ROLE = 'role';
-const FRACTIONS = 'fractions';
+const FACTIONS = 'factions';
 const FEATURES = 'features';
 const LEADER = 'leader';
 const FLEET_COMMANDER = 'fleetCommander';
@@ -37,13 +37,13 @@ const charactersFiltration = {
         return newParams;
     },
 
-    setFractions: function (params, fractionCodes, logic) {
-        const newParams = params.filter((param) => param.name !== FRACTIONS);
+    setFactions: function (params, factionCodes, logic) {
+        const newParams = params.filter((param) => param.name !== FACTIONS);
 
-        if (Array.isArray(fractionCodes) && fractionCodes.length > 0) {
+        if (Array.isArray(factionCodes) && factionCodes.length > 0) {
             newParams.push({
-                name: FRACTIONS,
-                value: fractionCodes,
+                name: FACTIONS,
+                value: factionCodes,
                 logic
             });
         }
@@ -93,23 +93,23 @@ const charactersFiltration = {
                     case ROLE:
                         isMatched = param.value.indexOf(character.role.code) > -1;
                         break;
-                    case FRACTIONS:
-                        const foundFractions = [];
+                    case FACTIONS:
+                        const foundFactions = [];
 
                         param.value.forEach((seekingValue) => {
-                            character.fractions.forEach((fraction) => {
-                                if (fraction.code === seekingValue) {
-                                    foundFractions.push(seekingValue);
+                            character.factions.forEach((faction) => {
+                                if (faction.code === seekingValue) {
+                                    foundFactions.push(seekingValue);
                                 }
                             });
                         });
 
-                        if (foundFractions.length === 0) {
+                        if (foundFactions.length === 0) {
                             isMatched = false;
                         } else if (param.logic === 'or') {
                             isMatched = true;
                         } else {
-                            isMatched = foundFractions.length === param.value.length;
+                            isMatched = foundFactions.length === param.value.length;
                         }
 
                         break;
@@ -163,8 +163,8 @@ const charactersFiltration = {
                         activeValues = [...param.value];
                     }
                     break;
-                case FRACTIONS:
-                    if (seekingParamName === FRACTIONS) {
+                case FACTIONS:
+                    if (seekingParamName === FACTIONS) {
                         activeValues = [...param.value];
                     }
                     break;
@@ -202,15 +202,15 @@ const charactersFiltration = {
         return this.getActiveValuesByParamName(params, ROLE);
     },
 
-    getFractions: function (params) {
-        return this.getActiveValuesByParamName(params, FRACTIONS);
+    getFactions: function (params) {
+        return this.getActiveValuesByParamName(params, FACTIONS);
     },
 
     getFeatures: function (params) {
         return this.getActiveValuesByParamName(params, FEATURES);
     },
 
-    getFractionsLogic: function (params, defaultValue: Logic): Logic {
+    getFactionsLogic: function (params, defaultValue: Logic): Logic {
         let activeLogic = defaultValue;
 
         if (params.length === 0) {
@@ -219,7 +219,7 @@ const charactersFiltration = {
 
         params.forEach((param) => {
             switch (param.name) {
-                case FRACTIONS:
+                case FACTIONS:
                     activeLogic = param.logic;
                     break;
             }

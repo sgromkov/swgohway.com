@@ -318,7 +318,7 @@ describe('charactersFiltration.setAlignment() removes alignment param from param
             name: 'alignment',
             value: 'light'
         }, {
-            name: 'fractions',
+            name: 'factions',
             value: ['Jedi', 'Old Republic']
         }];
     });
@@ -328,7 +328,7 @@ describe('charactersFiltration.setAlignment() removes alignment param from param
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jedi', 'Old Republic']
             }]
         );
@@ -339,7 +339,7 @@ describe('charactersFiltration.setAlignment() removes alignment param from param
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jedi', 'Old Republic']
             }]
         );
@@ -350,7 +350,7 @@ describe('charactersFiltration.setAlignment() removes alignment param from param
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jedi', 'Old Republic']
             }]
         );
@@ -361,7 +361,7 @@ describe('charactersFiltration.setAlignment() removes alignment param from param
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jedi', 'Old Republic']
             }]
         );
@@ -372,7 +372,7 @@ describe('charactersFiltration.setAlignment() removes alignment param from param
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jedi', 'Old Republic']
             }]
         );
@@ -383,7 +383,7 @@ describe('charactersFiltration.setAlignment() removes alignment param from param
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jedi', 'Old Republic']
             }]
         );
@@ -394,7 +394,7 @@ describe('charactersFiltration.setAlignment() removes alignment param from param
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jedi', 'Old Republic']
             }]
         );
@@ -405,7 +405,7 @@ describe('charactersFiltration.setAlignment() removes alignment param from param
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jedi', 'Old Republic']
             }]
         );
@@ -416,7 +416,7 @@ describe('charactersFiltration.setAlignment() removes alignment param from param
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jedi', 'Old Republic']
             }]
         );
@@ -427,7 +427,7 @@ describe('charactersFiltration.setAlignment() removes alignment param from param
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jedi', 'Old Republic']
             }]
         );
@@ -438,7 +438,7 @@ describe('charactersFiltration.setAlignment() removes alignment param from param
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jedi', 'Old Republic']
             }]
         );
@@ -449,7 +449,7 @@ describe('charactersFiltration.setAlignment() removes alignment param from param
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jedi', 'Old Republic']
             }]
         );

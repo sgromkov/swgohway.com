@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const FractionSchema = new mongoose.Schema({
+const FactionSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
@@ -13,7 +13,7 @@ const FractionSchema = new mongoose.Schema({
     },
 });
 
-FractionSchema.set('toJSON', {
+FactionSchema.set('toJSON', {
     transform: function (doc, ret, options) {
         ret.id = ret._id.toString();
         delete ret._id;
@@ -21,4 +21,4 @@ FractionSchema.set('toJSON', {
     versionKey: false,
 });
 
-export default mongoose.models.Fraction || mongoose.model('Fraction', FractionSchema);
+export default mongoose.models.Faction || mongoose.model('Faction', FactionSchema);

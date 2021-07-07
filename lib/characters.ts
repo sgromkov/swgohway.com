@@ -6,7 +6,7 @@ export async function getCharacters() {
 
     const results = await Character.find({})
         .populate({ path: 'alignment', select: 'title code' })
-        .populate({ path: 'fractions', select: 'title code' })
+        .populate({ path: 'factions', select: 'title code' })
         .populate({ path: 'role', select: 'title code' })
 
     const characters = results.map((result) => result.toJSON());

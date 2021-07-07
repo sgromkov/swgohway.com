@@ -33,9 +33,9 @@ const CharacterSchema = new mongoose.Schema({
         ref: 'Alignment',
         required: true,
     },
-    fractions: [{
+    factions: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Fraction'
+        ref: 'Faction'
     }],
     role: {
         type: mongoose.Schema.Types.ObjectId,

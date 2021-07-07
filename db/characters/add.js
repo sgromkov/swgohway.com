@@ -1,7 +1,7 @@
 import dbConnect from '../../utilities/dbConnect.js';
 import Alignment from '../../models/Alignment.js';
 import Role from '../../models/Role.js';
-import Fraction from '../../models/Fraction.js';
+import Faction from '../../models/Faction.js';
 import Character from '../../models/Character.js';
 import mockedCharacters from '../../__mocks__/characters.json';
 
@@ -9,19 +9,19 @@ await dbConnect();
 
 const alignments = await Alignment.find({});
 const roles = await Role.find({});
-const fractions = await Fraction.find({});
+const factions = await Faction.find({});
 
 const LEADER = 'Leader';
 const FLEET_COMMANDER = 'Fleet Commander';
 const GALACTIC_LEGEND = 'Galactic Legend';
 const features = [LEADER, FLEET_COMMANDER, GALACTIC_LEGEND];
 
-const removeFeaturesFromFractions = function (fraction) {
-    return features.reduce((isFraction, feature) => (feature === fraction) ? false : isFraction, true);
+const removeFeaturesFromFactions = function (faction) {
+    return features.reduce((isFaction, feature) => (feature === faction) ? false : isFaction, true);
 };
 
-const removeRolesFromFractions = function (fraction) {
-    return roles.reduce((isFraction, role) => (role.title === fraction) ? false : isFraction, true);
+const removeRolesFromFactions = function (faction) {
+    return roles.reduce((isFaction, role) => (role.title === faction) ? false : isFaction, true);
 };
 
 const characters = mockedCharacters.map((el) => {
@@ -31,11 +31,11 @@ const characters = mockedCharacters.map((el) => {
 
     const characterAlignment = alignments.filter((alignment) => alignment.title === el.alignment)[0];
 
-    const characterFractionTitles = el.categories
-        .filter(removeRolesFromFractions)
-        .filter(removeFeaturesFromFractions);
-    const characterFractions = characterFractionTitles.map((fractionTitle) => {
-        return fractions.reduce((id, fraction) => (fraction.title === fractionTitle) ? fraction._id : id, null);
+    const characterFactionTitles = el.categories
+        .filter(removeRolesFromFactions)
+        .filter(removeFeaturesFromFactions);
+    const characterFactions = characterFactionTitles.map((factionTitle) => {
+        return factions.reduce((id, faction) => (faction.title === factionTitle) ? faction._id : id, null);
     });
 
     const characterRoleTitle = (el.role === LEADER)
@@ -59,7 +59,7 @@ const characters = mockedCharacters.map((el) => {
         power: el.power,
         description: el.description,
         alignment: characterAlignment._id,
-        fractions: characterFractions,
+        factions: characterFactions,
         role: characterRole._id,
         ability: el.ability_classes,
         ship: el.ship,

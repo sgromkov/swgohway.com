@@ -307,7 +307,7 @@ describe('charactersFiltration.setRoles() removes role param from params with di
             name: 'role',
             value: ['attacker', 'tank']
         }, {
-            name: 'fractions',
+            name: 'factions',
             value: ['Jedi', 'Old Republic']
         }];
     });
@@ -317,7 +317,7 @@ describe('charactersFiltration.setRoles() removes role param from params with di
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jedi', 'Old Republic']
             }]
         );
@@ -328,7 +328,7 @@ describe('charactersFiltration.setRoles() removes role param from params with di
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jedi', 'Old Republic']
             }]
         );
@@ -339,7 +339,7 @@ describe('charactersFiltration.setRoles() removes role param from params with di
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jedi', 'Old Republic']
             }]
         );
@@ -350,7 +350,7 @@ describe('charactersFiltration.setRoles() removes role param from params with di
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jedi', 'Old Republic']
             }]
         );
@@ -361,7 +361,7 @@ describe('charactersFiltration.setRoles() removes role param from params with di
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jedi', 'Old Republic']
             }]
         );
@@ -372,7 +372,7 @@ describe('charactersFiltration.setRoles() removes role param from params with di
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jedi', 'Old Republic']
             }]
         );
@@ -383,7 +383,7 @@ describe('charactersFiltration.setRoles() removes role param from params with di
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jedi', 'Old Republic']
             }]
         );
@@ -394,7 +394,7 @@ describe('charactersFiltration.setRoles() removes role param from params with di
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jedi', 'Old Republic']
             }]
         );
@@ -405,7 +405,7 @@ describe('charactersFiltration.setRoles() removes role param from params with di
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jedi', 'Old Republic']
             }]
         );
@@ -416,7 +416,7 @@ describe('charactersFiltration.setRoles() removes role param from params with di
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jedi', 'Old Republic']
             }]
         );
@@ -427,7 +427,7 @@ describe('charactersFiltration.setRoles() removes role param from params with di
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jedi', 'Old Republic']
             }]
         );
@@ -438,7 +438,7 @@ describe('charactersFiltration.setRoles() removes role param from params with di
 
         expect(params).toMatchObject(
             [{
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jedi', 'Old Republic']
             }]
         );
@@ -590,7 +590,7 @@ describe('charactersFiltration.setRoles() sets role param correctly to params wi
             name: 'alignment',
             value: 'dark'
         }, {
-            name: 'fractions',
+            name: 'factions',
             value: ['Jedi', 'Old Republic']
         }, {
             name: 'role',
@@ -607,7 +607,7 @@ describe('charactersFiltration.setRoles() sets role param correctly to params wi
                 name: 'alignment',
                 value: 'dark'
             }, {
-                name: 'fractions',
+                name: 'factions',
                 value: ['Jedi', 'Old Republic']
             }, {
                 name: 'role',
