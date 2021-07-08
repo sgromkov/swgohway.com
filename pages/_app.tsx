@@ -1,21 +1,40 @@
 import React from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { ThemeProvider, makeStyles } from '@material-ui/core/styles';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { ThemeProvider, makeStyles, withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { Container, Tooltip, IconButton, AppBar, Toolbar, Typography } from '@material-ui/core';
+import { Container, Tooltip, IconButton, AppBar, Toolbar, Box, Button } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 import TelegramIcon from '@material-ui/icons/Telegram';
 import theme from '../theme';
 
 const useStyles = makeStyles((theme) => ({
-    title: {
+    menu: {
+        display: 'flex',
         flexGrow: 1,
+        alignSelf: 'stretch',
     },
+    menuButton: {
+        paddingLeft: theme.spacing(2),
+        paddingRight: theme.spacing(2),
+    },
+    menuButtonActive: {
+        backgroundColor: 'rgba(0, 0, 0, 0.04)',
+    }
 }));
 
+const MenuButton = withStyles({
+    label: {
+        textTransform: 'initial',
+    }
+})(Button);
+
 export default function MyApp({ Component, pageProps }: AppProps) {
+    const router = useRouter();
+
     const classes = useStyles();
 
     React.useEffect(() => {
@@ -41,9 +60,22 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                 <AppBar position="static" color="primary" elevation={0}>
                     <Container maxWidth="lg" disableGutters>
                         <Toolbar>
-                            <Typography variant="h6" className={classes.title}>
-                                SWGOH WAY
-                            </Typography>
+                            <Box className={classes.menu}>
+                                <Link href="/">
+                                    <MenuButton
+                                        color="inherit"
+                                        size="large"
+                                        className={`${classes.menuButton} ${(router.asPath === '/') ? classes.menuButtonActive: ''}`}
+                                    >Characters</MenuButton>
+                                </Link>
+                                <Link href="/ships">
+                                    <MenuButton
+                                        color="inherit"
+                                        size="large"
+                                        className={`${classes.menuButton} ${(router.asPath === '/ships') ? classes.menuButtonActive: ''}`}
+                                    >Ships</MenuButton>
+                                </Link>
+                            </Box>
                             <Tooltip title="Join the Telegram group">
                                 <IconButton
                                     color="inherit"

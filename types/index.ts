@@ -30,6 +30,12 @@ export interface Role {
     code: string,
 }
 
+export interface ShipRole {
+    id: string,
+    title: string,
+    code: string,
+}
+
 export interface Feature {
     title: string,
     code: string,
@@ -53,4 +59,20 @@ export interface Character {
     leader: boolean,
     fleetCommander: boolean,
     galacticLegend: boolean,
+}
+
+export interface Ship {
+    id: string,
+    name: string,
+    code: string,
+    swgohggBaseId: string,
+    image: string,
+    power: number,
+    description: string,
+    alignment: Alignment,
+    factions?: Faction[],
+    role: ShipRole,
+    ability?: string,
+    activateShardCount: number,
+    cargoShip: boolean,
 }

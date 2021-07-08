@@ -72,6 +72,23 @@ const HealerChip = withStyles({
     }
 })(Chip);
 
+const CapitalShipChip = withStyles({
+    root: {
+        borderRadius: '4px',
+        '&:not($outlined)': {
+            backgroundColor: theme.swgoh.role.healer,
+            color: '#fff',
+        },
+    },
+    outlined: {
+        color: theme.swgoh.role.healer,
+        borderColor: theme.swgoh.role.healer,
+    },
+    icon: {
+        color: 'inherit',
+    }
+})(Chip);
+
 type RoleChipProps = ChipProps & {
     role: string,
 };
@@ -113,6 +130,15 @@ const RoleChip: React.FC<RoleChipProps> = (props) => {
             resultChip = (
                 <HealerChip
                     label={label || 'Healer'}
+                    icon={<RoleIcon role={role} fontSize="small" />}
+                    {...other}
+                />
+            );
+            break;
+        case 'capital-ship':
+            resultChip = (
+                <CapitalShipChip
+                    label={label || 'Capital Ship'}
                     icon={<RoleIcon role={role} fontSize="small" />}
                     {...other}
                 />
