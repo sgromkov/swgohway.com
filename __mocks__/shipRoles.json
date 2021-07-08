@@ -1,0 +1,18 @@
+[
+    {
+        "code": "support",
+        "title": "Support"
+    },
+    {
+        "code": "attacker",
+        "title": "Attacker"
+    },
+    {
+        "code": "tank",
+        "title": "Tank"
+    },
+    {
+        "code": "capital-ship",
+        "title": "Capital Ship"
+    }
+]

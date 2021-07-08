@@ -26,7 +26,17 @@ npm run db db/factions/add.js
 npm run db db/characters/add.js
 ```
 
-5. images:
+5. ship roles:
+```bash
+npm run db db/shipRoles/add.js
+```
+
+5. ships:
+```bash
+npm run db db/ships/add.js
+```
+
+7. images:
 ```bash
 # remove "type": "module" from package.json first
 npm run db db/images/add.js
