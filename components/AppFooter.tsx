@@ -86,7 +86,7 @@ const AppFooter: React.FC<AppFooterProps> = () => {
                         <h6 className={classes.heading}>Policy</h6>
                         <ul className={classes.menu}>
                             <li className={classes.menuItem}>
-                                SWGOHWAY.com is not affiliated with EA, EA Capital Games, Disney or Lucasfilm LTD.
+                                swgohway.com is not affiliated with EA, EA Capital Games, Disney or Lucasfilm LTD.
                             </li>
                         </ul>
                     </Grid>
