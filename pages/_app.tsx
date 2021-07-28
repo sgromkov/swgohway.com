@@ -1,42 +1,14 @@
 import React from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { ThemeProvider, makeStyles, withStyles } from '@material-ui/core/styles';
+import { Provider } from 'next-auth/client';
+import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { Container, Tooltip, IconButton, AppBar, Toolbar, Box, Button } from '@material-ui/core';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
-import TelegramIcon from '@material-ui/icons/Telegram';
 import theme from '../theme';
-
-const useStyles = makeStyles((theme) => ({
-    menu: {
-        display: 'flex',
-        flexGrow: 1,
-        alignSelf: 'stretch',
-    },
-    menuButton: {
-        paddingLeft: theme.spacing(2),
-        paddingRight: theme.spacing(2),
-    },
-    menuButtonActive: {
-        backgroundColor: 'rgba(0, 0, 0, 0.04)',
-    }
-}));
-
-const MenuButton = withStyles({
-    label: {
-        textTransform: 'initial',
-    }
-})(Button);
+import AppHeader from '../components/AppHeader';
+import AppFooter from '../components/AppFooter';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-    const router = useRouter();
-
-    const classes = useStyles();
-
     React.useEffect(() => {
         // Remove the server-side injected CSS.
         const jssStyles = document.querySelector('#jss-server-side');
@@ -55,59 +27,14 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
                 <link rel="manifest" href="/site.webmanifest" />
             </Head>
-            <ThemeProvider theme={theme}>
-                <CssBaseline />
-                <AppBar position="static" color="primary" elevation={0}>
-                    <Container maxWidth="lg" disableGutters>
-                        <Toolbar>
-                            <Box className={classes.menu}>
-                                <Link href="/">
-                                    <MenuButton
-                                        color="inherit"
-                                        size="large"
-                                        className={`${classes.menuButton} ${(router.asPath === '/') ? classes.menuButtonActive: ''}`}
-                                    >Characters</MenuButton>
-                                </Link>
-                                <Link href="/ships">
-                                    <MenuButton
-                                        color="inherit"
-                                        size="large"
-                                        className={`${classes.menuButton} ${(router.asPath === '/ships') ? classes.menuButtonActive: ''}`}
-                                    >Ships</MenuButton>
-                                </Link>
-                            </Box>
-                            <Tooltip title="Join the Telegram group">
-                                <IconButton
-                                    color="inherit"
-                                    aria-label="Join the Telegram group"
-                                    href="https://t.me/swgohwaycom"
-                                >
-                                    <TelegramIcon />
-                                </IconButton>
-                            </Tooltip>
-                            <Tooltip title="About the author">
-                                <IconButton
-                                    color="inherit"
-                                    aria-label="About the author"
-                                    href="https://gromkov.me"
-                                >
-                                    <EmojiPeopleIcon />
-                                </IconButton>
-                            </Tooltip>
-                            <Tooltip title="View Github repository">
-                                <IconButton
-                                    color="inherit"
-                                    aria-label="View Github repository"
-                                    href="https://github.com/sgromkov/swgoh"
-                                >
-                                    <GitHubIcon />
-                                </IconButton>
-                            </Tooltip>
-                        </Toolbar>
-                    </Container>
-                </AppBar>
-                <Component {...pageProps} />
-            </ThemeProvider>
+            <Provider session={pageProps.session}>
+                <ThemeProvider theme={theme}>
+                    <CssBaseline />
+                    <AppHeader />
+                    <Component {...pageProps} />
+                    <AppFooter />
+                </ThemeProvider>
+            </Provider>
         </React.Fragment>
     );
 }

@@ -72,43 +72,45 @@ const Ships: React.FC<ShipsProps> = ({
     const activeFactionsLogic = shipFiltration.getFactionsLogic(params, LogicValues.OR) as Logic;
 
     return (
-        <Container component="main" maxWidth="lg">
+        <React.Fragment>
             <Head>
                 <title>Ships | swgoh</title>
             </Head>
-            <PageCaption caption="Ships" />
-            <ShipFilter
-                alignments={alignments.map((option) => {
-                    return Object.assign({}, option, {
-                        selected: activeAlignments.indexOf(option.code) !== -1
-                    });
-                })}
-                roles={roles.map((option) => {
-                    return Object.assign({}, option, {
-                        selected: activeRoles.indexOf(option.code) !== -1
-                    });
-                })}
-                factions={factions.map((option) => {
-                    return Object.assign({}, option, {
-                        selected: activeFactions.indexOf(option.code) !== -1
-                    });
-                })}
-                features={features.map((option) => {
-                    return Object.assign({}, option, {
-                        selected: activeFeatures.indexOf(option.code) !== -1
-                    });
-                })}
-                factionsLogic={activeFactionsLogic}
-                onAlignmentChange={filterShipsByAlignment}
-                onRoleChange={filterShipsByRole}
-                onFactionChange={filterShipsByFaction}
-                onFeatureChange={filterShipsByFeature}
-                onReset={() => {setParams([])}}
-            />
-            <ShipList
-                ships={shipFiltration.getFilteredShips(ships, params)}
-            />
-        </Container >
+            <Container component="main" maxWidth="lg">
+                <PageCaption caption="Ships" />
+                <ShipFilter
+                    alignments={alignments.map((option) => {
+                        return Object.assign({}, option, {
+                            selected: activeAlignments.indexOf(option.code) !== -1
+                        });
+                    })}
+                    roles={roles.map((option) => {
+                        return Object.assign({}, option, {
+                            selected: activeRoles.indexOf(option.code) !== -1
+                        });
+                    })}
+                    factions={factions.map((option) => {
+                        return Object.assign({}, option, {
+                            selected: activeFactions.indexOf(option.code) !== -1
+                        });
+                    })}
+                    features={features.map((option) => {
+                        return Object.assign({}, option, {
+                            selected: activeFeatures.indexOf(option.code) !== -1
+                        });
+                    })}
+                    factionsLogic={activeFactionsLogic}
+                    onAlignmentChange={filterShipsByAlignment}
+                    onRoleChange={filterShipsByRole}
+                    onFactionChange={filterShipsByFaction}
+                    onFeatureChange={filterShipsByFeature}
+                    onReset={() => { setParams([]) }}
+                />
+                <ShipList
+                    ships={shipFiltration.getFilteredShips(ships, params)}
+                />
+            </Container>
+        </React.Fragment>
     );
 };
 

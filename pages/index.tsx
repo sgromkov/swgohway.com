@@ -10,8 +10,8 @@ import PageCaption from '../components/PageCaption';
 import CharacterList from '../components/CharacterList';
 import CharacterFilter from '../components/CharacterFilter';
 import charactersFiltration from '../utilities/charactersFiltration';
-import sortSelectOptionsByTitle from "../utilities/sortSelectOptionsByTitle";
-import sortCharactersByName from "../utilities/sortCharactersByName";
+import sortSelectOptionsByTitle from '../utilities/sortSelectOptionsByTitle';
+import sortCharactersByName from '../utilities/sortCharactersByName';
 import {
     Alignment,
     AlignmentCode,
@@ -71,43 +71,45 @@ const Characters: React.FC<CharactersProps> = ({
     const activeFactionsLogic = charactersFiltration.getFactionsLogic(params, LogicValues.OR) as Logic;
 
     return (
-        <Container component="main" maxWidth="lg">
+        <React.Fragment>
             <Head>
                 <title>Characters | swgoh</title>
             </Head>
-            <PageCaption caption="Characters" />
-            <CharacterFilter
-                alignments={alignments.map((option) => {
-                    return Object.assign({}, option, {
-                        selected: activeAlignments.indexOf(option.code) !== -1
-                    });
-                })}
-                roles={roles.map((option) => {
-                    return Object.assign({}, option, {
-                        selected: activeRoles.indexOf(option.code) !== -1
-                    });
-                })}
-                factions={factions.map((option) => {
-                    return Object.assign({}, option, {
-                        selected: activeFactions.indexOf(option.code) !== -1
-                    });
-                })}
-                features={features.map((option) => {
-                    return Object.assign({}, option, {
-                        selected: activeFeatures.indexOf(option.code) !== -1
-                    });
-                })}
-                factionsLogic={activeFactionsLogic}
-                onAlignmentChange={filterCharactersByAlignment}
-                onRoleChange={filterCharactersByRole}
-                onFactionChange={filterCharactersByFaction}
-                onFeatureChange={filterCharactersByFeature}
-                onReset={() => {setParams([])}}
-            />
-            <CharacterList
-                characters={charactersFiltration.getFilteredCharacters(characters, params)}
-            />
-        </Container >
+            <Container component="main" maxWidth="lg">
+                <PageCaption caption="Characters" />
+                <CharacterFilter
+                    alignments={alignments.map((option) => {
+                        return Object.assign({}, option, {
+                            selected: activeAlignments.indexOf(option.code) !== -1
+                        });
+                    })}
+                    roles={roles.map((option) => {
+                        return Object.assign({}, option, {
+                            selected: activeRoles.indexOf(option.code) !== -1
+                        });
+                    })}
+                    factions={factions.map((option) => {
+                        return Object.assign({}, option, {
+                            selected: activeFactions.indexOf(option.code) !== -1
+                        });
+                    })}
+                    features={features.map((option) => {
+                        return Object.assign({}, option, {
+                            selected: activeFeatures.indexOf(option.code) !== -1
+                        });
+                    })}
+                    factionsLogic={activeFactionsLogic}
+                    onAlignmentChange={filterCharactersByAlignment}
+                    onRoleChange={filterCharactersByRole}
+                    onFactionChange={filterCharactersByFaction}
+                    onFeatureChange={filterCharactersByFeature}
+                    onReset={() => { setParams([]) }}
+                />
+                <CharacterList
+                    characters={charactersFiltration.getFilteredCharacters(characters, params)}
+                />
+            </Container>
+        </React.Fragment>
     );
 };
 
