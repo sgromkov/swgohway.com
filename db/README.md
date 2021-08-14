@@ -2,8 +2,9 @@
 
 ## What to do before database update
 1. update file `__mocks__/characters.json`
-2. add key `"type": "module"` in `package.json`
-3. remove all existing collection in database 
+2. update file `__mocks__/ships.json`
+3. add key `"type": "module"` in `package.json`
+4. remove all existing collection in database
 
 ## Order filling database
 1. alignments:
