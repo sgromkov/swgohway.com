@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import { GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
-import { getAlignments } from '../lib/alignments';
-import { getCharacters } from '../lib/characters';
-import { getFactions } from '../lib/factions';
-import { getRoles } from '../lib/roles';
+import { getAlignments } from '../../../lib/alignments';
+import { getCharacters } from '../../../lib/characters';
+import { getFactions } from '../../../lib/factions';
+import { getRoles } from '../../../lib/roles';
 import { Container } from '@material-ui/core';
-import PageCaption from '../components/PageCaption';
-import CharacterList from '../components/CharacterList';
-import CharacterFilter from '../components/CharacterFilter';
-import charactersFiltration from '../utilities/charactersFiltration';
-import sortSelectOptionsByTitle from '../utilities/sortSelectOptionsByTitle';
-import sortCharactersByName from '../utilities/sortCharactersByName';
-import characterFeatures from '../utilities/characterFeatures';
+import PageCaption from '../../../components/PageCaption';
+import PlayerCharacterList from '../../../components/PlayerCharacterList';
+import CharacterFilter from '../../../components/CharacterFilter';
+import charactersFiltration from '../../../utilities/charactersFiltration';
+import sortSelectOptionsByTitle from '../../../utilities/sortSelectOptionsByTitle';
+import sortCharactersByName from '../../../utilities/sortCharactersByName';
+import characterFeatures from '../../../utilities/characterFeatures';
 import {
     Alignment,
     AlignmentCode,
@@ -22,22 +22,45 @@ import {
     Logic,
     LogicValues,
     Role,
-} from '../types';
+    CombinedCharacter,
+} from '../../../types';
 
-type CharactersProps = {
+const getCombinedCharacters = function (defaultCharacters: Character[], playerCharacters: any[]) {
+    const playerCharactersByKey = {};
+    playerCharacters.forEach((character) => {
+        playerCharactersByKey[character.data.base_id] = character.data;
+    });
+
+    const combinedCharacters = {};
+    defaultCharacters.forEach((character) => {
+        const baseId = character.swgohggBaseId;
+        combinedCharacters[baseId] = {
+            default: character,
+            player: playerCharactersByKey[baseId] || null,
+        } as CombinedCharacter;
+    });
+
+    return combinedCharacters;
+};
+
+type PlayerCharactersProps = {
     alignments: Alignment[],
     characters: Character[],
     features: Feature[],
     factions: Faction[],
     roles: Role[],
+    player: any,
+    combinedCharacters: any,
 };
 
-const Characters: React.FC<CharactersProps> = ({
+const PlayerCharacters: React.FC<PlayerCharactersProps> = ({
     alignments,
     characters,
     features,
     factions,
     roles,
+    player,
+    combinedCharacters,
 }) => {
     const [params, setParams] = useState([]);
 
@@ -74,10 +97,10 @@ const Characters: React.FC<CharactersProps> = ({
     return (
         <React.Fragment>
             <Head>
-                <title>Characters | swgoh</title>
+                <title>{`Characters – ${player.name}`}</title>
             </Head>
             <Container component="main" maxWidth="lg">
-                <PageCaption caption="Characters" />
+                <PageCaption caption={`Characters – ${player.name}`} />
                 <CharacterFilter
                     alignments={alignments.map((option) => {
                         return Object.assign({}, option, {
@@ -106,30 +129,52 @@ const Characters: React.FC<CharactersProps> = ({
                     onFeatureChange={filterCharactersByFeature}
                     onReset={() => { setParams([]) }}
                 />
-                <CharacterList
-                    characters={charactersFiltration.getFilteredCharacters(characters, params)}
+                <PlayerCharacterList
+                    characters={
+                        charactersFiltration.getFilteredCharacters(characters, params)
+                        .map((character) => combinedCharacters[character.swgohggBaseId])
+                    }
                 />
             </Container>
         </React.Fragment>
     );
 };
 
-export default Characters;
+export default PlayerCharacters;
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
     const alignments: Alignment[] = await getAlignments();
     const characters: Character[] = await getCharacters();
     const factions: Faction[] = await getFactions();
     const roles: Role[] = await getRoles();
     const features: Feature[] = characterFeatures.slice();
 
+    const res = await fetch(`https://swgoh.gg/api/player/${context.query.code}/`);
+    const { data: player, units: playerCharacters } = await res.json();
+
+    const combinedCharacters = getCombinedCharacters(characters, playerCharacters);
+
+    const sortCharactersByPower = (a, b) => {
+        const currentPower = (combinedCharacters[a.swgohggBaseId].player)
+            ? combinedCharacters[a.swgohggBaseId].player.power
+            : 0;
+
+        const nextPower = (combinedCharacters[b.swgohggBaseId].player)
+            ? combinedCharacters[b.swgohggBaseId].player.power
+            : 0;
+
+        return (currentPower < nextPower) ? 1 : -1;
+    };
+
     return {
         props: {
             alignments: alignments.sort(sortSelectOptionsByTitle),
-            characters: characters.sort(sortCharactersByName),
+            characters: characters.sort(sortCharactersByPower),
             features: features.sort(sortSelectOptionsByTitle),
             factions: factions.sort(sortSelectOptionsByTitle),
             roles: roles.sort(sortSelectOptionsByTitle),
-        } as CharactersProps
+            player,
+            combinedCharacters,
+        } as PlayerCharactersProps
     };
 }

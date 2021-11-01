@@ -76,3 +76,8 @@ export interface Ship {
     activateShardCount: number,
     cargoShip: boolean,
 }
+
+export interface CombinedCharacter {
+    default: Character,
+    player: any,
+}
