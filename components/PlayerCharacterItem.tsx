@@ -102,6 +102,44 @@ const useStyles = makeStyles((theme) => ({
         transform: "translate(-50%)",
         lineHeight: 1,
     },
+    stars: {},
+    star: {
+        position: "absolute",
+        bottom: "50%",
+        left: "50%",
+        width: "15px",
+        height: "54px",
+        color: "#000",
+        webkitTransformOrigin: "center bottom",
+        transformOrigin: "center bottom",
+        background: "center 0 transparent url(/images/badges/star.png) no-repeat",
+        backgroundSize: "100%",
+        zIndex: 2,
+    },
+    star_is_inactive: {
+        backgroundImage: 'url(/images/badges/star-inactive.png)',
+    },
+    star_number_1: {
+        transform: 'translateX(-50%) rotate(-60deg)',
+    },
+    star_number_2: {
+        transform: 'translateX(-50%) rotate(-40deg)',
+    },
+    star_number_3: {
+        transform: 'translateX(-50%) rotate(-20deg)',
+    },
+    star_number_4: {
+        transform: 'translateX(-50%) rotate(0deg)',
+    },
+    star_number_5: {
+        transform: 'translateX(-50%) rotate(20deg)',
+    },
+    star_number_6: {
+        transform: 'translateX(-50%) rotate(40deg)',
+    },
+    star_number_7: {
+        transform: 'translateX(-50%) rotate(60deg)',
+    },
     relic: {
         position: "absolute",
         right: '-14px',
@@ -168,6 +206,8 @@ const PlayerCharacterItem: React.FC<PlayerCharacterItemProps> = ({
         ? classes[`relic_is_legend`]
         : classes[`relic_alignment_${character.default.alignment.code}`];
 
+    console.log(character);
+
     return (
         <div className={classes.character}>
             <div className={classes.portrait}>
@@ -182,6 +222,18 @@ const PlayerCharacterItem: React.FC<PlayerCharacterItemProps> = ({
                 <div className={`${classes.gear} ${gearLevelClassModifier} ${gearAlignmentClassModifier}`}></div>
                 <div className={classes.level}>
                     {character.player.level}
+                </div>
+                <div className={`${classes.stars}`}>
+                    {[1, 2, 3, 4, 5, 6, 7].map((star) => (
+                        <div
+                            key={star}
+                            className={`${[
+                                classes.star,
+                                classes['star_number_' + star],
+                                (character.player.rarity < star) ? classes.star_is_inactive : '',
+                            ].join(' ')}`}
+                        ></div>
+                    ))}
                 </div>
                 {(character.player.relic_tier - 2 > 0) ? (
                     <div className={`${classes.relic} ${relicClassModifier}`}>
