@@ -4,14 +4,21 @@ Web application for the mobile ["Star Wars: Galaxy of Heroes"](https://www.ea.co
 
 App: https://swgohway.com
 
+## Current state
+
+Pages:
+- [Characters](https://swgohway.com/);
+- [Ships](https://swgohway.com/ships);
+- [Player's characters](https://swgohway.com/player/177969349/characters) by ally code.
+
 ## Coming soon
 
 Here are a few ideas I'm going to implement:
 
-- Advanced character filters;
-- Advanced ship filters;
-- Advanced team builder;
-- Authorization and using your own characters data.
+- Redux integration;
+- Player's ships by ally code;
+- Text field for entering ally code;
+- Authorization and saving ally code to user.
 
 ## What's Under the Hood?
 
