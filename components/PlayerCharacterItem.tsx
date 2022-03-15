@@ -206,8 +206,6 @@ const PlayerCharacterItem: React.FC<PlayerCharacterItemProps> = ({
         ? classes[`relic_is_legend`]
         : classes[`relic_alignment_${character.default.alignment.code}`];
 
-    console.log(character);
-
     return (
         <div className={classes.character}>
             <div className={classes.portrait}>
